@@ -1,0 +1,37 @@
+import { FOOTER_COLUMNS, SITE } from "../../data/content";
+
+export function SiteFooter() {
+  return (
+    <footer className="bg-green-800 text-cream-200 px-6 sm:px-10 pt-20 pb-10">
+      <div className="max-w-[1180px] mx-auto flex flex-wrap gap-16 justify-between">
+        <div className="max-w-[36ch]">
+          <div className="font-marker text-h3 uppercase tracking-marker">{SITE.brand}</div>
+          <p className="font-body text-body-md text-sage-300 mt-4">
+            Authentic Persian flavours, homemade with heart, cooked at FoodLab Strathfield South and
+            delivered across New South Wales.
+          </p>
+        </div>
+        {FOOTER_COLUMNS.map((col) => (
+          <div key={col.title} className="flex flex-col gap-3">
+            <div className="font-ui text-eyebrow font-bold uppercase tracking-eyebrow text-sage-300">
+              {col.title}
+            </div>
+            {col.links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="font-ui text-body-md font-semibold text-cream-200 no-underline transition-colors duration-150 ease-standard hover:text-amber-500"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className="max-w-[1180px] mx-auto mt-16 pt-6 border-t border-[rgba(240,235,220,0.24)] font-ui text-caption text-sage-300">
+        Kookoo Foods — Persian cuisine, established 2024. ABN and food safety registration through
+        FoodLab Sydney.
+      </div>
+    </footer>
+  );
+}

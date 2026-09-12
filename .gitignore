@@ -1,0 +1,29 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Original Claude Design handoff bundle (raw/unoptimized source assets, ~120MB).
+# The photos and copy it contains have already been extracted, optimized and
+# committed under public/images and src/data — kept locally for reference only.
+kookoo-foods-catering-website/

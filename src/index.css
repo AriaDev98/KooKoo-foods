@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------- */
+/* Design tokens — carried over from the "Greenhouse" design system that  */
+/* Kookoo Foods was designed with (Claude Design), tuned with the site's  */
+/* own amber accent override.                                            */
+/* ---------------------------------------------------------------------- */
+@theme {
+  --color-green-900: #1b2e0f;
+  --color-green-800: #263f14;
+  --color-green-700: #2f4d1a;
+  --color-green-600: #3d6122;
+  --color-green-500: #5c7c3c;
+
+  --color-sage-400: #8fa477;
+  --color-sage-300: #a9b893;
+  --color-sage-200: #c3cdb2;
+  --color-sage-100: #dfe4d4;
+
+  --color-cream-100: #faf7ef;
+  --color-cream-200: #f0ebdc;
+  --color-cream-300: #e4ddc8;
+  --color-cream-400: #d2c8ac;
+
+  /* Kookoo's own amber, warmer/more golden than the base design system */
+  --color-amber-600: #b77f12;
+  --color-amber-500: #d69a1f;
+  --color-amber-400: #e6b245;
+  --color-amber-200: #f7dcb8;
+
+  --color-clay-800: #3a1810;
+  --color-clay-700: #4c2118;
+  --color-clay-500: #7a4032;
+  --color-clay-200: #d9beb4;
+
+  --color-ink-900: #171a12;
+
+  --font-display: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  --font-ui: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  --font-body: "Newsreader", Georgia, serif;
+  --font-marker: "Space Mono", ui-monospace, monospace;
+
+  --radius-control: 8px;
+  --radius-tile: 14px;
+
+  --shadow-card: 0 1px 0 0 var(--color-cream-400);
+  --shadow-raised: 0 2px 0 0 rgba(38, 63, 20, 0.14);
+  --shadow-photo: 0 12px 28px -18px rgba(27, 46, 15, 0.45);
+  --shadow-block: 0 10px 30px -14px rgba(31, 51, 16, 0.45);
+
+  /* Fluid display sizes */
+  --text-hero: clamp(2.75rem, 6vw, 5rem);
+  --text-h1: clamp(2.25rem, 4.4vw, 3.5rem);
+  --text-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --text-lead: clamp(1.375rem, 2vw, 1.75rem);
+  --text-marker: clamp(1.5rem, 2.6vw, 2.125rem);
+
+  /* Fixed body/UI sizes */
+  --text-h3: 1.5rem;
+  --text-h4: 1.25rem;
+  --text-body-lg: 1.1875rem;
+  --text-body-md: 1.0625rem;
+  --text-body-sm: 0.9375rem;
+  --text-eyebrow: 0.8125rem;
+  --text-caption: 0.8125rem;
+
+  --tracking-hero: -0.02em;
+  --tracking-heading: -0.02em;
+  --tracking-marker: 0.04em;
+  --tracking-eyebrow: 0.14em;
+
+  --ease-standard: cubic-bezier(0.32, 0.72, 0.28, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream-200);
+  color: var(--color-green-700);
+}
+
+[id] {
+  scroll-margin-top: 84px;
+}
+
+@media (max-width: 900px) {
+  [id] {
+    scroll-margin-top: 150px;
+  }
+}
+
+::selection {
+  background: var(--color-amber-400);
+  color: var(--color-green-900);
+}
