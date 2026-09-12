@@ -95,3 +95,22 @@ body {
   background: var(--color-amber-400);
   color: var(--color-green-900);
 }
+
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.kenburns {
+  animation: kenburns 20s var(--ease-standard) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kenburns {
+    animation: none;
+  }
+}

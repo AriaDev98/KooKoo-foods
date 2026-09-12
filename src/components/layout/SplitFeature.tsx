@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Photo } from "../ui/Photo";
+import { Reveal } from "../ui/Reveal";
 
 type Surface = "cream" | "sage" | "green" | "raised";
 
@@ -18,6 +19,7 @@ export function SplitFeature({
   surface = "sage",
   softCorner = true,
   minHeight = "520px",
+  revealImage = false,
 }: {
   children: ReactNode;
   imageSrc: string;
@@ -26,6 +28,7 @@ export function SplitFeature({
   surface?: Surface;
   softCorner?: boolean;
   minHeight?: string;
+  revealImage?: boolean;
 }) {
   const panel = (
     <div
@@ -42,9 +45,8 @@ export function SplitFeature({
     </div>
   );
 
-  const media = (
-    <Photo src={imageSrc} alt={imageLabel} ratio="auto" className="min-h-full" />
-  );
+  const photo = <Photo src={imageSrc} alt={imageLabel} ratio="auto" className="min-h-full" />;
+  const media = revealImage ? <Reveal>{photo}</Reveal> : photo;
 
   return (
     <section

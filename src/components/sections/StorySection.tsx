@@ -2,6 +2,7 @@ import { SplitFeature } from "../layout/SplitFeature";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Badge } from "../ui/Badge";
 import { Photo } from "../ui/Photo";
+import { Reveal } from "../ui/Reveal";
 
 export function StorySection() {
   return (
@@ -11,6 +12,7 @@ export function StorySection() {
       minHeight="560px"
       imageSrc="/images/photos/founder-cake.jpg"
       imageLabel="the baker with a finished cake at FoodLab"
+      revealImage
     >
       <div id="story">
         <SectionHeading icon="notebook-pen" tone="clay">
@@ -32,11 +34,13 @@ export function StorySection() {
         </div>
         <Badge tone="sage">Based at FoodLab, Strathfield South</Badge>
         <figure className="m-0 mt-10 max-w-[30em]">
-          <Photo
-            src="/images/photos/ash-reshteh-making.jpg"
-            alt="plating Ash Reshteh at the market stall"
-            ratio="4 / 3"
-          />
+          <Reveal>
+            <Photo
+              src="/images/photos/ash-reshteh-making.jpg"
+              alt="plating Ash Reshteh at the market stall"
+              ratio="4 / 3"
+            />
+          </Reveal>
           <figcaption className="mt-4 font-ui text-body-sm font-semibold text-green-500">
             Finishing bowls of Ash Reshteh to order.
           </figcaption>

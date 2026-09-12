@@ -1,5 +1,6 @@
 import { SectionHeading } from "../ui/SectionHeading";
 import { Photo } from "../ui/Photo";
+import { Reveal } from "../ui/Reveal";
 import { PANTRY } from "../../data/content";
 
 export function PantrySection() {
@@ -21,9 +22,11 @@ export function PantrySection() {
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {PANTRY.map((item) => (
+          {PANTRY.map((item, i) => (
             <div key={item.name} className="flex flex-col gap-5">
-              <Photo src={item.src} alt={item.name} ratio="1 / 1" />
+              <Reveal delay={(i % 3) * 90}>
+                <Photo src={item.src} alt={item.name} ratio="1 / 1" />
+              </Reveal>
               <div>
                 <h3 className="m-0 mb-3 font-display text-h4 font-extrabold tracking-heading text-green-800">
                   {item.name}

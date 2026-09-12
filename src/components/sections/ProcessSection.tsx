@@ -1,5 +1,6 @@
 import { SectionHeading } from "../ui/SectionHeading";
 import { Photo } from "../ui/Photo";
+import { Reveal } from "../ui/Reveal";
 import { PROCESS_STEPS } from "../../data/content";
 
 export function ProcessSection() {
@@ -21,9 +22,11 @@ export function ProcessSection() {
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {PROCESS_STEPS.map((step) => (
+          {PROCESS_STEPS.map((step, i) => (
             <figure key={step.n} className="m-0 flex flex-col gap-5">
-              <Photo src={step.src} alt={step.label} ratio="3 / 4" />
+              <Reveal delay={(i % 3) * 90}>
+                <Photo src={step.src} alt={step.label} ratio="3 / 4" />
+              </Reveal>
               <figcaption className="flex gap-4 items-baseline">
                 <span className="font-marker text-h4 leading-none text-clay-500">{step.n}</span>
                 <span className="font-body text-body-lg leading-relaxed text-green-500">
