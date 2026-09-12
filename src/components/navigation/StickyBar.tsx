@@ -9,8 +9,12 @@ export function StickyBar() {
       className="fixed top-0 left-0 right-0 z-50 flex flex-wrap items-center justify-between gap-6 bg-green-800 px-8 py-[10px] shadow-[0_6px_24px_-12px_rgba(0,0,0,0.5)] transition-transform duration-300 ease-standard"
       style={{ transform: scrolled ? "translateY(0)" : "translateY(-102%)" }}
     >
-      <a href="#top" className="flex items-center gap-4 no-underline">
-        <img src="/images/logos/kookoo-logo-gold.png" alt={SITE.brand} className="h-[34px] w-auto block" />
+      <a href="#top" className="group flex items-center gap-4 no-underline">
+        <img
+          src="/images/logos/kookoo-logo-gold.png"
+          alt={SITE.brand}
+          className="h-[34px] w-auto block transition-transform duration-150 ease-standard group-hover:scale-105"
+        />
         <span className="font-display text-body-md font-extrabold tracking-tight text-cream-100">
           {SITE.brand}
         </span>

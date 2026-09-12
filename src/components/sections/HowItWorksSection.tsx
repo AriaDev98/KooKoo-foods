@@ -1,6 +1,7 @@
 import { SectionHeading } from "../ui/SectionHeading";
 import { HighlightHeading } from "../ui/HighlightHeading";
 import { Button } from "../ui/Button";
+import { Reveal } from "../ui/Reveal";
 import { STEPS, SITE } from "../../data/content";
 
 export function HowItWorksSection() {
@@ -8,7 +9,7 @@ export function HowItWorksSection() {
     <section id="how" className="bg-green-800 text-cream-200 px-6 sm:px-10 py-24">
       <div className="max-w-[1180px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-end">
-          <div>
+          <Reveal>
             <SectionHeading icon="notebook-pen" tone="amber" color="cream">
               How it works
             </SectionHeading>
@@ -17,7 +18,7 @@ export function HowItWorksSection() {
                 {"Three steps\nto a full table"}
               </HighlightHeading>
             </div>
-          </div>
+          </Reveal>
           <p className="m-0 font-body text-lead leading-relaxed text-cream-200 max-w-[30em]">
             No order is too small and no menu is fixed. Tell us the date and we will build the spread
             around your table.

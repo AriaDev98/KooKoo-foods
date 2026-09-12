@@ -1,48 +1,90 @@
-import { useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Card } from "../ui/Card";
 import { Badge } from "../ui/Badge";
+import { Reveal } from "../ui/Reveal";
 import { DISHES, FILTERS, matchesFilter } from "../../data/dishes";
+
+type IndicatorRect = { top: number; left: number; width: number; height: number };
 
 export function MenuSection() {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
   const [gfOnly, setGfOnly] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const filterRefs = useRef<Partial<Record<(typeof FILTERS)[number], HTMLButtonElement>>>({});
+  const [indicator, setIndicator] = useState<IndicatorRect | null>(null);
 
   const dishes = useMemo(
     () => DISHES.filter((d) => matchesFilter(d, filter, gfOnly)),
     [filter, gfOnly],
   );
 
+  useLayoutEffect(() => {
+    const positionIndicator = () => {
+      const track = trackRef.current;
+      const btn = filterRefs.current[filter];
+      if (!track || !btn) return;
+      const trackRect = track.getBoundingClientRect();
+      const btnRect = btn.getBoundingClientRect();
+      setIndicator({
+        top: btnRect.top - trackRect.top,
+        left: btnRect.left - trackRect.left,
+        width: btnRect.width,
+        height: btnRect.height,
+      });
+    };
+    positionIndicator();
+    window.addEventListener("resize", positionIndicator);
+    return () => window.removeEventListener("resize", positionIndicator);
+    // dish counts (and so button widths) change with gfOnly even when filter doesn't
+  }, [filter, gfOnly]);
+
   return (
     <section id="menu" className="bg-cream-100 border-t border-cream-400 px-6 sm:px-10 py-24">
       <div className="max-w-[1180px] mx-auto">
         <div className="flex flex-wrap items-end justify-between gap-8">
-          <div>
+          <Reveal>
             <SectionHeading icon="chef-hat" tone="amber">
               The menu
             </SectionHeading>
             <h2 className="mt-6 font-display text-h2 font-extrabold tracking-heading leading-snug text-green-800">
               Everything we cook, in one place
             </h2>
-          </div>
+          </Reveal>
           <p className="m-0 font-body text-body-md text-green-500 max-w-[30em]">
             Menu 15.07.6 — dishes rotate with the season. Veg vegetarian, V vegan, GF gluten free, DF
             dairy free, CN contains nuts.
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-3 mt-10 mb-4">
+        <div ref={trackRef} className="relative flex flex-wrap gap-3 mt-10 mb-4">
+          {indicator ? (
+            <div
+              aria-hidden="true"
+              className="absolute rounded-full bg-green-800"
+              style={{
+                top: indicator.top,
+                left: indicator.left,
+                width: indicator.width,
+                height: indicator.height,
+                transition: "top 250ms var(--ease-standard), left 250ms var(--ease-standard), width 250ms var(--ease-standard), height 250ms var(--ease-standard)",
+              }}
+            />
+          ) : null}
           {FILTERS.map((label) => {
             const active = label === filter;
             const count = DISHES.filter((d) => matchesFilter(d, label, gfOnly)).length;
             return (
               <button
                 key={label}
+                ref={(el) => {
+                  if (el) filterRefs.current[label] = el;
+                }}
                 type="button"
                 onClick={() => setFilter(label)}
                 aria-pressed={active}
-                className={`font-ui text-body-sm font-extrabold uppercase tracking-wide cursor-pointer px-5 py-[10px] rounded-full border-2 border-green-800 transition-colors duration-150 ease-standard hover:bg-amber-500 hover:border-amber-500 hover:text-green-800 ${
-                  active ? "bg-green-800 text-cream-200" : "bg-transparent text-green-800"
+                className={`relative z-10 font-ui text-body-sm font-extrabold uppercase tracking-wide cursor-pointer px-5 py-[10px] rounded-full border-2 border-green-800 transition-colors duration-150 ease-standard hover:bg-amber-500 hover:border-amber-500 hover:text-green-800 ${
+                  active ? "text-cream-200" : "bg-transparent text-green-800"
                 }`}
               >
                 {label} <span className="opacity-60">{count}</span>

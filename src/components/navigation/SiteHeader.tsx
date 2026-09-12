@@ -26,8 +26,12 @@ export function SiteHeader() {
     <header className="relative bg-green-800">
       {/* Compact bar + slide-down menu, phones only */}
       <div className="sm:hidden flex items-center justify-between px-6 py-4">
-        <a href="#top" className="flex items-center gap-3 no-underline">
-          <img src="/images/logos/kookoo-logo-gold.png" alt={SITE.brand} className="h-10 w-auto" />
+        <a href="#top" className="group flex items-center gap-3 no-underline">
+          <img
+            src="/images/logos/kookoo-logo-gold.png"
+            alt={SITE.brand}
+            className="h-10 w-auto transition-transform duration-150 ease-standard group-hover:scale-105"
+          />
           <span className="font-display text-body-md font-extrabold text-cream-100">{SITE.brand}</span>
         </a>
         <button
@@ -85,7 +89,13 @@ export function SiteHeader() {
           </Button>
         </div>
         <div className="flex flex-col items-center gap-10">
-          <img src="/images/logos/kookoo-logo-gold.png" alt={SITE.brand} className="h-[120px] w-auto" />
+          <a href="#top" className="group">
+            <img
+              src="/images/logos/kookoo-logo-gold.png"
+              alt={SITE.brand}
+              className="h-[120px] w-auto transition-transform duration-150 ease-standard group-hover:scale-105"
+            />
+          </a>
           <nav className="flex flex-wrap justify-center gap-8">
             {NAV_ITEMS.map((item) => (
               <a

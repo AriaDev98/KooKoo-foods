@@ -83,9 +83,11 @@ export function GallerySection() {
     <section id="gallery" className="bg-cream-200 px-6 sm:px-10 py-24">
       <div className="max-w-[1180px] mx-auto">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading icon="camera" tone="amber">
-            From the kitchen
-          </SectionHeading>
+          <Reveal>
+            <SectionHeading icon="camera" tone="amber">
+              From the kitchen
+            </SectionHeading>
+          </Reveal>
           <div className="flex flex-wrap items-center gap-4 max-w-[34em]">
             <p className="m-0 font-body text-body-md text-green-500">
               Click a photo to turn it over for the ingredients. Lists are a guide — tell us about
