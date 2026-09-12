@@ -2,6 +2,7 @@ import { useState } from "react";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Photo } from "../ui/Photo";
 import { Reveal } from "../ui/Reveal";
+import { SocialLinks } from "../ui/SocialLinks";
 import { GALLERY, type GalleryItem } from "../../data/gallery";
 
 function GalleryCard({ item, delay = 0 }: { item: GalleryItem; delay?: number }) {
@@ -85,13 +86,13 @@ export function GallerySection() {
           <SectionHeading icon="camera" tone="amber">
             From the kitchen
           </SectionHeading>
-          <p className="m-0 font-body text-body-md text-green-500 max-w-[34em]">
-            Click a photo to turn it over for the ingredients. Lists are a guide — tell us about
-            allergies or intolerances and we confirm every dish before we cook. More on Instagram —{" "}
-            <a href="https://instagram.com/kookoo.au" className="text-amber-600 font-semibold">
-              @kookoo.au
-            </a>
-          </p>
+          <div className="flex flex-wrap items-center gap-4 max-w-[34em]">
+            <p className="m-0 font-body text-body-md text-green-500">
+              Click a photo to turn it over for the ingredients. Lists are a guide — tell us about
+              allergies or intolerances and we confirm every dish before we cook. Follow us for more:
+            </p>
+            <SocialLinks tone="onLight" />
+          </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
           {GALLERY.map((item, i) => (

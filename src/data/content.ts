@@ -5,6 +5,7 @@ export const SITE = {
   email: "kookoofoods.au@gmail.com",
   instagramHandle: "@kookoo.au",
   instagramUrl: "https://instagram.com/kookoo.au",
+  facebookUrl: "https://www.facebook.com/kookoo.au.2025",
   address: {
     kitchen: "FoodLab",
     line: "34 Crosgrove Rd, Strathfield South",
@@ -115,7 +116,6 @@ export const FOOTER_COLUMNS = [
     links: [
       { label: SITE.email, href: `mailto:${SITE.email}` },
       { label: SITE.phone, href: SITE.phoneHref },
-      { label: SITE.instagramHandle, href: SITE.instagramUrl },
     ],
   },
 ];
