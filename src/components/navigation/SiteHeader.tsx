@@ -36,39 +36,46 @@ export function SiteHeader() {
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="-mr-2 p-2 text-cream-100"
+          className="-mr-2 p-2 text-cream-100 transition-transform duration-200 ease-standard"
+          style={{ transform: open ? "rotate(90deg)" : "rotate(0deg)" }}
         >
           {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {open ? (
-        <div
-          id="mobile-nav"
-          className="sm:hidden absolute inset-x-0 top-full z-50 flex flex-col gap-5 border-t border-[rgba(240,235,220,0.24)] bg-green-800 px-6 py-8 shadow-[0_16px_32px_-16px_rgba(0,0,0,0.5)]"
-        >
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.id}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="font-ui text-body-lg font-extrabold text-cream-200 no-underline"
-            >
-              {item.label}
-            </a>
-          ))}
-          <Button
-            variant="primary"
-            size="md"
-            href={HEADER_CTA.href}
+      <div
+        id="mobile-nav"
+        aria-hidden={!open}
+        inert={!open}
+        className="sm:hidden absolute inset-x-0 top-full z-50 flex flex-col gap-5 border-t border-[rgba(240,235,220,0.24)] bg-green-800 px-6 py-8 shadow-[0_16px_32px_-16px_rgba(0,0,0,0.5)]"
+        style={{
+          opacity: open ? 1 : 0,
+          transform: open ? "translateY(0)" : "translateY(-12px)",
+          pointerEvents: open ? "auto" : "none",
+          transition: "opacity 220ms var(--ease-standard), transform 220ms var(--ease-standard)",
+        }}
+      >
+        {NAV_ITEMS.map((item) => (
+          <a
+            key={item.id}
+            href={item.href}
             onClick={() => setOpen(false)}
-            fullWidth
-            className="mt-2"
+            className="font-ui text-body-lg font-extrabold text-cream-200 no-underline"
           >
-            {HEADER_CTA.label}
-          </Button>
-        </div>
-      ) : null}
+            {item.label}
+          </a>
+        ))}
+        <Button
+          variant="primary"
+          size="md"
+          href={HEADER_CTA.href}
+          onClick={() => setOpen(false)}
+          fullWidth
+          className="mt-2"
+        >
+          {HEADER_CTA.label}
+        </Button>
+      </div>
 
       {/* Tall centered masthead, tablet and up */}
       <div className="hidden sm:block relative px-10 pt-10 pb-12">
