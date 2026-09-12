@@ -1,27 +1,96 @@
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { Button } from "../ui/Button";
 import { NAV_ITEMS, HEADER_CTA, SITE } from "../../data/content";
 
 export function SiteHeader() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
   return (
-    <header className="relative bg-green-800 px-6 sm:px-10 pt-10 pb-12">
-      <div className="absolute top-10 right-6 sm:right-10">
-        <Button marker size="sm" href={HEADER_CTA.href}>
-          {HEADER_CTA.label}
-        </Button>
+    <header className="relative bg-green-800">
+      {/* Compact bar + slide-down menu, phones only */}
+      <div className="sm:hidden flex items-center justify-between px-6 py-4">
+        <a href="#top" className="flex items-center gap-3 no-underline">
+          <img src="/images/logos/kookoo-logo-gold.png" alt={SITE.brand} className="h-10 w-auto" />
+          <span className="font-display text-body-md font-extrabold text-cream-100">{SITE.brand}</span>
+        </a>
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          aria-label={open ? "Close menu" : "Open menu"}
+          className="-mr-2 p-2 text-cream-100"
+        >
+          {open ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
-      <div className="flex flex-col items-center gap-10">
-        <img src="/images/logos/kookoo-logo-gold.png" alt={SITE.brand} className="h-24 sm:h-[120px] w-auto" />
-        <nav className="flex flex-wrap justify-center gap-8">
+
+      {open ? (
+        <div
+          id="mobile-nav"
+          className="sm:hidden absolute inset-x-0 top-full z-50 flex flex-col gap-5 border-t border-[rgba(240,235,220,0.24)] bg-green-800 px-6 py-8 shadow-[0_16px_32px_-16px_rgba(0,0,0,0.5)]"
+        >
           {NAV_ITEMS.map((item) => (
             <a
               key={item.id}
               href={item.href}
-              className="font-ui text-body-lg font-extrabold text-cream-200 no-underline transition-colors duration-150 ease-standard hover:text-amber-500"
+              onClick={() => setOpen(false)}
+              className="font-ui text-body-lg font-extrabold text-cream-200 no-underline"
             >
               {item.label}
             </a>
           ))}
-        </nav>
+          <Button
+            variant="primary"
+            size="md"
+            href={HEADER_CTA.href}
+            onClick={() => setOpen(false)}
+            fullWidth
+            className="mt-2"
+          >
+            {HEADER_CTA.label}
+          </Button>
+        </div>
+      ) : null}
+
+      {/* Tall centered masthead, tablet and up */}
+      <div className="hidden sm:block relative px-10 pt-10 pb-12">
+        <div className="absolute top-10 right-10">
+          <Button marker size="sm" href={HEADER_CTA.href}>
+            {HEADER_CTA.label}
+          </Button>
+        </div>
+        <div className="flex flex-col items-center gap-10">
+          <img src="/images/logos/kookoo-logo-gold.png" alt={SITE.brand} className="h-[120px] w-auto" />
+          <nav className="flex flex-wrap justify-center gap-8">
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
+                className="font-ui text-body-lg font-extrabold text-cream-200 no-underline transition-colors duration-150 ease-standard hover:text-amber-500"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
       </div>
     </header>
   );

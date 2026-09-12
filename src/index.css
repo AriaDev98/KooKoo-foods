@@ -22,8 +22,11 @@
   --color-cream-300: #e4ddc8;
   --color-cream-400: #d2c8ac;
 
-  /* Kookoo's own amber, warmer/more golden than the base design system */
-  --color-amber-600: #b77f12;
+  /* Kookoo's own amber, warmer/more golden than the base design system.
+     amber-600 is darkened from the original #b77f12 — that failed WCAG AA
+     contrast (as low as 1.64:1) everywhere it's used as text: badges, the
+     required-field asterisk, dish course labels, the Instagram link. */
+  --color-amber-600: #5e3d08;
   --color-amber-500: #d69a1f;
   --color-amber-400: #e6b245;
   --color-amber-200: #f7dcb8;
