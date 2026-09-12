@@ -1,4 +1,5 @@
 import { FOOTER_COLUMNS, SITE } from "../../data/content";
+import { SocialLinks } from "../ui/SocialLinks";
 
 export function SiteFooter() {
   return (
@@ -10,6 +11,7 @@ export function SiteFooter() {
             Authentic Persian flavours, homemade with heart, cooked at FoodLab Strathfield South and
             delivered across New South Wales.
           </p>
+          <SocialLinks tone="onDark" className="mt-6" />
         </div>
         {FOOTER_COLUMNS.map((col) => (
           <div key={col.title} className="flex flex-col gap-3">
