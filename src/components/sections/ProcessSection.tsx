@@ -8,14 +8,14 @@ export function ProcessSection() {
     <section id="process" className="bg-cream-100 border-t border-cream-400 px-6 sm:px-10 py-24">
       <div className="max-w-[1180px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-end">
-          <div>
+          <Reveal>
             <SectionHeading icon="chef-hat" tone="clay">
               Made by hand
             </SectionHeading>
             <h2 className="mt-6 font-display text-h2 font-extrabold tracking-heading leading-tight text-green-800">
               The process of baking auchma
             </h2>
-          </div>
+          </Reveal>
           <p className="m-0 font-body text-lead leading-relaxed text-green-700 max-w-[32em]">
             Every auchma is rolled, brushed and sprinkled by hand at the FoodLab kitchen on the morning
             of your event — never frozen, never bought in.

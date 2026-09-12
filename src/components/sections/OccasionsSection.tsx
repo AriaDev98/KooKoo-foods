@@ -1,13 +1,16 @@
 import { SectionHeading } from "../ui/SectionHeading";
+import { Reveal } from "../ui/Reveal";
 import { OCCASIONS } from "../../data/content";
 
 export function OccasionsSection() {
   return (
     <section className="bg-sage-300 px-6 sm:px-10 py-24">
       <div className="max-w-[1180px] mx-auto">
-        <SectionHeading icon="users" tone="clay">
-          What we cook for
-        </SectionHeading>
+        <Reveal>
+          <SectionHeading icon="users" tone="clay">
+            What we cook for
+          </SectionHeading>
+        </Reveal>
         <div className="flex flex-wrap gap-4 mt-10">
           {OCCASIONS.map((occasion) => (
             <span

@@ -8,14 +8,14 @@ export function PantrySection() {
     <section id="pantry" className="bg-cream-200 px-6 sm:px-10 py-24">
       <div className="max-w-[1180px] mx-auto">
         <div className="flex flex-wrap items-end justify-between gap-8">
-          <div>
+          <Reveal>
             <SectionHeading icon="leaf" tone="clay">
               Jars and pantry
             </SectionHeading>
             <h2 className="mt-6 font-display text-h2 font-extrabold tracking-heading leading-snug text-green-800">
               Take something home
             </h2>
-          </div>
+          </Reveal>
           <p className="m-0 font-body text-body-md text-green-500 max-w-[30em]">
             Made in small batches at FoodLab. Add them to a catering order, or ask what is in stock this
             week.

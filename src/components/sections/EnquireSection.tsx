@@ -6,6 +6,7 @@ import { Input } from "../ui/Input";
 import { Select } from "../ui/Select";
 import { Textarea } from "../ui/Textarea";
 import { Button } from "../ui/Button";
+import { Reveal } from "../ui/Reveal";
 import { OCCASIONS, SITE } from "../../data/content";
 
 interface FormState {
@@ -88,12 +89,14 @@ export function EnquireSection() {
     >
       <div className="max-w-[1180px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
         <div>
-          <SectionHeading icon="mail" tone="amber">
-            Book your event
-          </SectionHeading>
-          <h2 className="mt-6 mb-6 font-display text-h2 font-extrabold tracking-heading leading-snug text-green-800">
-            Tell us what you are planning
-          </h2>
+          <Reveal>
+            <SectionHeading icon="mail" tone="amber">
+              Book your event
+            </SectionHeading>
+            <h2 className="mt-6 mb-6 font-display text-h2 font-extrabold tracking-heading leading-snug text-green-800">
+              Tell us what you are planning
+            </h2>
+          </Reveal>
           <p className="m-0 mb-10 font-body text-body-lg leading-relaxed text-green-700 max-w-[32em]">
             Send the date, the number of guests and any dietary needs. We reply with a spread and a
             price, usually the same day.

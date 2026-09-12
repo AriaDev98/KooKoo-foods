@@ -1,5 +1,6 @@
 import { SectionHeading } from "../ui/SectionHeading";
 import { Card } from "../ui/Card";
+import { Reveal } from "../ui/Reveal";
 
 const CARDS = [
   {
@@ -24,9 +25,11 @@ export function IntroSection() {
     <section className="bg-cream-200 px-6 sm:px-10 py-24">
       <div className="max-w-[1180px] mx-auto">
         <div className="max-w-[34em]">
-          <SectionHeading icon="cooking-pot" tone="amber">
-            Catering for events and parties
-          </SectionHeading>
+          <Reveal>
+            <SectionHeading icon="cooking-pot" tone="amber">
+              Catering for events and parties
+            </SectionHeading>
+          </Reveal>
           <div className="font-body text-lead leading-relaxed text-green-700 mt-8 space-y-6">
             <p className="m-0">
               Kookoo Foods is a <b className="font-bold">home kitchen</b> working out of{" "}
