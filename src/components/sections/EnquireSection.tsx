@@ -221,7 +221,7 @@ export function EnquireSection() {
               title="Map of 34 Crosgrove Rd, Strathfield South"
               src={SITE.mapEmbedUrl}
               className="w-full h-[300px] border-0 block"
-              style={{ filter: "sepia(.45) hue-rotate(40deg) saturate(1.6) brightness(.92) contrast(1.1)" }}
+              style={{ filter: "grayscale(1) sepia(.9) saturate(1.8) contrast(1.1)" }}
               loading="lazy"
             />
             <MapPin
