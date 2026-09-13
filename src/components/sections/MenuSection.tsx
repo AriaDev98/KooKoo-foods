@@ -52,8 +52,8 @@ export function MenuSection() {
             </h2>
           </Reveal>
           <p className="m-0 font-body text-body-md text-green-500 max-w-[30em]">
-            Menu 15.07.6 — dishes rotate with the season. Veg vegetarian, V vegan, GF gluten free, DF
-            dairy free, CN contains nuts.
+            Updated seasonally — dishes rotate with what's fresh. Veg vegetarian, V vegan, GF gluten
+            free, DF dairy free, CN contains nuts.
           </p>
         </div>
 
@@ -111,7 +111,7 @@ export function MenuSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {dishes.map((dish, i) => (
             <Card key={dish.name} tone={i % 3 === 1 ? "sage" : "cream"} bordered>
-              <div className="flex flex-col gap-4 h-full">
+              <div className="flex flex-col gap-4">
                 <div className="flex items-baseline justify-between gap-4">
                   <h3 className="m-0 font-display text-h4 font-extrabold tracking-heading text-green-800">
                     {dish.name}
@@ -121,13 +121,15 @@ export function MenuSection() {
                   </span>
                 </div>
                 <p className="m-0 font-body text-body-md leading-relaxed text-green-700">{dish.desc}</p>
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {dish.tags.map((tag) => (
-                    <Badge key={tag.label} tone={tag.tone}>
-                      {tag.label}
-                    </Badge>
-                  ))}
-                </div>
+                {dish.tags.length > 0 ? (
+                  <div className="flex flex-wrap gap-2">
+                    {dish.tags.map((tag) => (
+                      <Badge key={tag.label} tone={tag.tone}>
+                        {tag.label}
+                      </Badge>
+                    ))}
+                  </div>
+                ) : null}
               </div>
             </Card>
           ))}
