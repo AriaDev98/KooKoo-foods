@@ -6,10 +6,11 @@ export function HeroSection() {
     <Hero
       headline={"Take a Bite\nof Persia"}
       tone="light"
-      height="640px"
+      height="600px"
       imageSrc="/images/photos/hero-kabab.jpg"
       imageLabel="kababs over charcoal"
       kenBurns
+      showScrollCue
     >
       <div className="flex flex-col items-center gap-8 max-w-[620px]">
         <p className="m-0 font-body text-lead leading-normal text-green-800 bg-[rgba(243,239,228,0.84)] shadow-block px-6 py-4 text-center">

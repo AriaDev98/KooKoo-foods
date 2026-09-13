@@ -112,8 +112,26 @@ body {
   animation: kenburns 20s var(--ease-standard) forwards;
 }
 
+@keyframes scroll-cue-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+.scroll-cue {
+  animation: scroll-cue-bob 2s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .kenburns {
+    animation: none;
+  }
+
+  .scroll-cue {
     animation: none;
   }
 }
