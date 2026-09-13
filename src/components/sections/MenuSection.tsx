@@ -52,8 +52,8 @@ export function MenuSection() {
             </h2>
           </Reveal>
           <p className="m-0 font-body text-body-md text-green-500 max-w-[30em]">
-            Menu 15.07.6 — dishes rotate with the season. Veg vegetarian, V vegan, GF gluten free, DF
-            dairy free, CN contains nuts.
+            Updated seasonally — dishes rotate with what's fresh. Veg vegetarian, V vegan, GF gluten
+            free, DF dairy free, CN contains nuts.
           </p>
         </div>
 
