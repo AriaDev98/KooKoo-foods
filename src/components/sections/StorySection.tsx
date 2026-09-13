@@ -1,7 +1,6 @@
 import { SplitFeature } from "../layout/SplitFeature";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Badge } from "../ui/Badge";
-import { Photo } from "../ui/Photo";
 import { Reveal } from "../ui/Reveal";
 
 export function StorySection() {
@@ -35,18 +34,6 @@ export function StorySection() {
           </p>
         </div>
         <Badge tone="sage">Based at FoodLab, Strathfield South</Badge>
-        <figure className="m-0 mt-10 max-w-[30em]">
-          <Reveal>
-            <Photo
-              src="/images/photos/ash-reshteh-making.jpg"
-              alt="plating Ash Reshteh at the market stall"
-              ratio="4 / 3"
-            />
-          </Reveal>
-          <figcaption className="mt-4 font-ui text-body-sm font-semibold text-green-500">
-            Finishing bowls of Ash Reshteh to order.
-          </figcaption>
-        </figure>
       </div>
     </SplitFeature>
   );
