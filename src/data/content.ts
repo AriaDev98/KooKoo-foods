@@ -11,8 +11,9 @@ export const SITE = {
     line: "34 Crosgrove Rd, Strathfield South",
     region: "NSW 2136",
   },
+  // no &marker= here — a custom-styled pin is overlaid on top instead, see EnquireSection
   mapEmbedUrl:
-    "https://www.openstreetmap.org/export/embed.html?bbox=151.0640%2C-33.9060%2C151.0900%2C-33.8880&layer=mapnik&marker=-33.8970%2C151.0770",
+    "https://www.openstreetmap.org/export/embed.html?bbox=151.0640%2C-33.9060%2C151.0900%2C-33.8880&layer=mapnik",
   mapDirectionsUrl:
     "https://www.google.com/maps/search/?api=1&query=34+Crosgrove+Rd+Strathfield+South+NSW+2136",
 };
