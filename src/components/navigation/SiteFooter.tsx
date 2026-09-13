@@ -30,9 +30,11 @@ export function SiteFooter() {
           </div>
         ))}
       </div>
-      <div className="max-w-[1180px] mx-auto mt-16 pt-6 border-t border-[rgba(240,235,220,0.24)] font-ui text-caption text-sage-300">
-        Kookoo Foods — Persian cuisine, established 2024. ABN and food safety registration through
-        FoodLab Sydney.
+      <div className="max-w-[1180px] mx-auto mt-16 pt-6 border-t border-[rgba(240,235,220,0.24)] font-ui text-caption text-sage-300 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <p className="m-0">&copy; {new Date().getFullYear()} Kookoo Foods. All rights reserved.</p>
+        <p className="m-0">
+          Persian cuisine, established 2024. ABN and food safety registration through FoodLab Sydney.
+        </p>
       </div>
     </footer>
   );
