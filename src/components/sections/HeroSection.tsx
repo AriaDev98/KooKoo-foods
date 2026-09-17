@@ -6,7 +6,7 @@ export function HeroSection() {
     <Hero
       headline={"A Taste of Persia,\nBrought to Your Table"}
       tone="dark"
-      height="600px"
+      height="480px"
       className="bg-green-800"
       showScrollCue
     >
