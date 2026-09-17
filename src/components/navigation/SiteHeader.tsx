@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "../ui/Button";
+import { CreepyButton } from "../ui/CreepyButton";
 import { NAV_ITEMS, HEADER_CTA, SITE } from "../../data/content";
 
 export function SiteHeader() {
@@ -83,9 +84,7 @@ export function SiteHeader() {
       {/* Tall centered masthead, tablet and up */}
       <div className="hidden sm:block relative px-10 pt-10 pb-12">
         <div className="absolute top-10 right-10">
-          <Button marker size="sm" href={HEADER_CTA.href}>
-            {HEADER_CTA.label}
-          </Button>
+          <CreepyButton href={HEADER_CTA.href}>{HEADER_CTA.label}</CreepyButton>
         </div>
         <div className="flex flex-col items-center gap-10">
           <a href="#top" className="group">
