@@ -30,16 +30,13 @@ export function IntroSection() {
               Catering for events and parties
             </SectionHeading>
           </Reveal>
-          <div className="font-body text-lead leading-relaxed text-green-700 mt-8 space-y-6">
+          <div className="font-body text-lead leading-relaxed text-green-700 mt-8">
             <p className="m-0">
-              Kookoo Foods is a <b className="font-bold">home kitchen</b> working out of{" "}
-              <b className="font-bold">FoodLab Strathfield South</b>. Everything is cooked to order —
-              saffron, herbs and slow work, the way it is done at home.
-            </p>
-            <p className="m-0">
-              We cook for <b className="font-bold">weddings</b>, <b className="font-bold">birthdays</b>,
-              office lunches and quiet family tables, anywhere across{" "}
-              <b className="font-bold">New South Wales</b>.
+              Kookoo Foods is a <b className="font-bold">family business</b>, cooked up at{" "}
+              <b className="font-bold">FoodLab in Strathfield</b>. Everything is made the way it's
+              done at home — saffron, herbs, and slow cooked. We cater{" "}
+              <b className="font-bold">weddings</b>, <b className="font-bold">birthdays</b>, office
+              functions and family/friends dinners across <b className="font-bold">Sydney</b>.
             </p>
           </div>
         </div>
