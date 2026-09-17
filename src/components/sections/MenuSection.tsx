@@ -2,10 +2,132 @@ import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Card } from "../ui/Card";
 import { Badge } from "../ui/Badge";
+import { Photo } from "../ui/Photo";
 import { Reveal } from "../ui/Reveal";
-import { DISHES, FILTERS, matchesFilter } from "../../data/dishes";
+import { DISHES, FILTERS, matchesFilter, type Dish } from "../../data/dishes";
 
 type IndicatorRect = { top: number; left: number; width: number; height: number };
+
+function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "photo">>; delay: number }) {
+  const [open, setOpen] = useState(false);
+  const toggle = () => setOpen((v) => !v);
+
+  return (
+    <Reveal delay={delay}>
+      <div
+        role="button"
+        tabIndex={0}
+        aria-pressed={open}
+        aria-label={
+          open
+            ? `${dish.name} — showing ingredients, activate to turn back`
+            : `${dish.name} — activate to see ingredients and allergens`
+        }
+        title="Click to see ingredients and allergens"
+        onClick={toggle}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        }}
+        className="h-full cursor-pointer transition-transform duration-200 ease-standard hover:-translate-y-1 focus-visible:outline focus-visible:outline-3 focus-visible:outline-amber-500 focus-visible:outline-offset-2"
+        style={{ perspective: "1400px", aspectRatio: "3 / 4" }}
+      >
+        <div
+          className="relative w-full h-full transition-transform duration-500 ease-standard"
+          style={{ transformStyle: "preserve-3d", transform: open ? "rotateY(180deg)" : "rotateY(0deg)" }}
+        >
+          {/* front */}
+          <div
+            className="absolute inset-0 overflow-hidden rounded-3xl"
+            style={{ backfaceVisibility: "hidden" }}
+          >
+            <Photo src={dish.photo.src} alt={dish.name} ratio="3 / 4" />
+            <div className="absolute left-0 bottom-0 flex flex-col items-start gap-[2px] p-4">
+              <span className="font-ui text-eyebrow font-bold uppercase tracking-eyebrow text-green-800 bg-amber-500 px-[10px] py-[5px]">
+                Turn me over
+              </span>
+              <h3 className="m-0 font-display text-h4 font-extrabold tracking-heading leading-snug text-green-800 bg-[rgba(243,239,228,0.9)] shadow-block px-3 py-2">
+                {dish.name}
+              </h3>
+            </div>
+          </div>
+          {/* back */}
+          <div
+            className="absolute inset-0 rounded-3xl bg-green-800 p-6 flex flex-col gap-3 overflow-auto"
+            style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+          >
+            <div>
+              <span className="font-marker text-eyebrow tracking-eyebrow uppercase text-amber-500">
+                {dish.course}
+              </span>
+              <h3 className="m-0 mt-1 font-display text-h4 font-extrabold tracking-heading leading-snug text-cream-100">
+                {dish.name}
+              </h3>
+              <p className="mt-2 font-body text-body-sm leading-relaxed text-cream-200">{dish.desc}</p>
+            </div>
+            {dish.tags.length > 0 ? (
+              <div className="flex flex-wrap gap-2">
+                {dish.tags.map((tag) => (
+                  <Badge key={tag.label} tone={tag.tone}>
+                    {tag.label}
+                  </Badge>
+                ))}
+              </div>
+            ) : null}
+            <div className="pt-3 border-t border-[rgba(240,235,220,0.24)]">
+              <div className="font-ui text-caption font-bold uppercase tracking-eyebrow text-amber-500 mb-1">
+                Ingredients
+              </div>
+              <p className="m-0 font-body text-body-sm leading-normal text-cream-200">
+                {dish.photo.ingredients}
+              </p>
+            </div>
+            <div>
+              <div className="font-ui text-caption font-bold uppercase tracking-eyebrow text-amber-500 mb-1">
+                Allergens
+              </div>
+              <p className="m-0 font-body text-body-sm leading-normal text-sage-300">
+                {dish.photo.allergens}
+              </p>
+            </div>
+            <span className="mt-auto pt-2 font-ui text-caption font-bold uppercase tracking-eyebrow text-sage-300">
+              Turn back
+            </span>
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
+function TextDishCard({ dish, tone }: { dish: Dish; tone: "cream" | "sage" }) {
+  return (
+    <Card tone={tone} bordered>
+      <div className="flex flex-col gap-4">
+        <div className="flex items-baseline justify-between gap-4">
+          <h3 className="m-0 font-display text-h4 font-extrabold tracking-heading text-green-800">
+            {dish.name}
+          </h3>
+          <span className="font-marker text-eyebrow tracking-eyebrow uppercase text-amber-600 whitespace-nowrap">
+            {dish.course}
+          </span>
+        </div>
+        <p className="m-0 font-body text-body-md leading-relaxed text-green-700">{dish.desc}</p>
+        {dish.tags.length > 0 ? (
+          <div className="flex flex-wrap gap-2">
+            {dish.tags.map((tag) => (
+              <Badge key={tag.label} tone={tag.tone}>
+                {tag.label}
+              </Badge>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    </Card>
+  );
+}
 
 export function MenuSection() {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
@@ -52,8 +174,8 @@ export function MenuSection() {
             </h2>
           </Reveal>
           <p className="m-0 font-body text-body-md text-green-500 max-w-[30em]">
-            Updated seasonally — dishes rotate with what's fresh. Veg vegetarian, V vegan, GF gluten
-            free, DF dairy free, CN contains nuts.
+            Updated seasonally — dishes rotate with what's fresh. Click a photo to see ingredients and
+            allergens. Veg vegetarian, V vegan, GF gluten free, DF dairy free, CN contains nuts.
           </p>
         </div>
 
@@ -109,30 +231,13 @@ export function MenuSection() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {dishes.map((dish, i) => (
-            <Card key={dish.name} tone={i % 3 === 1 ? "sage" : "cream"} bordered>
-              <div className="flex flex-col gap-4">
-                <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="m-0 font-display text-h4 font-extrabold tracking-heading text-green-800">
-                    {dish.name}
-                  </h3>
-                  <span className="font-marker text-eyebrow tracking-eyebrow uppercase text-amber-600 whitespace-nowrap">
-                    {dish.course}
-                  </span>
-                </div>
-                <p className="m-0 font-body text-body-md leading-relaxed text-green-700">{dish.desc}</p>
-                {dish.tags.length > 0 ? (
-                  <div className="flex flex-wrap gap-2">
-                    {dish.tags.map((tag) => (
-                      <Badge key={tag.label} tone={tag.tone}>
-                        {tag.label}
-                      </Badge>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
-            </Card>
-          ))}
+          {dishes.map((dish, i) =>
+            dish.photo ? (
+              <PhotoDishCard key={dish.name} dish={dish as Dish & Required<Pick<Dish, "photo">>} delay={(i % 3) * 90} />
+            ) : (
+              <TextDishCard key={dish.name} dish={dish} tone={i % 3 === 1 ? "sage" : "cream"} />
+            ),
+          )}
         </div>
       </div>
     </section>

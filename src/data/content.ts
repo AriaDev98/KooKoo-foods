@@ -22,7 +22,6 @@ export const NAV_ITEMS = [
   { id: "menu", label: "Menu", href: "#menu" },
   { id: "pantry", label: "Jars & pantry", href: "#pantry" },
   { id: "story", label: "Our story", href: "#story" },
-  { id: "gallery", label: "Gallery", href: "#gallery" },
   { id: "enquire", label: "Contact", href: "#enquire" },
 ];
 

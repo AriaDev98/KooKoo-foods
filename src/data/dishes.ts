@@ -2,11 +2,18 @@ export type DishCourse = "Appetizer" | "Side" | "Main" | "Salad" | "Sweets";
 export type DishTagTone = "amber" | "sage";
 export type DishTag = { label: string; tone: DishTagTone };
 
+export interface DishPhoto {
+  src: string;
+  ingredients: string;
+  allergens: string;
+}
+
 export interface Dish {
   name: string;
   course: DishCourse;
   desc: string;
   tags: DishTag[];
+  photo?: DishPhoto;
 }
 
 export const FILTERS: Array<DishCourse | "All"> = [
@@ -24,6 +31,13 @@ export const DISHES: Dish[] = [
     course: "Appetizer",
     desc: "Roasted eggplant with fried onion, garlic and kashk, dried mint and walnuts, crackers on the side.",
     tags: [{ label: "CN", tone: "amber" }],
+    photo: {
+      src: "/images/photos/kashke-bademjan-tray.jpg",
+      ingredients:
+        "Roasted eggplant, fried onion, garlic, kashk, dried mint, walnuts, olive oil. Crackers on the side.",
+      allergens:
+        "Contains walnuts. Kashk is a dairy product — ask for the dairy-free version. Crackers contain gluten.",
+    },
   },
   {
     name: "Mirza ghasemi",
@@ -35,6 +49,19 @@ export const DISHES: Dish[] = [
     ],
   },
   {
+    name: "Ash Reshteh",
+    course: "Appetizer",
+    desc: "Persian herb and noodle soup with chickpeas, lentils, beans, crispy fried onions and kashk.",
+    tags: [{ label: "Veg", tone: "sage" }],
+    photo: {
+      src: "/images/photos/ash-reshteh.jpg",
+      ingredients:
+        "Persian herb and noodle soup with chickpeas, lentils, beans, fresh herbs, crispy fried onions and kashk. A vegetarian favourite.",
+      allergens:
+        "Contains gluten in the noodles and dairy in the kashk — ask for it without. No nuts.",
+    },
+  },
+  {
     name: "Dolmeh",
     course: "Appetizer",
     desc: "Vine leaves rolled around a herb and rice filling, slow-cooked until soft.",
@@ -42,6 +69,12 @@ export const DISHES: Dish[] = [
       { label: "Veg", tone: "sage" },
       { label: "GF", tone: "sage" },
     ],
+    photo: {
+      src: "/images/photos/dolmeh-full.jpg",
+      ingredients:
+        "Cabbage leaves wrapped around a filling of fresh herbs and rice, slow-cooked and finished with tomato, parsley and red onion.",
+      allergens: "Gluten free, dairy free, nut free.",
+    },
   },
   {
     name: "Kookoo sibzamini",
@@ -91,6 +124,11 @@ export const DISHES: Dish[] = [
       { label: "V", tone: "sage" },
       { label: "GF", tone: "sage" },
     ],
+    photo: {
+      src: "/images/photos/jars.jpg",
+      ingredients: "Mixed vegetables, vinegar, herbs and garlic, put up by hand in small batches.",
+      allergens: "Gluten free, dairy free, nut free.",
+    },
   },
   {
     name: "Maste khiar",
@@ -118,30 +156,60 @@ export const DISHES: Dish[] = [
       { label: "GF", tone: "sage" },
       { label: "DF", tone: "sage" },
     ],
+    photo: {
+      src: "/images/photos/ghormeh-sabzi.jpg",
+      ingredients:
+        "Slow-cooked herbs — parsley, coriander, fenugreek — with lamb, red kidney beans, dried lime and onion.",
+      allergens: "Gluten free, dairy free, nut free. Served with saffron rice.",
+    },
   },
   {
     name: "Kabab koobideh",
     course: "Main",
     desc: "Hand-minced lamb and beef skewers, charcoal-grilled, served with saffron rice.",
     tags: [],
+    photo: {
+      src: "/images/photos/koobideh.jpg",
+      ingredients:
+        "Hand-minced lamb and beef, grated onion, saffron, turmeric. Charcoal grilled, served with grilled tomato.",
+      allergens:
+        "The flatbread contains gluten — we swap in saffron rice on request. No nuts, no dairy.",
+    },
   },
   {
     name: "Zereshk polo ba morgh",
     course: "Main",
     desc: "Saffron chicken with barberry rice — sweet, sour and the dish everyone asks for again.",
     tags: [],
+    photo: {
+      src: "/images/photos/barberry-rice-full.jpg",
+      ingredients: "Chicken, onion, tomatoes, saffron, rice, Persian barberry.",
+      allergens: "Gluten free, nut free. Served with pickles and olives on the side.",
+    },
   },
   {
     name: "Tahchin",
     course: "Main",
     desc: "Baked saffron rice cake with a crisp golden crust, layered with chicken.",
     tags: [],
+    photo: {
+      src: "/images/photos/tahchin-v7.jpg",
+      ingredients:
+        "Baked saffron rice cake layered with chicken, yoghurt and egg, topped with barberries. Strong saffron flavour.",
+      allergens: "Contains dairy and egg. Gluten free, nut free.",
+    },
   },
   {
     name: "Chicken auchma",
     course: "Main",
     desc: "Baked chicken and onion folded into an enriched dough, served with dips on the side.",
     tags: [],
+    photo: {
+      src: "/images/photos/auchma-2.jpg",
+      ingredients:
+        "Wheat flour, egg, butter, chicken, onion, herbs, sesame seeds. Served with dips on the side.",
+      allergens: "Contains gluten, egg, dairy and sesame.",
+    },
   },
   {
     name: "Pear, Carrot and Herb Salad",
@@ -157,18 +225,35 @@ export const DISHES: Dish[] = [
     course: "Sweets",
     desc: "Baked to order for the table that needs it, and good enough for the table that does not.",
     tags: [{ label: "GF", tone: "sage" }],
+    photo: {
+      src: "/images/photos/cream-cake.jpg",
+      ingredients: "Wheat flour, eggs, sugar, cream, vanilla, strawberries, blueberries.",
+      allergens: "Contains gluten, egg and dairy. A gluten-free sponge is available to order.",
+    },
   },
   {
     name: "Chocolate cake",
     course: "Sweets",
     desc: "Dark, dense and not too sweet — the way it is served with tea at home.",
     tags: [],
+    photo: {
+      src: "/images/photos/chocolate-cake-2.jpg",
+      ingredients:
+        "Dark chocolate sponge with a chocolate cream layer and a walnut and caramel middle, dusted with cocoa.",
+      allergens: "Contains gluten, egg, dairy and walnuts.",
+    },
   },
   {
     name: "Lemon cake",
     course: "Sweets",
     desc: "Bright and syrupy, cut into squares for a crowd.",
     tags: [],
+    photo: {
+      src: "/images/photos/semolina-lemon-cake.jpg",
+      ingredients:
+        "Semolina and wheat flour, eggs, sugar, yoghurt, lemon and a lemon syrup, finished with chopped pistachio.",
+      allergens: "Contains gluten, egg, dairy and pistachio.",
+    },
   },
 ];
 
