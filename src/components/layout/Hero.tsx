@@ -30,7 +30,7 @@ export function Hero({
         </div>
       ) : null}
       <div
-        className={`relative z-10 flex flex-col items-center justify-center text-center gap-8 mx-auto w-full max-w-[1180px] px-10 ${showScrollCue ? "pt-12 pb-12" : "py-20"}`}
+        className={`relative z-10 flex flex-col items-center justify-center text-center gap-8 mx-auto w-full max-w-[1180px] px-10 ${showScrollCue ? "pt-2 pb-16" : "py-20"}`}
       >
         <HighlightHeading tone={tone} align="center">
           {headline}

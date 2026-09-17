@@ -174,8 +174,7 @@ export function MenuSection() {
             </h2>
           </Reveal>
           <p className="m-0 font-body text-body-md text-green-500 max-w-[30em]">
-            Updated seasonally — dishes rotate with what's fresh. Click a photo to see ingredients and
-            allergens. Veg vegetarian, V vegan, GF gluten free, DF dairy free, CN contains nuts.
+            Vegetarian (Veg) · Vegan (V) · Gluten Free (GF) · Dairy Free (DF) · Contains Nuts (CN)
           </p>
         </div>
 
