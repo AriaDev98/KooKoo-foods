@@ -26,13 +26,12 @@ export function SiteHeader() {
     <header className="relative bg-green-800">
       {/* Compact bar + slide-down menu, phones only */}
       <div className="sm:hidden flex items-center justify-between px-6 py-4">
-        <a href="#top" className="group flex items-center gap-3 no-underline">
+        <a href="#top" className="group flex items-center no-underline">
           <img
             src="/images/logos/kookoo-logo-gold.png"
             alt={SITE.brand}
             className="h-10 w-auto transition-transform duration-150 ease-standard group-hover:scale-105"
           />
-          <span className="font-display text-body-md font-extrabold text-cream-100">{SITE.brand}</span>
         </a>
         <button
           type="button"

@@ -11,7 +11,7 @@ export function HeroSection() {
       showScrollCue
     >
       <div className="flex flex-col items-center gap-8 max-w-[620px]">
-        <p className="m-0 font-body text-lead leading-normal text-green-800 bg-[rgba(243,239,228,0.84)] shadow-block px-6 py-4 text-center">
+        <p className="m-0 font-body text-lead leading-relaxed text-cream-200 text-center">
           Authentic Persian flavours, homemade with heart. From backyard gatherings to big-day
           events.
         </p>
