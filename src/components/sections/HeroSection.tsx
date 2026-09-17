@@ -5,11 +5,9 @@ export function HeroSection() {
   return (
     <Hero
       headline={"Take a Bite\nof Persia"}
-      tone="light"
+      tone="dark"
       height="600px"
-      imageSrc="/images/photos/hero-kabab.jpg"
-      imageLabel="kababs over charcoal"
-      kenBurns
+      className="bg-green-800"
       showScrollCue
     >
       <div className="flex flex-col items-center gap-8 max-w-[620px]">
@@ -21,7 +19,7 @@ export function HeroSection() {
           <Button variant="primary" size="lg" href="#menu">
             Browse the menu
           </Button>
-          <Button variant="secondary" size="lg" href="#enquire">
+          <Button variant="outlineInverse" size="lg" href="#enquire">
             Book your event
           </Button>
         </div>

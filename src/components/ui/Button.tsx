@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "outline" | "ghost";
+type Variant = "primary" | "secondary" | "outline" | "outlineInverse" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 const base =
@@ -16,6 +16,8 @@ const variants: Record<Variant, string> = {
   primary: "bg-amber-500 text-green-800 hover:bg-amber-400",
   secondary: "bg-green-800 text-cream-200 hover:bg-green-700",
   outline: "bg-transparent text-green-800 shadow-[inset_0_0_0_2px_var(--color-green-800)] hover:bg-cream-300",
+  outlineInverse:
+    "bg-transparent text-cream-100 shadow-[inset_0_0_0_2px_var(--color-cream-100)] hover:text-amber-400 hover:shadow-[inset_0_0_0_2px_var(--color-amber-400)]",
   ghost: "bg-transparent text-amber-600 hover:bg-amber-200",
 };
 
