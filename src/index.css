@@ -99,19 +99,6 @@ body {
   color: var(--color-green-900);
 }
 
-@keyframes kenburns {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.06);
-  }
-}
-
-.kenburns {
-  animation: kenburns 20s var(--ease-standard) forwards;
-}
-
 @keyframes scroll-cue-bob {
   0%,
   100% {
@@ -127,10 +114,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .kenburns {
-    animation: none;
-  }
-
   .scroll-cue {
     animation: none;
   }
