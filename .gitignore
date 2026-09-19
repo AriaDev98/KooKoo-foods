@@ -27,3 +27,8 @@ dist-ssr
 # The photos and copy it contains have already been extracted, optimized and
 # committed under public/images and src/data — kept locally for reference only.
 kookoo-foods-catering-website/
+
+# UI/UX Pro Max skill (third-party design reference data + scripts, ~10MB,
+# https://github.com/nextlevelbuilder/ui-ux-pro-max-skill, MIT licensed).
+# Local agent tooling only — not part of the deployed site.
+.claude/skills/
