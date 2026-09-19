@@ -22,7 +22,7 @@ export function SiteFooter() {
               <a
                 key={link.label}
                 href={link.href}
-                className="font-ui text-body-md font-semibold text-cream-200 no-underline transition-colors duration-150 ease-standard hover:text-amber-500"
+                className="link-underline w-fit font-ui text-body-md font-semibold text-cream-200 transition-colors duration-150 ease-standard hover:text-amber-500"
               >
                 {link.label}
               </a>

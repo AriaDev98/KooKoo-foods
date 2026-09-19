@@ -164,6 +164,71 @@ body {
   animation-delay: 750ms;
 }
 
+/* Premium CTA: soft ambient glow + a single light sweep on hover/focus.
+   Reserved for the site's one real conversion action (Send my enquiry) —
+   deliberately not reused elsewhere so it keeps its weight. */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 300ms var(--ease-standard);
+}
+
+.btn-premium:hover,
+.btn-premium:focus-visible {
+  box-shadow: 0 0 28px 4px rgba(214, 154, 31, 0.5);
+}
+
+.btn-premium::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+
+.btn-premium:hover::after,
+.btn-premium:focus-visible::after {
+  animation: btn-shimmer-sweep 900ms ease forwards;
+}
+
+@keyframes btn-shimmer-sweep {
+  from {
+    left: -60%;
+  }
+  to {
+    left: 130%;
+  }
+}
+
+/* Underline reveal for tertiary text links — a quieter echo of the CTA glow,
+   scaled down for things that aren't asking for a decision. */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background: var(--color-amber-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms var(--ease-standard);
+}
+
+.link-underline:hover::after,
+.link-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue {
     animation: none;
@@ -178,6 +243,11 @@ body {
   }
 
   .hero-content-rise {
+    animation: none;
+  }
+
+  .btn-premium:hover::after,
+  .btn-premium:focus-visible::after {
     animation: none;
   }
 }

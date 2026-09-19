@@ -27,6 +27,8 @@ interface CommonProps {
   size?: Size;
   fullWidth?: boolean;
   marker?: boolean;
+  /** Ambient glow + a single hover shimmer. Reserve for the one real conversion CTA on a page. */
+  premium?: boolean;
   className?: string;
 }
 
@@ -42,6 +44,7 @@ export function Button({
   size = "md",
   fullWidth = false,
   marker = false,
+  premium = false,
   className = "",
   href,
   ...rest
@@ -52,6 +55,7 @@ export function Button({
     variants[variant],
     fullWidth ? "w-full" : "",
     marker ? "font-marker font-normal uppercase tracking-marker" : "",
+    premium ? "btn-premium" : "",
     className,
   ]
     .filter(Boolean)
