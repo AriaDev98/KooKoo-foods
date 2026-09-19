@@ -24,7 +24,7 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="relative bg-green-800">
+    <header className="relative header-echo-bg">
       {/* Compact bar + slide-down menu, phones only */}
       <div className="sm:hidden flex items-center justify-between px-6 py-4">
         <a href="#top" className="group flex items-center no-underline">

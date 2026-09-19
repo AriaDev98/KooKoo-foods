@@ -3,7 +3,10 @@ type Level = "hero" | "section";
 
 const tones: Record<Tone, string> = {
   light: "bg-cream-200 text-green-800",
-  dark: "bg-green-800 text-cream-200",
+  // Translucent + blurred rather than a flat fill, so the block reads as a
+  // soft scrim over the living background instead of a mismatched flat
+  // patch sitting on top of it (used on sections with LivingBackground).
+  dark: "text-cream-200 backdrop-blur-sm bg-[rgba(27,46,15,0.55)]",
 };
 
 const levels: Record<Level, string> = {

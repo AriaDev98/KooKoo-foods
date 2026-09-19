@@ -229,6 +229,17 @@ body {
   transform: scaleX(1);
 }
 
+/* Static echo of the living hero's blob positions (lighter green upper-left,
+   warm amber upper-right) for the masthead sitting above it — same color
+   story, no motion, so navigation stays calm while the seam into the hero
+   feels like one continuous scene rather than a hard cut. */
+.header-echo-bg {
+  background:
+    radial-gradient(ellipse 65% 85% at 88% 15%, rgba(214, 154, 31, 0.12), transparent 60%),
+    radial-gradient(ellipse 70% 90% at 8% 5%, rgba(61, 97, 34, 0.4), transparent 65%),
+    var(--color-green-700);
+}
+
 /* Living background: three soft blurred shapes that drift and slowly swell,
    blending into each other and the base green. Only the site's own green/
    sage/amber tones — richer in-between colors emerge from the blend modes
