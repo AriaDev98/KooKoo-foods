@@ -158,7 +158,7 @@ export function EnquireSection() {
               />
             </Field>
             <div className="flex flex-wrap gap-4 items-center">
-              <Button type="submit" variant="primary" size="lg">
+              <Button type="submit" variant="primary" size="lg" premium>
                 Send my enquiry
               </Button>
               <Button variant="outline" size="lg" href={SITE.phoneHref}>
@@ -166,7 +166,17 @@ export function EnquireSection() {
               </Button>
             </div>
             <p role="status" className={`m-0 font-body text-body-md leading-normal px-5 py-4 border-l-4 ${statusClasses}`}>
-              {status}
+              {!sent && !hasError ? (
+                <>
+                  Or email{" "}
+                  <a href={`mailto:${SITE.email}`} className="link-underline font-bold text-green-800">
+                    {SITE.email}
+                  </a>{" "}
+                  directly.
+                </>
+              ) : (
+                status
+              )}
             </p>
           </form>
         </div>
