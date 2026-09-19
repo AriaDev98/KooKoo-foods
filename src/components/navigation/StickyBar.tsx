@@ -6,7 +6,7 @@ export function StickyBar() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 flex flex-wrap items-center justify-between gap-6 bg-green-800 px-8 py-[10px] shadow-[0_6px_24px_-12px_rgba(0,0,0,0.5)] transition-transform duration-300 ease-standard"
+      className={`fixed top-0 left-0 right-0 z-50 flex flex-wrap items-center justify-between gap-6 bg-green-800 px-8 py-[10px] transition-transform duration-300 ease-standard ${scrolled ? "shadow-[0_6px_24px_-12px_rgba(0,0,0,0.5)]" : ""}`}
       style={{ transform: scrolled ? "translateY(0)" : "translateY(-102%)" }}
     >
       <a href="#top" className="group flex items-center no-underline">

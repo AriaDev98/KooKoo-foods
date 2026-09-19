@@ -48,7 +48,10 @@ export function CreepyButton({ children, className = "", coverClassName = "", hr
   };
 
   const classes = [
-    "group relative inline-flex min-w-[9em] text-body-md rounded-control bg-green-800 cursor-pointer outline-none select-none no-underline",
+    // No fill here — the header's own (living) background shows through
+    // behind the eyes when the cover tilts, instead of a flat swatch that
+    // would sit as a mismatched box on top of it.
+    "group relative inline-flex min-w-[9em] text-body-md rounded-control cursor-pointer outline-none select-none no-underline",
     "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-amber-400",
     className,
   ]

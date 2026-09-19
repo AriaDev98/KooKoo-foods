@@ -2,11 +2,12 @@ type Tone = "light" | "dark";
 type Level = "hero" | "section";
 
 const tones: Record<Tone, string> = {
-  light: "bg-cream-200 text-green-800",
-  // Translucent + blurred rather than a flat fill, so the block reads as a
-  // soft scrim over the living background instead of a mismatched flat
-  // patch sitting on top of it (used on sections with LivingBackground).
-  dark: "text-cream-200 backdrop-blur-sm bg-[rgba(27,46,15,0.55)]",
+  light: "bg-cream-200 text-green-800 px-[0.22em] py-[0.14em] shadow-block",
+  // No block at all on the living background — a flat or translucent fill
+  // both still read as a mismatched box sitting on top of a shifting scene.
+  // Plain text plus a soft drop shadow keeps it legible without a visible
+  // edge, closer to how text just sits in the light of the gradient.
+  dark: "text-cream-100 [text-shadow:0_4px_22px_rgba(19,31,10,0.65)]",
 };
 
 const levels: Record<Level, string> = {
@@ -40,7 +41,7 @@ export function HighlightHeading({
       } gap-[2px] font-display font-extrabold leading-tight ${levels[level]}`}
     >
       {lines.map((line, i) => (
-        <span key={i} className={`${tones[tone]} px-[0.22em] py-[0.14em] shadow-block`} style={{ WebkitBoxDecorationBreak: "clone", boxDecorationBreak: "clone" }}>
+        <span key={i} className={tones[tone]} style={{ WebkitBoxDecorationBreak: "clone", boxDecorationBreak: "clone" }}>
           {animateIn
             ? line.split(" ").map((word, wi) => {
                 const delay = wordIndex * 60;
