@@ -38,10 +38,10 @@
 
   --color-ink-900: #171a12;
 
-  --font-display: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  --font-display: "Fraunces", "Newsreader", Georgia, serif;
   --font-ui: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
   --font-body: "Newsreader", Georgia, serif;
-  --font-marker: "Space Mono", ui-monospace, monospace;
+  --font-marker: "Karla", "Bricolage Grotesque", system-ui, sans-serif;
 
   --radius-control: 8px;
   --radius-tile: 14px;
@@ -69,7 +69,7 @@
 
   --tracking-hero: -0.02em;
   --tracking-heading: -0.02em;
-  --tracking-marker: 0.04em;
+  --tracking-marker: 0.08em;
   --tracking-eyebrow: 0.14em;
 
   --ease-standard: cubic-bezier(0.32, 0.72, 0.28, 1);
@@ -130,12 +130,52 @@ body {
   animation: creepy-blink 3s linear infinite;
 }
 
+@keyframes hero-word-rise {
+  from {
+    transform: translateY(115%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hero-word {
+  display: inline-block;
+  animation: hero-word-rise 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-content-rise {
+  from {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hero-content-rise {
+  animation: hero-content-rise 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 750ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue {
     animation: none;
   }
 
   .creepy-eye {
+    animation: none;
+  }
+
+  .hero-word {
+    animation: none;
+  }
+
+  .hero-content-rise {
     animation: none;
   }
 }

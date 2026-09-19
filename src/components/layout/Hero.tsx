@@ -10,6 +10,7 @@ export function Hero({
   imageLabel,
   height = "560px",
   showScrollCue = false,
+  animateHeadline = false,
   className = "",
   children,
 }: {
@@ -19,6 +20,7 @@ export function Hero({
   imageLabel?: string;
   height?: string;
   showScrollCue?: boolean;
+  animateHeadline?: boolean;
   className?: string;
   children?: ReactNode;
 }) {
@@ -32,10 +34,10 @@ export function Hero({
       <div
         className={`relative z-10 flex flex-col items-center justify-center text-center gap-8 mx-auto w-full max-w-[1180px] px-10 ${showScrollCue ? "pt-2 pb-16" : "py-20"}`}
       >
-        <HighlightHeading tone={tone} align="center">
+        <HighlightHeading tone={tone} align="center" animateIn={animateHeadline}>
           {headline}
         </HighlightHeading>
-        {children}
+        {animateHeadline ? <div className="hero-content-rise">{children}</div> : children}
       </div>
       {showScrollCue ? (
         <button

@@ -9,6 +9,7 @@ export function HeroSection() {
       height="480px"
       className="bg-green-800"
       showScrollCue
+      animateHeadline
     >
       <div className="flex flex-col items-center gap-8 max-w-[620px]">
         <p className="m-0 font-body text-lead leading-relaxed text-cream-200 text-center">
