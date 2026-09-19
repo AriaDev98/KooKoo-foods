@@ -1,10 +1,12 @@
 import { FOOTER_COLUMNS, SITE } from "../../data/content";
 import { SocialLinks } from "../ui/SocialLinks";
+import { LivingBackground } from "../ui/LivingBackground";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-green-800 text-cream-200 px-6 sm:px-10 pt-20 pb-10">
-      <div className="max-w-[1180px] mx-auto flex flex-wrap gap-16 justify-between">
+    <footer className="relative isolate overflow-hidden bg-green-800 text-cream-200 px-6 sm:px-10 pt-20 pb-10">
+      <LivingBackground />
+      <div className="relative z-10 max-w-[1180px] mx-auto flex flex-wrap gap-16 justify-between">
         <div className="max-w-[36ch]">
           <div className="font-marker text-h3 uppercase tracking-marker">{SITE.brand}</div>
           <p className="font-body text-body-md text-sage-300 mt-4">
@@ -30,7 +32,7 @@ export function SiteFooter() {
           </div>
         ))}
       </div>
-      <div className="max-w-[1180px] mx-auto mt-16 pt-6 border-t border-[rgba(240,235,220,0.24)] font-ui text-caption text-sage-300 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+      <div className="relative z-10 max-w-[1180px] mx-auto mt-16 pt-6 border-t border-[rgba(240,235,220,0.24)] font-ui text-caption text-sage-300 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <p className="m-0">&copy; {new Date().getFullYear()} Kookoo Foods. All rights reserved.</p>
         <p className="m-0">
           Persian cuisine, established 2024. ABN and food safety registration through FoodLab Sydney.

@@ -2,12 +2,14 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { HighlightHeading } from "../ui/HighlightHeading";
 import { Button } from "../ui/Button";
 import { Reveal } from "../ui/Reveal";
+import { LivingBackground } from "../ui/LivingBackground";
 import { STEPS, SITE } from "../../data/content";
 
 export function HowItWorksSection() {
   return (
-    <section id="how" className="bg-green-800 text-cream-200 px-6 sm:px-10 py-24">
-      <div className="max-w-[1180px] mx-auto">
+    <section id="how" className="relative isolate overflow-hidden bg-green-800 text-cream-200 px-6 sm:px-10 py-24">
+      <LivingBackground />
+      <div className="relative z-10 max-w-[1180px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-end">
           <Reveal>
             <SectionHeading icon="notebook-pen" tone="amber" color="cream">

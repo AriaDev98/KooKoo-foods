@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
 import { HighlightHeading } from "../ui/HighlightHeading";
 import { Photo } from "../ui/Photo";
+import { LivingBackground } from "../ui/LivingBackground";
 
 export function Hero({
   headline,
@@ -11,6 +12,7 @@ export function Hero({
   height = "560px",
   showScrollCue = false,
   animateHeadline = false,
+  living = false,
   className = "",
   children,
 }: {
@@ -21,16 +23,18 @@ export function Hero({
   height?: string;
   showScrollCue?: boolean;
   animateHeadline?: boolean;
+  living?: boolean;
   className?: string;
   children?: ReactNode;
 }) {
   return (
-    <section className={`relative isolate grid ${className}`} style={{ minHeight: height }}>
+    <section className={`relative isolate overflow-hidden grid ${className}`} style={{ minHeight: height }}>
       {imageSrc ? (
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Photo src={imageSrc} alt={imageLabel ?? ""} ratio="auto" className="min-h-full" />
         </div>
       ) : null}
+      {living ? <LivingBackground /> : null}
       <div
         className={`relative z-10 flex flex-col items-center justify-center text-center gap-8 mx-auto w-full max-w-[1180px] px-10 ${showScrollCue ? "pt-2 pb-16" : "py-20"}`}
       >
