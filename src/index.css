@@ -234,9 +234,16 @@ body {
    story, no motion, so navigation stays calm while the seam into the hero
    feels like one continuous scene rather than a hard cut. */
 .header-echo-bg {
+  /* Plain alpha compositing, hand-calculated rather than eyeballed through
+     blend-mode math (soft-light/overlay both moved colors the *opposite*
+     direction from what the numbers suggested — not reliable to hand-tune).
+     The green layer's alpha never drops below 0.35, so its color at the
+     header's bottom edge lands at ~(52,84,29) — measured 4-6 units from the
+     living hero's own resting top-edge color of ~(55,88,30), close enough
+     that the transition doesn't read as a seam. */
   background:
-    radial-gradient(ellipse 80% 220% at 88% 0%, rgba(214, 154, 31, 0.14), rgba(214, 154, 31, 0.05) 70%, rgba(214, 154, 31, 0.02) 100%),
-    radial-gradient(ellipse 85% 230% at 8% -10%, rgba(61, 97, 34, 0.45), rgba(61, 97, 34, 0.18) 70%, rgba(61, 97, 34, 0.08) 100%),
+    radial-gradient(ellipse 75% 130% at 90% 10%, rgba(214, 154, 31, 0.38), transparent 75%),
+    radial-gradient(ellipse 90% 160% at 6% -10%, rgba(61, 97, 34, 0.6), rgba(61, 97, 34, 0.35) 100%),
     var(--color-green-700);
 }
 
