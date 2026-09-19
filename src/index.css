@@ -204,6 +204,59 @@ body {
   }
 }
 
+/* Logo shine: a light sweep masked to the gold logo's own letterforms, not
+   a rectangle over it. Hover/focus only — reserved for the prominent
+   header logo, not the small StickyBar/footer instances, and never
+   looping (a logo that shines on every page load reads as a gimmick;
+   gold catching light only when you actually reach for it reads as
+   intentional). */
+.logo-shine {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* The mask stays fixed to the logo's own silhouette; only the gradient's
+     position animates within it (via background-position, not transform —
+     transforming the whole element would move the mask and the highlight
+     together as one rigid unit, never actually sweeping across the letters). */
+  background-image: linear-gradient(
+    75deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(255, 255, 255, 0.5) 42%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.5) 58%,
+    transparent 70%,
+    transparent 100%
+  );
+  background-size: 220% 220%;
+  background-position: 150% 0%;
+  background-repeat: no-repeat;
+  mix-blend-mode: screen;
+  -webkit-mask-image: url("/images/logos/kookoo-logo-gold.png");
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url("/images/logos/kookoo-logo-gold.png");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  pointer-events: none;
+}
+
+.group:hover .logo-shine,
+.group:focus-visible .logo-shine {
+  animation: logo-shine-sweep 1000ms ease forwards;
+}
+
+@keyframes logo-shine-sweep {
+  from {
+    background-position: 150% 0%;
+  }
+  to {
+    background-position: -150% 0%;
+  }
+}
+
 /* Underline reveal for tertiary text links — a quieter echo of the CTA glow,
    scaled down for things that aren't asking for a decision. */
 .link-underline {
@@ -352,6 +405,11 @@ body {
 
   .btn-premium:hover::after,
   .btn-premium:focus-visible::after {
+    animation: none;
+  }
+
+  .group:hover .logo-shine,
+  .group:focus-visible .logo-shine {
     animation: none;
   }
 
