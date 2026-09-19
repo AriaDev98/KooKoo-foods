@@ -134,10 +134,12 @@ body {
   from {
     transform: translateY(115%);
     opacity: 0;
+    filter: blur(7px);
   }
   to {
     transform: translateY(0);
     opacity: 1;
+    filter: blur(0);
   }
 }
 
