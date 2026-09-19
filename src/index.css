@@ -204,6 +204,59 @@ body {
   }
 }
 
+/* Logo shine: a light sweep masked to the gold logo's own letterforms, not
+   a rectangle over it. Hover/focus only — reserved for the prominent
+   header logo, not the small StickyBar/footer instances, and never
+   looping (a logo that shines on every page load reads as a gimmick;
+   gold catching light only when you actually reach for it reads as
+   intentional). */
+.logo-shine {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* The mask stays fixed to the logo's own silhouette; only the gradient's
+     position animates within it (via background-position, not transform —
+     transforming the whole element would move the mask and the highlight
+     together as one rigid unit, never actually sweeping across the letters). */
+  background-image: linear-gradient(
+    75deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(255, 255, 255, 0.5) 42%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.5) 58%,
+    transparent 70%,
+    transparent 100%
+  );
+  background-size: 220% 220%;
+  background-position: 150% 0%;
+  background-repeat: no-repeat;
+  mix-blend-mode: screen;
+  -webkit-mask-image: url("/images/logos/kookoo-logo-gold.png");
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url("/images/logos/kookoo-logo-gold.png");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  pointer-events: none;
+}
+
+.group:hover .logo-shine,
+.group:focus-visible .logo-shine {
+  animation: logo-shine-sweep 1000ms ease forwards;
+}
+
+@keyframes logo-shine-sweep {
+  from {
+    background-position: 150% 0%;
+  }
+  to {
+    background-position: -150% 0%;
+  }
+}
+
 /* Underline reveal for tertiary text links — a quieter echo of the CTA glow,
    scaled down for things that aren't asking for a decision. */
 .link-underline {
@@ -234,9 +287,19 @@ body {
    story, no motion, so navigation stays calm while the seam into the hero
    feels like one continuous scene rather than a hard cut. */
 .header-echo-bg {
+  /* Plain alpha compositing, hand-calculated against the living hero's own
+     top-edge color (sampled directly, not guessed): now that the blobs are
+     back to their original low-opacity/no-blend-mode version, the hero's
+     top edge only varies ~15-20 units across the whole width (roughly
+     (53,85,29) down to (38,63,20)) — much more muted than the mix-blend
+     version this was last tuned against. Alphas scaled down to match. */
   background:
-    radial-gradient(ellipse 80% 220% at 88% 0%, rgba(214, 154, 31, 0.14), rgba(214, 154, 31, 0.05) 70%, rgba(214, 154, 31, 0.02) 100%),
-    radial-gradient(ellipse 85% 230% at 8% -10%, rgba(61, 97, 34, 0.45), rgba(61, 97, 34, 0.18) 70%, rgba(61, 97, 34, 0.08) 100%),
+    /* the hero's two blobs don't reach its own horizontal center, leaving a
+       darker gap there (measured ~(38,63,20), notably darker than either
+       blob's own influence zone) — echoed here at the header's bottom-center */
+    radial-gradient(ellipse 30% 45% at 48% 100%, rgba(27, 46, 15, 0.4), transparent 70%),
+    radial-gradient(ellipse 75% 130% at 90% 10%, rgba(214, 154, 31, 0.05), transparent 75%),
+    radial-gradient(ellipse 90% 160% at 6% -10%, rgba(61, 97, 34, 0.35), rgba(61, 97, 34, 0.15) 100%),
     var(--color-green-700);
 }
 
@@ -255,7 +318,6 @@ body {
 .living-bg-blob {
   position: absolute;
   filter: blur(60px);
-  mix-blend-mode: soft-light;
   will-change: transform, opacity;
 }
 
@@ -265,7 +327,7 @@ body {
   top: -14%;
   left: -12%;
   background: var(--color-green-600);
-  opacity: 0.75;
+  opacity: 0.65;
   border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
   animation: living-breathe-1 13s ease-in-out infinite;
 }
@@ -276,7 +338,7 @@ body {
   bottom: -16%;
   right: -8%;
   background: var(--color-sage-400);
-  opacity: 0.55;
+  opacity: 0.32;
   border-radius: 60% 40% 35% 65% / 55% 60% 40% 45%;
   animation: living-breathe-2 16s ease-in-out infinite;
 }
@@ -287,8 +349,7 @@ body {
   top: 14%;
   right: 8%;
   background: var(--color-amber-500);
-  opacity: 0.4;
-  mix-blend-mode: overlay;
+  opacity: 0.14;
   border-radius: 50% 50% 42% 58% / 40% 45% 55% 60%;
   animation: living-breathe-3 19s ease-in-out infinite;
 }
@@ -317,11 +378,11 @@ body {
   0%,
   100% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.4;
+    opacity: 0.14;
   }
   50% {
     transform: translate(-3%, 3%) scale(1.2);
-    opacity: 0.6;
+    opacity: 0.22;
   }
 }
 
@@ -344,6 +405,11 @@ body {
 
   .btn-premium:hover::after,
   .btn-premium:focus-visible::after {
+    animation: none;
+  }
+
+  .group:hover .logo-shine,
+  .group:focus-visible .logo-shine {
     animation: none;
   }
 

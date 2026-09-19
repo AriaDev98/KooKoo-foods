@@ -87,12 +87,14 @@ export function SiteHeader() {
           <CreepyButton href={HEADER_CTA.href}>{HEADER_CTA.label}</CreepyButton>
         </div>
         <div className="flex flex-col items-center gap-10">
-          <a href="#top" className="group">
-            <img
-              src="/images/logos/kookoo-logo-gold.png"
-              alt={SITE.brand}
-              className="h-[120px] w-auto transition-transform duration-150 ease-standard group-hover:scale-105"
-            />
+          <a
+            href="#top"
+            className="group inline-block transition-transform duration-150 ease-standard hover:scale-105"
+          >
+            <span className="relative block overflow-hidden">
+              <img src="/images/logos/kookoo-logo-gold.png" alt={SITE.brand} className="h-[120px] w-auto" />
+              <span className="logo-shine" aria-hidden="true" />
+            </span>
           </a>
           <nav className="flex flex-wrap justify-center gap-8">
             {NAV_ITEMS.map((item) => (
