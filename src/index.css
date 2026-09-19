@@ -234,16 +234,19 @@ body {
    story, no motion, so navigation stays calm while the seam into the hero
    feels like one continuous scene rather than a hard cut. */
 .header-echo-bg {
-  /* Plain alpha compositing, hand-calculated rather than eyeballed through
-     blend-mode math (soft-light/overlay both moved colors the *opposite*
-     direction from what the numbers suggested — not reliable to hand-tune).
-     The green layer's alpha never drops below 0.35, so its color at the
-     header's bottom edge lands at ~(52,84,29) — measured 4-6 units from the
-     living hero's own resting top-edge color of ~(55,88,30), close enough
-     that the transition doesn't read as a seam. */
+  /* Plain alpha compositing, hand-calculated against the living hero's own
+     top-edge color (sampled directly, not guessed): now that the blobs are
+     back to their original low-opacity/no-blend-mode version, the hero's
+     top edge only varies ~15-20 units across the whole width (roughly
+     (53,85,29) down to (38,63,20)) — much more muted than the mix-blend
+     version this was last tuned against. Alphas scaled down to match. */
   background:
-    radial-gradient(ellipse 75% 130% at 90% 10%, rgba(214, 154, 31, 0.38), transparent 75%),
-    radial-gradient(ellipse 90% 160% at 6% -10%, rgba(61, 97, 34, 0.6), rgba(61, 97, 34, 0.35) 100%),
+    /* the hero's two blobs don't reach its own horizontal center, leaving a
+       darker gap there (measured ~(38,63,20), notably darker than either
+       blob's own influence zone) — echoed here at the header's bottom-center */
+    radial-gradient(ellipse 30% 45% at 48% 100%, rgba(27, 46, 15, 0.4), transparent 70%),
+    radial-gradient(ellipse 75% 130% at 90% 10%, rgba(214, 154, 31, 0.05), transparent 75%),
+    radial-gradient(ellipse 90% 160% at 6% -10%, rgba(61, 97, 34, 0.35), rgba(61, 97, 34, 0.15) 100%),
     var(--color-green-700);
 }
 
@@ -262,7 +265,6 @@ body {
 .living-bg-blob {
   position: absolute;
   filter: blur(60px);
-  mix-blend-mode: soft-light;
   will-change: transform, opacity;
 }
 
@@ -272,7 +274,7 @@ body {
   top: -14%;
   left: -12%;
   background: var(--color-green-600);
-  opacity: 0.75;
+  opacity: 0.65;
   border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
   animation: living-breathe-1 13s ease-in-out infinite;
 }
@@ -283,7 +285,7 @@ body {
   bottom: -16%;
   right: -8%;
   background: var(--color-sage-400);
-  opacity: 0.55;
+  opacity: 0.32;
   border-radius: 60% 40% 35% 65% / 55% 60% 40% 45%;
   animation: living-breathe-2 16s ease-in-out infinite;
 }
@@ -294,8 +296,7 @@ body {
   top: 14%;
   right: 8%;
   background: var(--color-amber-500);
-  opacity: 0.4;
-  mix-blend-mode: overlay;
+  opacity: 0.14;
   border-radius: 50% 50% 42% 58% / 40% 45% 55% 60%;
   animation: living-breathe-3 19s ease-in-out infinite;
 }
@@ -324,11 +325,11 @@ body {
   0%,
   100% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.4;
+    opacity: 0.14;
   }
   50% {
     transform: translate(-3%, 3%) scale(1.2);
-    opacity: 0.6;
+    opacity: 0.22;
   }
 }
 
