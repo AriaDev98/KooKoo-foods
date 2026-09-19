@@ -235,8 +235,8 @@ body {
    feels like one continuous scene rather than a hard cut. */
 .header-echo-bg {
   background:
-    radial-gradient(ellipse 65% 85% at 88% 15%, rgba(214, 154, 31, 0.12), transparent 60%),
-    radial-gradient(ellipse 70% 90% at 8% 5%, rgba(61, 97, 34, 0.4), transparent 65%),
+    radial-gradient(ellipse 80% 220% at 88% 0%, rgba(214, 154, 31, 0.14), rgba(214, 154, 31, 0.05) 70%, rgba(214, 154, 31, 0.02) 100%),
+    radial-gradient(ellipse 85% 230% at 8% -10%, rgba(61, 97, 34, 0.45), rgba(61, 97, 34, 0.18) 70%, rgba(61, 97, 34, 0.08) 100%),
     var(--color-green-700);
 }
 
