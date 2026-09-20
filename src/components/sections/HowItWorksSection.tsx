@@ -22,8 +22,8 @@ export function HowItWorksSection() {
             </div>
           </Reveal>
           <p className="m-0 font-body text-lead leading-relaxed text-cream-200 max-w-[30em]">
-            No order is too small and no menu is fixed. Tell us the date and we will build the spread
-            around your table.
+            We cater from 10 guests up, and no menu is fixed. Tell us the date and we will build the
+            spread around your table.
           </p>
         </div>
 

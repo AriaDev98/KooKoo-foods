@@ -43,14 +43,23 @@ export function EnquireSection() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    const guestsNum = Number(form.guests);
+    const guestsMissing = !form.guests.trim();
+    const guestsTooFew = !guestsMissing && guestsNum > 0 && guestsNum < 10;
+
     const missing: string[] = [];
     if (!form.name.trim()) missing.push("your name");
     if (!form.contact.trim()) missing.push("an email or phone number");
+    if (guestsMissing) missing.push("the number of guests");
 
-    if (missing.length) {
-      setErrors({ name: !form.name.trim(), contact: !form.contact.trim() });
+    if (missing.length || guestsTooFew) {
+      setErrors({ name: !form.name.trim(), contact: !form.contact.trim(), guests: guestsMissing || guestsTooFew });
       setSent(false);
-      setStatus(`Almost there — we still need ${missing.join(" and ")}.`);
+      setStatus(
+        guestsTooFew
+          ? `We cater from 10 guests up — for a smaller group, call us on ${SITE.phone} and we'll see what we can do.`
+          : `Almost there — we still need ${missing.join(" and ")}.`,
+      );
       return;
     }
 
@@ -128,10 +137,10 @@ export function EnquireSection() {
                   onChange={(e) => setField("occasion", e.target.value)}
                 />
               </Field>
-              <Field label="Guests">
+              <Field label="Guests" required hint="Minimum 10 guests">
                 <Input
                   type="number"
-                  min={1}
+                  min={10}
                   max={1000}
                   step={1}
                   inputMode="numeric"
@@ -140,6 +149,7 @@ export function EnquireSection() {
                     setField("guests", e.target.value.replace(/[^0-9]/g, "").replace(/^0+/, "").slice(0, 4))
                   }
                   placeholder="40"
+                  invalid={!!errors.guests}
                 />
               </Field>
               <Field label="Date">

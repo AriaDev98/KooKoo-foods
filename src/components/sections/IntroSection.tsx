@@ -16,7 +16,7 @@ const CARDS = [
   {
     icon: "users" as const,
     title: "Any size table",
-    desc: "Six people at home or two hundred at a hall — the food is cooked fresh either way.",
+    desc: "From ten people at home to two hundred at a hall — the food is cooked fresh either way.",
   },
 ];
 
