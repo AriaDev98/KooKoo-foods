@@ -31,7 +31,7 @@ export const STEPS = [
   {
     n: "01",
     title: "Tell us the date",
-    desc: "Send the date, the number of guests and anything anyone cannot eat. We cater from 10 guests up.",
+    desc: "Send the date, the number of guests and anything anyone cannot eat — minimum 10 guests.",
   },
   {
     n: "02",
