@@ -131,6 +131,42 @@ export const DISHES: Dish[] = [
     },
   },
   {
+    name: "Persian crackers",
+    course: "Side",
+    desc: "Thin baked crackers with pumpkin, sunflower and sesame seeds, made to go with the eggplant dip.",
+    tags: [{ label: "V", tone: "sage" }],
+    photo: {
+      src: "/images/photos/crackers-tray.jpg",
+      ingredients:
+        "Thin baked crackers with pumpkin seeds, sunflower seeds and sesame, snapped by hand into pieces. Made to go with the eggplant dip.",
+      allergens: "Contains gluten and sesame. Contains seeds. No nuts, no dairy.",
+    },
+  },
+  {
+    name: "Barbari bread",
+    course: "Side",
+    desc: "Handmade wholemeal flatbread, topped with sesame and sunflower seeds and scored by hand.",
+    tags: [{ label: "V", tone: "sage" }],
+    photo: {
+      src: "/images/photos/wholemeal-bread.jpg",
+      ingredients:
+        "Wholemeal flour, water, yeast, salt, topped with sesame and sunflower seeds. Baked flat and scored by hand.",
+      allergens: "Contains gluten and sesame. Dairy free, egg free, nut free.",
+    },
+  },
+  {
+    name: "Pitta bread",
+    course: "Side",
+    desc: "Soft flatbread, baked fresh and served warm alongside the dips and mains.",
+    tags: [{ label: "Veg", tone: "sage" }],
+    photo: {
+      src: "/images/photos/pita-bread-v2.jpg",
+      ingredients:
+        "Flour and yoghurt. Soft flatbread, baked fresh and served warm alongside the dips and mains.",
+      allergens: "Contains gluten and dairy. Egg free, nut free.",
+    },
+  },
+  {
     name: "Maste khiar",
     course: "Side",
     desc: "Yoghurt with cucumber, dried mint and a little garlic. Cool, and on every Persian table.",
@@ -253,6 +289,52 @@ export const DISHES: Dish[] = [
       ingredients:
         "Semolina and wheat flour, eggs, sugar, yoghurt, lemon and a lemon syrup, finished with chopped pistachio.",
       allergens: "Contains gluten, egg, dairy and pistachio.",
+    },
+  },
+  {
+    name: "Orange cake",
+    course: "Sweets",
+    desc: "Fresh orange folded through a moist sponge, finished with chopped pistachio.",
+    tags: [{ label: "CN", tone: "amber" }],
+    photo: {
+      src: "/images/photos/orange-cake.jpg",
+      ingredients: "Flour, eggs, yoghurt, milk, oil and fresh orange, finished with chopped pistachio.",
+      allergens: "Contains gluten, egg, dairy and pistachio.",
+    },
+  },
+  {
+    name: "Cinnamon walnut roll",
+    course: "Sweets",
+    desc: "A sweet enriched dough rolled with walnuts, dates and cinnamon.",
+    tags: [{ label: "CN", tone: "amber" }],
+    photo: {
+      src: "/images/photos/sweet-bread.jpg",
+      ingredients: "Wheat flour, butter, eggs, milk, sugar, walnuts, dates, cinnamon.",
+      allergens: "Contains gluten, egg, dairy and walnuts.",
+    },
+  },
+  {
+    name: "Persian sweets platter",
+    course: "Sweets",
+    desc: "A mixed tray — chickpea stars, almond crinkle cookies, chocolate buttons and almond-topped slices.",
+    tags: [{ label: "CN", tone: "amber" }],
+    photo: {
+      src: "/images/photos/persian-sweets-tray2.jpg",
+      ingredients:
+        "Flour, eggs, butter, almond flour, cocoa powder. A mixed tray — chickpea stars, almond crinkle cookies, chocolate buttons and almond-topped slices.",
+      allergens: "Contains gluten, egg, dairy and almonds.",
+    },
+  },
+  {
+    name: "Homemade Persian sweets",
+    course: "Sweets",
+    desc: "Almond slices baked into a short, buttery biscuit, cinnamon-dusted and finished with flaked almonds.",
+    tags: [{ label: "CN", tone: "amber" }],
+    photo: {
+      src: "/images/photos/persian-sweets-2.jpg",
+      ingredients:
+        "Almond slices baked into a short, buttery biscuit and cut into fingers — cinnamon-dusted and finished with flaked almonds.",
+      allergens: "Contains gluten, egg, dairy and almonds. Ask about the gluten-free options.",
     },
   },
 ];
