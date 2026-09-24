@@ -4,6 +4,7 @@ import { Card } from "../ui/Card";
 import { Badge } from "../ui/Badge";
 import { Photo } from "../ui/Photo";
 import { Reveal } from "../ui/Reveal";
+import { AddToTable } from "../ui/AddToTable";
 import { DISHES, FILTERS, matchesFilter, type Dish } from "../../data/dishes";
 
 type IndicatorRect = { top: number; left: number; width: number; height: number };
@@ -13,7 +14,7 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
   const toggle = () => setOpen((v) => !v);
   
   return (
-    <Reveal delay={delay}>
+    <Reveal delay={delay} className="relative">
       <div
         role="button"
         tabIndex={0}
@@ -121,6 +122,9 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
           </div>
         </div>
       </div>
+      <div className="absolute right-3 top-3 z-10">
+        <AddToTable name={dish.name} collapsed />
+      </div>
     </Reveal>
   );
 }
@@ -138,7 +142,7 @@ function TextDishCard({ dish, tone }: { dish: Dish; tone: "cream" | "sage" }) {
           </span>
         </div>
         <p className="m-0 font-body text-body-md leading-relaxed text-green-700">{dish.desc}</p>
-        {dish.tags.length > 0 ? (
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap gap-2">
             {dish.tags.map((tag) => (
               <Badge key={tag.label} tone={tag.tone}>
@@ -146,7 +150,8 @@ function TextDishCard({ dish, tone }: { dish: Dish; tone: "cream" | "sage" }) {
               </Badge>
             ))}
           </div>
-        ) : null}
+          <AddToTable name={dish.name} />
+        </div>
       </div>
     </Card>
   );

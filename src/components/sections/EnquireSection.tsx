@@ -9,6 +9,7 @@ import { Textarea } from "../ui/Textarea";
 import { Button } from "../ui/Button";
 import { Reveal } from "../ui/Reveal";
 import { OCCASIONS, SITE } from "../../data/content";
+import { useTable } from "../../context/TableContext";
 
 interface FormState {
   name: string;
@@ -29,6 +30,7 @@ const initialForm: FormState = {
 };
 
 export function EnquireSection() {
+  const { selected, remove } = useTable();
   const [form, setForm] = useState<FormState>(initialForm);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, boolean>>>({});
   const [sent, setSent] = useState(false);
@@ -69,6 +71,7 @@ export function EnquireSection() {
       `Occasion: ${form.occasion}`,
       `Guests: ${form.guests || "not sure yet"}`,
       `Date: ${form.date || "flexible"}`,
+      ...(selected.length ? ["", "Dishes I would like on my table:", ...selected.map((n) => `- ${n}`)] : []),
       "",
       form.notes,
     ].join("\n");
@@ -155,6 +158,44 @@ export function EnquireSection() {
               <Field label="Date">
                 <Input type="date" value={form.date} onChange={(e) => setField("date", e.target.value)} />
               </Field>
+            </div>
+            <div className="rounded-2xl border-2 border-dashed border-green-700 bg-cream-200 px-5 py-4">
+              <div className="font-ui text-caption font-bold uppercase tracking-eyebrow text-green-600">
+                Your table
+              </div>
+              {selected.length ? (
+                <>
+                  <ul className="m-0 mt-3 p-0 list-none flex flex-wrap gap-2">
+                    {selected.map((name) => (
+                      <li
+                        key={name}
+                        className="flex items-center gap-1 rounded-full bg-green-800 py-1 pl-4 pr-1 font-ui text-body-sm font-bold text-cream-100"
+                      >
+                        {name}
+                        <button
+                          type="button"
+                          onClick={() => remove(name)}
+                          aria-label={`Remove ${name}`}
+                          className="grid h-6 w-6 place-items-center rounded-full text-cream-200 hover:bg-amber-500 hover:text-green-800 cursor-pointer"
+                        >
+                          ×
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="m-0 mt-3 font-body text-body-sm text-green-700">
+                    These will be added to your enquiry.
+                  </p>
+                </>
+              ) : (
+                <p className="m-0 mt-2 font-body text-body-md text-green-700">
+                  Nothing picked yet. Tap <b>Add to my table</b> on any dish in the{" "}
+                  <a href="#menu" className="link-underline font-bold text-green-800">
+                    menu
+                  </a>{" "}
+                  and it will appear here.
+                </p>
+              )}
             </div>
             <Field
               label="What are you after"
