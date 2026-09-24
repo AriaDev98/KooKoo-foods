@@ -43,7 +43,18 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
             className="absolute inset-0 overflow-hidden rounded-3xl"
             style={{ backfaceVisibility: "hidden" }}
           >
-            <Photo src={dish.photo.src} alt={dish.name} ratio="3 / 4" />
+            {dish.photo.fit === "contain" ? (
+              <div className="absolute inset-0 bg-green-800 flex items-center justify-center px-4 pb-20">
+                <img
+                  src={dish.photo.src}
+                  alt={dish.name}
+                  loading="lazy"
+                  className="block w-full h-auto rounded-2xl shadow-[0_10px_30px_-10px_rgba(0,0,0,0.6)]"
+                />
+              </div>
+            ) : (
+              <Photo src={dish.photo.src} alt={dish.name} ratio="3 / 4" />
+            )}
             <div className="absolute left-0 bottom-0 flex flex-col items-start gap-[2px] p-4">
               <span className="font-ui text-eyebrow font-bold uppercase tracking-eyebrow text-green-800 bg-amber-500 px-[10px] py-[5px]">
                 Turn me over

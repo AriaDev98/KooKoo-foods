@@ -4,6 +4,7 @@ export type DishTag = { label: string; tone: DishTagTone };
 
 export interface DishPhoto {
   src: string;
+  fit?: "contain";
   ingredients: string;
   allergens: string;
 }
@@ -62,7 +63,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Dolmeh",
+    name: "Dolmeh (Cabbage Stuffed)",
     course: "Appetizer",
     desc: "Cabbage leaves rolled around a herb and rice filling, slow-cooked until soft.",
     tags: [
@@ -92,6 +93,7 @@ export const DISHES: Dish[] = [
     ],
     photo: {
       src: "/images/photos/zucchini-kookoo.jpg",
+      fit: "contain",
       ingredients: "Zucchini, potato, egg, onion and fresh herbs, pan-baked until golden.",
       allergens: "Contains egg. Gluten free, dairy free, nut free.",
     },
