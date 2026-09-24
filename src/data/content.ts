@@ -38,6 +38,7 @@ export const STEPS = [
     n: "02",
     title: "We plan the menu",
     desc: "We come back with a spread and a price. Change what you like until it is the table you wanted.",
+    link: { label: "Pick your dishes", href: "#menu" },
   },
   {
     n: "03",

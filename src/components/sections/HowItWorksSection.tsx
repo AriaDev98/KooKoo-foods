@@ -1,11 +1,19 @@
+import { CalendarDays, ClipboardList, Flame } from "lucide-react";
 import { SectionHeading } from "../ui/SectionHeading";
 import { HighlightHeading } from "../ui/HighlightHeading";
 import { Button } from "../ui/Button";
 import { Reveal } from "../ui/Reveal";
 import { LivingBackground } from "../ui/LivingBackground";
+import { useReveal } from "../../hooks/useReveal";
 import { STEPS, SITE } from "../../data/content";
 
+const STEP_ICONS = [CalendarDays, ClipboardList, Flame];
+
 export function HowItWorksSection() {
+  // Plays once, the first time the steps scroll into view; reduced-motion visitors
+  // get the finished layout straight away (useReveal starts revealed for them).
+  const { ref, revealed } = useReveal<HTMLDivElement>("0px 0px -120px 0px");
+
   return (
     <section id="how" className="relative isolate overflow-hidden bg-green-800 text-cream-200 px-6 sm:px-10 py-24">
       <LivingBackground />
@@ -27,16 +35,41 @@ export function HowItWorksSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
-          {STEPS.map((step) => (
-            <div key={step.n} className="flex flex-col gap-5 pt-6 border-t-4 border-amber-500">
-              <span className="font-marker text-h2 leading-none text-amber-500">{step.n}</span>
-              <h3 className="m-0 font-display text-h4 font-extrabold tracking-heading leading-snug text-cream-100">
-                {step.title}
-              </h3>
-              <p className="m-0 font-body text-body-lg leading-relaxed text-cream-200">{step.desc}</p>
-            </div>
-          ))}
+        <div
+          ref={ref}
+          className={`hiw-steps grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16 ${revealed ? "is-in" : ""}`}
+        >
+          {STEPS.map((step, i) => {
+            const Icon = STEP_ICONS[i];
+            return (
+              <div key={step.n} className="hiw-step relative flex flex-col" style={{ "--i": i } as React.CSSProperties}>
+                <div className="hiw-icon">
+                  <Icon size={30} strokeWidth={2.2} aria-hidden="true" />
+                  {i === STEPS.length - 1 ? (
+                    <>
+                      <span className="hiw-steam" />
+                      <span className="hiw-steam hiw-steam-2" />
+                      <span className="hiw-steam hiw-steam-3" />
+                    </>
+                  ) : null}
+                </div>
+                {i < STEPS.length - 1 ? <span className="hiw-connector" aria-hidden="true" /> : null}
+                <span className="mt-5 font-marker text-h4 leading-none text-amber-500">{step.n}</span>
+                <h3 className="m-0 mt-2 font-display text-h3 font-extrabold tracking-heading leading-snug text-cream-100">
+                  {step.title}
+                </h3>
+                <p className="m-0 mt-3 font-body text-body-lg leading-relaxed text-cream-200">{step.desc}</p>
+                {"link" in step && step.link ? (
+                  <a
+                    href={step.link.href}
+                    className="mt-4 self-start border-b-2 border-amber-500 pb-[2px] font-ui text-body-sm font-extrabold uppercase tracking-wide text-amber-400 no-underline transition-colors duration-150 hover:border-cream-100 hover:text-cream-100"
+                  >
+                    {step.link.label} →
+                  </a>
+                ) : null}
+              </div>
+            );
+          })}
         </div>
 
         <div className="flex flex-wrap gap-5 items-center mt-16 pt-10 border-t border-[rgba(240,235,220,0.24)]">

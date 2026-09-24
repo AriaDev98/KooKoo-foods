@@ -770,6 +770,136 @@ body {
   background: var(--color-amber-500);
 }
 
+/* How it works: the icons pop in one after another while an amber line draws
+   between them, once, when the steps first scroll into view. --i is the step
+   index (0-2). Below lg the connector is hidden and the stagger is shorter. */
+.hiw-step {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 700ms var(--ease-standard),
+    transform 700ms var(--ease-standard);
+  transition-delay: calc(var(--i, 0) * 250ms);
+}
+.hiw-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 68px;
+  width: 68px;
+  flex: none;
+  border-radius: 50%;
+  border: 4px solid var(--color-amber-500);
+  background: rgba(38, 63, 20, 0.55);
+  color: var(--color-amber-400);
+  transform: scale(0.4);
+}
+.hiw-connector {
+  position: absolute;
+  top: 32px;
+  left: 84px;
+  width: calc(100% + 40px - 100px);
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--color-amber-500), var(--color-amber-400));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 800ms var(--ease-standard);
+}
+.hiw-steam {
+  position: absolute;
+  left: 50%;
+  top: -4px;
+  height: 8px;
+  width: 8px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: rgba(250, 247, 239, 0.6);
+  filter: blur(4px);
+  opacity: 0;
+}
+.hiw-steam-2 {
+  margin-left: -14px;
+}
+.hiw-steam-3 {
+  margin-left: 6px;
+}
+
+.hiw-steps.is-in .hiw-step {
+  opacity: 1;
+  transform: none;
+}
+.hiw-steps.is-in .hiw-icon {
+  animation: hiw-pop 650ms var(--ease-standard) both;
+  animation-delay: calc(var(--i, 0) * 250ms + 100ms);
+  transform: none;
+}
+.hiw-steps.is-in .hiw-connector {
+  transform: scaleX(1);
+  transition-delay: calc(var(--i, 0) * 250ms + 350ms);
+}
+.hiw-steps.is-in .hiw-steam {
+  animation: hiw-steam 2.6s ease-in-out infinite;
+  animation-delay: 1.4s;
+}
+.hiw-steps.is-in .hiw-steam-2 {
+  animation-delay: 2.3s;
+}
+.hiw-steps.is-in .hiw-steam-3 {
+  animation-delay: 2.8s;
+}
+
+@media (min-width: 1024px) {
+  .hiw-step {
+    transition-delay: calc(var(--i, 0) * 850ms);
+  }
+  .hiw-steps.is-in .hiw-icon {
+    animation-delay: calc(var(--i, 0) * 850ms + 100ms);
+  }
+  .hiw-steps.is-in .hiw-connector {
+    transition-delay: calc(var(--i, 0) * 850ms + 450ms);
+  }
+  .hiw-steps.is-in .hiw-steam {
+    animation-delay: 2.4s;
+  }
+  .hiw-steps.is-in .hiw-steam-2 {
+    animation-delay: 3.2s;
+  }
+  .hiw-steps.is-in .hiw-steam-3 {
+    animation-delay: 3.7s;
+  }
+}
+@media (max-width: 1023px) {
+  .hiw-connector {
+    display: none;
+  }
+}
+
+@keyframes hiw-pop {
+  0% {
+    transform: scale(0.4);
+  }
+  60% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes hiw-steam {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-34px) scale(1.7);
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue {
     animation: none;
@@ -801,6 +931,17 @@ body {
   .flip-chip-txt,
   .flip-chip-txt > span {
     transition: none;
+  }
+
+  .hiw-step,
+  .hiw-icon,
+  .hiw-connector {
+    transition: none;
+    animation: none;
+  }
+
+  .hiw-steam {
+    display: none;
   }
 
   .add-to-table,
