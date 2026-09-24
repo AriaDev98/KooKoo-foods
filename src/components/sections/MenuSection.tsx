@@ -32,7 +32,7 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
           }
         }}
         className="h-full cursor-pointer transition-transform duration-200 ease-standard hover:-translate-y-1 focus-visible:outline focus-visible:outline-3 focus-visible:outline-amber-500 focus-visible:outline-offset-2"
-        style={{ perspective: "1400px", aspectRatio: "3 / 4" }}
+        style={{ perspective: "1400px", aspectRatio: dish.photo.whole && !open ? "1080 / 668" : "3 / 4" }}
       >
         <div
           className="relative w-full h-full transition-transform duration-500 ease-standard"

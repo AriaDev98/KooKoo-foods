@@ -41,15 +41,6 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Mirza ghasemi",
-    course: "Appetizer",
-    desc: "Smoked eggplant cooked down with tomato and plenty of garlic.",
-    tags: [
-      { label: "Veg", tone: "sage" },
-      { label: "GF", tone: "sage" },
-    ],
-  },
-  {
     name: "Ash Reshteh",
     course: "Appetizer",
     desc: "Persian herb and noodle soup with chickpeas, lentils, beans, crispy fried onions and kashk.",
@@ -60,21 +51,6 @@ export const DISHES: Dish[] = [
         "Persian herb and noodle soup with chickpeas, lentils, beans, fresh herbs, crispy fried onions and kashk. A vegetarian favourite.",
       allergens:
         "Contains gluten in the noodles and dairy in the kashk — ask for it without. No nuts.",
-    },
-  },
-  {
-    name: "Zucchini Kookoo",
-    course: "Appetizer",
-    desc: "Kuku kadoo — zucchini and potato omelette with fried onions and herbs.",
-    tags: [
-      { label: "Veg", tone: "sage" },
-      { label: "GF", tone: "sage" },
-    ],
-    photo: {
-      src: "/images/photos/zucchini-kookoo.jpg",
-      whole: true,
-      ingredients: "Zucchini, potato, egg, onion and fresh herbs, pan-baked until golden.",
-      allergens: "Contains egg. Gluten free, dairy free, nut free.",
     },
   },
   {
@@ -90,6 +66,30 @@ export const DISHES: Dish[] = [
       ingredients:
         "Cabbage leaves wrapped around a filling of fresh herbs and rice, slow-cooked and finished with tomato, parsley and red onion.",
       allergens: "Gluten free, dairy free, nut free.",
+    },
+  },
+  {
+    name: "Mirza ghasemi",
+    course: "Appetizer",
+    desc: "Smoked eggplant cooked down with tomato and plenty of garlic.",
+    tags: [
+      { label: "Veg", tone: "sage" },
+      { label: "GF", tone: "sage" },
+    ],
+  },
+  {
+    name: "Zucchini Kookoo",
+    course: "Appetizer",
+    desc: "Kuku kadoo — zucchini and potato omelette with fried onions and herbs.",
+    tags: [
+      { label: "Veg", tone: "sage" },
+      { label: "GF", tone: "sage" },
+    ],
+    photo: {
+      src: "/images/photos/zucchini-kookoo.jpg",
+      whole: true,
+      ingredients: "Zucchini, potato, egg, onion and fresh herbs, pan-baked until golden.",
+      allergens: "Contains egg. Gluten free, dairy free, nut free.",
     },
   },
   {
