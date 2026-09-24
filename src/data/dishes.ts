@@ -64,13 +64,13 @@ export const DISHES: Dish[] = [
   {
     name: "Dolmeh",
     course: "Appetizer",
-    desc: "Vine leaves rolled around a herb and rice filling, slow-cooked until soft.",
+    desc: "Cabbage leaves rolled around a herb and rice filling, slow-cooked until soft.",
     tags: [
       { label: "Veg", tone: "sage" },
       { label: "GF", tone: "sage" },
     ],
     photo: {
-      src: "/images/photos/dolmeh-full.jpg",
+      src: "/images/photos/dolmeh-cabbage.jpg",
       ingredients:
         "Cabbage leaves wrapped around a filling of fresh herbs and rice, slow-cooked and finished with tomato, parsley and red onion.",
       allergens: "Gluten free, dairy free, nut free.",
@@ -90,6 +90,11 @@ export const DISHES: Dish[] = [
       { label: "Veg", tone: "sage" },
       { label: "GF", tone: "sage" },
     ],
+    photo: {
+      src: "/images/photos/zucchini-kookoo.jpg",
+      ingredients: "Zucchini, potato, egg, onion and fresh herbs, pan-baked until golden.",
+      allergens: "Contains egg. Gluten free, dairy free, nut free.",
+    },
   },
   {
     name: "Persian Rice",
@@ -145,12 +150,11 @@ export const DISHES: Dish[] = [
   {
     name: "Barbari bread",
     course: "Side",
-    desc: "Handmade wholemeal flatbread, topped with sesame and sunflower seeds and scored by hand.",
+    desc: "Homemade barbari — golden, soft-crumbed flatbread, scored by hand and scattered with sesame.",
     tags: [{ label: "V", tone: "sage" }],
     photo: {
-      src: "/images/photos/wholemeal-bread.jpg",
-      ingredients:
-        "Wholemeal flour, water, yeast, salt, topped with sesame and sunflower seeds. Baked flat and scored by hand.",
+      src: "/images/photos/barbari-homemade.jpg",
+      ingredients: "Flour, water, yeast, salt, topped with sesame seeds. Baked flat and scored by hand.",
       allergens: "Contains gluten and sesame. Dairy free, egg free, nut free.",
     },
   },
@@ -183,6 +187,12 @@ export const DISHES: Dish[] = [
       { label: "GF", tone: "sage" },
       { label: "DF", tone: "sage" },
     ],
+    photo: {
+      src: "/images/photos/koofteh-tomato.jpg",
+      ingredients:
+        "Lamb and beef mince, onion, chickpeas, rice, fresh herbs, dried plum, turmeric, tomato.",
+      allergens: "Gluten free and dairy free as cooked. No nuts.",
+    },
   },
   {
     name: "Ghormeh sabzi",
