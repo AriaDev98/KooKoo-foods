@@ -17,7 +17,7 @@ import { TableTray } from "./components/navigation/TableTray";
 function App() {
   return (
     <TableProvider>
-      <div id="top" className="bg-cream-200 font-ui overflow-x-hidden">
+      <div id="top" className="bg-cream-200 font-ui overflow-x-clip">
         <SiteHeader />
         <StickyBar />
         <BackToTop />
