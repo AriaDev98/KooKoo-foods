@@ -386,6 +386,69 @@ body {
   }
 }
 
+.flip-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 8px;
+  border-radius: 999px;
+  background: var(--color-amber-500);
+  color: var(--color-green-800);
+  font-family: var(--font-ui);
+  font-size: var(--text-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  transition: box-shadow 300ms var(--ease-standard);
+}
+.flip-chip svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  transition: transform 600ms var(--ease-standard);
+}
+.flip-chip-txt {
+  position: relative;
+  display: block;
+  height: 1.2em;
+  width: var(--chip-w1, 9.3em);
+  transition: width 350ms var(--ease-standard);
+}
+.flip-chip-txt > span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 1.2em;
+  white-space: nowrap;
+  transition: opacity 250ms, transform 250ms var(--ease-standard);
+}
+.flip-chip-t2 {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.flip-card:hover .flip-chip,
+.flip-card:focus-visible .flip-chip {
+  box-shadow: 0 0 0 4px rgba(214, 154, 31, 0.3);
+}
+.flip-card:hover .flip-chip svg,
+.flip-card:focus-visible .flip-chip svg {
+  transform: rotate(180deg);
+}
+.flip-card:hover .flip-chip-txt,
+.flip-card:focus-visible .flip-chip-txt {
+  width: var(--chip-w2, 17.2em);
+}
+.flip-card:hover .flip-chip-t1,
+.flip-card:focus-visible .flip-chip-t1 {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+.flip-card:hover .flip-chip-t2,
+.flip-card:focus-visible .flip-chip-t2 {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue {
     animation: none;
@@ -411,6 +474,12 @@ body {
   .group:hover .logo-shine,
   .group:focus-visible .logo-shine {
     animation: none;
+  }
+
+  .flip-chip svg,
+  .flip-chip-txt,
+  .flip-chip-txt > span {
+    transition: none;
   }
 
   .living-bg-blob-1,

@@ -31,7 +31,7 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
             toggle();
           }
         }}
-        className="h-full cursor-pointer transition-transform duration-200 ease-standard hover:-translate-y-1 focus-visible:outline focus-visible:outline-3 focus-visible:outline-amber-500 focus-visible:outline-offset-2"
+        className="flip-card h-full cursor-pointer transition-transform duration-200 ease-standard hover:-translate-y-1 focus-visible:outline focus-visible:outline-3 focus-visible:outline-amber-500 focus-visible:outline-offset-2"
         style={{ perspective: "1400px", aspectRatio: dish.photo.whole && !open ? "1080 / 668" : "3 / 4" }}
       >
         <div
@@ -50,8 +50,25 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
                 <Photo src={dish.photo.src} alt={dish.name} ratio="3 / 4" />
               )}
               <div className="absolute left-0 bottom-0 flex flex-col items-start gap-[2px] p-4">
-                <span className="font-ui text-eyebrow font-bold uppercase tracking-eyebrow text-green-800 bg-amber-500 px-[10px] py-[5px]">
-                  Turn me over
+                <span className="flip-chip">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M21 12a9 9 0 0 1-15.5 6.2L3 16" />
+                    <path d="M3 12a9 9 0 0 1 15.5-6.2L21 8" />
+                    <path d="M21 3v5h-5" />
+                    <path d="M3 21v-5h5" />
+                  </svg>
+                  <span className="flip-chip-txt">
+                    <span className="flip-chip-t1">Turn me over</span>
+                    <span className="flip-chip-t2">Ingredients &amp; allergens</span>
+                  </span>
                 </span>
                 <h3 className="m-0 font-display text-h4 font-extrabold tracking-heading leading-snug text-green-800 bg-[rgba(243,239,228,0.9)] shadow-block px-3 py-2">
                   {dish.name}
