@@ -363,3 +363,27 @@ export function matchesFilter(
   if (gfOnly && !isGlutenFree(dish)) return false;
   return filter === "All" || dish.course === filter;
 }
+
+// The uncropped landscape photo card is only as tall as its photo, so it looks
+// right only in a row of short text cards. Whatever the filter, seat it between
+// two text cards at a position that lands in the same row at 2 and 3 columns.
+export function arrangeWholePhotos(list: Dish[]): Dish[] {
+  const at = list.findIndex((d) => d.photo?.whole);
+  if (at === -1) return list;
+  const whole = list[at];
+  const rest = list.filter((_, i) => i !== at);
+  const isText = (d?: Dish) => !!d && !d.photo;
+
+  for (let i = 1; i <= rest.length; i += 3) {
+    if (isText(rest[i - 1]) && isText(rest[i])) {
+      return [...rest.slice(0, i), whole, ...rest.slice(i)];
+    }
+  }
+
+  const texts = rest.filter(isText);
+  if (texts.length >= 2) {
+    const [first, second] = texts;
+    return [first, whole, second, ...rest.filter((d) => d !== first && d !== second)];
+  }
+  return list;
+}

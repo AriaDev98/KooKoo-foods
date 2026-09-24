@@ -3,7 +3,6 @@ import { ChevronDown } from "lucide-react";
 import { HighlightHeading } from "../ui/HighlightHeading";
 import { Photo } from "../ui/Photo";
 import { LivingBackground } from "../ui/LivingBackground";
-import { HeroFoodScene } from "../ui/HeroFoodScene";
 
 export function Hero({
   headline,
@@ -14,7 +13,6 @@ export function Hero({
   showScrollCue = false,
   animateHeadline = false,
   living = false,
-  foodScene = false,
   className = "",
   children,
 }: {
@@ -26,7 +24,6 @@ export function Hero({
   showScrollCue?: boolean;
   animateHeadline?: boolean;
   living?: boolean;
-  foodScene?: boolean;
   className?: string;
   children?: ReactNode;
 }) {
@@ -38,7 +35,6 @@ export function Hero({
         </div>
       ) : null}
       {living ? <LivingBackground /> : null}
-      {foodScene ? <HeroFoodScene /> : null}
       <div
         className={`relative z-10 flex flex-col items-center justify-center text-center gap-8 mx-auto w-full max-w-[1180px] px-10 ${showScrollCue ? "pt-2 pb-16" : "py-20"}`}
       >
