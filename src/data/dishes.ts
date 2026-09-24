@@ -4,7 +4,7 @@ export type DishTag = { label: string; tone: DishTagTone };
 
 export interface DishPhoto {
   src: string;
-  wide?: boolean;
+  whole?: boolean;
   ingredients: string;
   allergens: string;
 }
@@ -72,7 +72,7 @@ export const DISHES: Dish[] = [
     ],
     photo: {
       src: "/images/photos/zucchini-kookoo.jpg",
-      wide: true,
+      whole: true,
       ingredients: "Zucchini, potato, egg, onion and fresh herbs, pan-baked until golden.",
       allergens: "Contains egg. Gluten free, dairy free, nut free.",
     },
