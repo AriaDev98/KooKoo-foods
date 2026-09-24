@@ -11,7 +11,7 @@ type IndicatorRect = { top: number; left: number; width: number; height: number 
 function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "photo">>; delay: number }) {
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen((v) => !v);
-
+  
   return (
     <Reveal delay={delay}>
       <div
@@ -32,7 +32,7 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
           }
         }}
         className="h-full cursor-pointer transition-transform duration-200 ease-standard hover:-translate-y-1 focus-visible:outline focus-visible:outline-3 focus-visible:outline-amber-500 focus-visible:outline-offset-2"
-        style={{ perspective: "1400px", aspectRatio: "3 / 4" }}
+        style={{ perspective: "1400px", aspectRatio: dish.photo.whole && !open ? "1080 / 668" : "3 / 4" }}
       >
         <div
           className="relative w-full h-full transition-transform duration-500 ease-standard"
@@ -40,17 +40,23 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
         >
           {/* front */}
           <div
-            className="absolute inset-0 overflow-hidden rounded-3xl"
+            className={`absolute inset-0 ${dish.photo.whole ? "flex items-center" : "overflow-hidden rounded-3xl"}`}
             style={{ backfaceVisibility: "hidden" }}
           >
-            <Photo src={dish.photo.src} alt={dish.name} ratio="3 / 4" />
-            <div className="absolute left-0 bottom-0 flex flex-col items-start gap-[2px] p-4">
-              <span className="font-ui text-eyebrow font-bold uppercase tracking-eyebrow text-green-800 bg-amber-500 px-[10px] py-[5px]">
-                Turn me over
-              </span>
-              <h3 className="m-0 font-display text-h4 font-extrabold tracking-heading leading-snug text-green-800 bg-[rgba(243,239,228,0.9)] shadow-block px-3 py-2">
-                {dish.name}
-              </h3>
+            <div className={`relative w-full ${dish.photo.whole ? "overflow-hidden rounded-3xl" : "h-full"}`}>
+              {dish.photo.whole ? (
+                <img src={dish.photo.src} alt={dish.name} loading="lazy" className="block w-full h-auto" />
+              ) : (
+                <Photo src={dish.photo.src} alt={dish.name} ratio="3 / 4" />
+              )}
+              <div className="absolute left-0 bottom-0 flex flex-col items-start gap-[2px] p-4">
+                <span className="font-ui text-eyebrow font-bold uppercase tracking-eyebrow text-green-800 bg-amber-500 px-[10px] py-[5px]">
+                  Turn me over
+                </span>
+                <h3 className="m-0 font-display text-h4 font-extrabold tracking-heading leading-snug text-green-800 bg-[rgba(243,239,228,0.9)] shadow-block px-3 py-2">
+                  {dish.name}
+                </h3>
+              </div>
             </div>
           </div>
           {/* back */}
