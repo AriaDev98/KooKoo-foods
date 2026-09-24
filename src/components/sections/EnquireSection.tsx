@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from "react";
-import { MapPin } from "lucide-react";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Card } from "../ui/Card";
 import { Field } from "../ui/Field";
@@ -279,17 +278,11 @@ export function EnquireSection() {
           </Card>
           <div className="relative border-2 border-green-800 bg-sage-200 overflow-hidden">
             <iframe
-              title="Map of 34 Crosgrove Rd, Strathfield South"
+              title="Map showing FoodLab at 34 Cosgrove Rd, Strathfield South"
               src={SITE.mapEmbedUrl}
               className="w-full h-[300px] border-0 block"
-              style={{ filter: "grayscale(1) sepia(.5) saturate(.4) contrast(1.1)" }}
+              style={{ filter: "grayscale(.55) sepia(.2) saturate(.75) contrast(1.05)" }}
               loading="lazy"
-            />
-            <MapPin
-              aria-hidden="true"
-              size={40}
-              strokeWidth={2.5}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full text-clay-700 fill-amber-500 pointer-events-none drop-shadow-[0_4px_6px_rgba(38,63,20,0.45)]"
             />
           </div>
           <Button variant="secondary" size="md" href={SITE.mapDirectionsUrl} fullWidth>
