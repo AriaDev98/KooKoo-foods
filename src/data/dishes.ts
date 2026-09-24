@@ -4,7 +4,7 @@ export type DishTag = { label: string; tone: DishTagTone };
 
 export interface DishPhoto {
   src: string;
-  fit?: "contain";
+  wide?: boolean;
   ingredients: string;
   allergens: string;
 }
@@ -63,6 +63,21 @@ export const DISHES: Dish[] = [
     },
   },
   {
+    name: "Zucchini Kookoo",
+    course: "Appetizer",
+    desc: "Kuku kadoo — zucchini and potato omelette with fried onions and herbs.",
+    tags: [
+      { label: "Veg", tone: "sage" },
+      { label: "GF", tone: "sage" },
+    ],
+    photo: {
+      src: "/images/photos/zucchini-kookoo.jpg",
+      wide: true,
+      ingredients: "Zucchini, potato, egg, onion and fresh herbs, pan-baked until golden.",
+      allergens: "Contains egg. Gluten free, dairy free, nut free.",
+    },
+  },
+  {
     name: "Dolmeh (Cabbage Stuffed)",
     course: "Appetizer",
     desc: "Cabbage leaves rolled around a herb and rice filling, slow-cooked until soft.",
@@ -82,21 +97,6 @@ export const DISHES: Dish[] = [
     course: "Appetizer",
     desc: "Golden potato patties, crisp at the edge and soft through the middle.",
     tags: [{ label: "Veg", tone: "sage" }],
-  },
-  {
-    name: "Zucchini Kookoo",
-    course: "Appetizer",
-    desc: "Kuku kadoo — zucchini and potato omelette with fried onions and herbs.",
-    tags: [
-      { label: "Veg", tone: "sage" },
-      { label: "GF", tone: "sage" },
-    ],
-    photo: {
-      src: "/images/photos/zucchini-kookoo.jpg",
-      fit: "contain",
-      ingredients: "Zucchini, potato, egg, onion and fresh herbs, pan-baked until golden.",
-      allergens: "Contains egg. Gluten free, dairy free, nut free.",
-    },
   },
   {
     name: "Persian Rice",

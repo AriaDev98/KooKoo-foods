@@ -11,9 +11,10 @@ type IndicatorRect = { top: number; left: number; width: number; height: number 
 function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "photo">>; delay: number }) {
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen((v) => !v);
+  const ratio = dish.photo.wide ? "1080 / 668" : "3 / 4";
 
   return (
-    <Reveal delay={delay}>
+    <Reveal delay={delay} className={dish.photo.wide ? "sm:col-span-2 min-w-0" : ""}>
       <div
         role="button"
         tabIndex={0}
@@ -31,8 +32,8 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
             toggle();
           }
         }}
-        className="h-full cursor-pointer transition-transform duration-200 ease-standard hover:-translate-y-1 focus-visible:outline focus-visible:outline-3 focus-visible:outline-amber-500 focus-visible:outline-offset-2"
-        style={{ perspective: "1400px", aspectRatio: "3 / 4" }}
+        className="h-full w-full min-w-0 cursor-pointer transition-transform duration-200 ease-standard hover:-translate-y-1 focus-visible:outline focus-visible:outline-3 focus-visible:outline-amber-500 focus-visible:outline-offset-2"
+        style={{ perspective: "1400px", aspectRatio: ratio }}
       >
         <div
           className="relative w-full h-full transition-transform duration-500 ease-standard"
@@ -43,18 +44,7 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
             className="absolute inset-0 overflow-hidden rounded-3xl"
             style={{ backfaceVisibility: "hidden" }}
           >
-            {dish.photo.fit === "contain" ? (
-              <div className="absolute inset-0 bg-green-800 flex items-center justify-center px-4 pb-20">
-                <img
-                  src={dish.photo.src}
-                  alt={dish.name}
-                  loading="lazy"
-                  className="block w-full h-auto rounded-2xl shadow-[0_10px_30px_-10px_rgba(0,0,0,0.6)]"
-                />
-              </div>
-            ) : (
-              <Photo src={dish.photo.src} alt={dish.name} ratio="3 / 4" />
-            )}
+            <Photo src={dish.photo.src} alt={dish.name} ratio={ratio} />
             <div className="absolute left-0 bottom-0 flex flex-col items-start gap-[2px] p-4">
               <span className="font-ui text-eyebrow font-bold uppercase tracking-eyebrow text-green-800 bg-amber-500 px-[10px] py-[5px]">
                 Turn me over
@@ -240,7 +230,7 @@ export function MenuSection() {
           {gfOnly ? ", gluten free." : "."}
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-flow-dense gap-6">
           {dishes.map((dish, i) =>
             dish.photo ? (
               <PhotoDishCard key={dish.name} dish={dish as Dish & Required<Pick<Dish, "photo">>} delay={(i % 3) * 90} />
