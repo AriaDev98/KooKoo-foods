@@ -44,32 +44,45 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
             style={{ backfaceVisibility: "hidden" }}
           >
             {dish.photo.whole ? (
-              <div className="absolute inset-0 bg-green-800">
-                <img
-                  src={dish.photo.src}
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover scale-125 blur-2xl opacity-70"
-                />
+              <div className="absolute inset-0 flex flex-col bg-green-800">
                 <img
                   src={dish.photo.src}
                   alt={dish.name}
                   loading="lazy"
-                  className="absolute left-0 right-0 top-[42%] -translate-y-1/2 w-full h-auto [mask-image:linear-gradient(to_bottom,transparent,black_12%,black_88%,transparent)]"
+                  className="block w-full h-auto shrink-0"
                 />
+                <div className="flex flex-1 flex-col items-start gap-3 p-5">
+                  <span className="font-ui text-eyebrow font-bold uppercase tracking-eyebrow text-green-800 bg-amber-500 px-[10px] py-[5px]">
+                    Turn me over
+                  </span>
+                  <h3 className="m-0 font-display text-h4 font-extrabold tracking-heading leading-snug text-cream-100">
+                    {dish.name}
+                  </h3>
+                  <p className="m-0 font-body text-body-sm leading-relaxed text-cream-200">{dish.desc}</p>
+                  {dish.tags.length > 0 ? (
+                    <div className="mt-auto flex flex-wrap gap-2">
+                      {dish.tags.map((tag) => (
+                        <Badge key={tag.label} tone={tag.tone}>
+                          {tag.label}
+                        </Badge>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
               </div>
             ) : (
-              <Photo src={dish.photo.src} alt={dish.name} ratio="3 / 4" />
+              <>
+                <Photo src={dish.photo.src} alt={dish.name} ratio="3 / 4" />
+                <div className="absolute left-0 bottom-0 flex flex-col items-start gap-[2px] p-4">
+                  <span className="font-ui text-eyebrow font-bold uppercase tracking-eyebrow text-green-800 bg-amber-500 px-[10px] py-[5px]">
+                    Turn me over
+                  </span>
+                  <h3 className="m-0 font-display text-h4 font-extrabold tracking-heading leading-snug text-green-800 bg-[rgba(243,239,228,0.9)] shadow-block px-3 py-2">
+                    {dish.name}
+                  </h3>
+                </div>
+              </>
             )}
-            <div className="absolute left-0 bottom-0 flex flex-col items-start gap-[2px] p-4">
-              <span className="font-ui text-eyebrow font-bold uppercase tracking-eyebrow text-green-800 bg-amber-500 px-[10px] py-[5px]">
-                Turn me over
-              </span>
-              <h3 className="m-0 font-display text-h4 font-extrabold tracking-heading leading-snug text-green-800 bg-[rgba(243,239,228,0.9)] shadow-block px-3 py-2">
-                {dish.name}
-              </h3>
-            </div>
           </div>
           {/* back */}
           <div
