@@ -8,14 +8,15 @@ export const SITE = {
   facebookUrl: "https://www.facebook.com/kookoo.au.2025",
   address: {
     kitchen: "FoodLab",
-    line: "34 Crosgrove Rd, Strathfield South",
+    line: "34 Cosgrove Rd, Strathfield South",
     region: "NSW 2136",
   },
-  // no &marker= here — a custom-styled pin is overlaid on top instead, see EnquireSection
+  // Google resolves the business by name and address and draws its own pin, which stays
+  // anchored to the location while the visitor zooms and pans.
   mapEmbedUrl:
-    "https://www.openstreetmap.org/export/embed.html?bbox=151.0640%2C-33.9060%2C151.0900%2C-33.8880&layer=mapnik",
+    "https://maps.google.com/maps?q=FoodLab+34+Cosgrove+Rd+Strathfield+South+NSW+2136&z=16&output=embed",
   mapDirectionsUrl:
-    "https://www.google.com/maps/search/?api=1&query=34+Crosgrove+Rd+Strathfield+South+NSW+2136",
+    "https://www.google.com/maps/search/?api=1&query=FoodLab+34+Cosgrove+Rd+Strathfield+South+NSW+2136",
 };
 
 export const NAV_ITEMS = [
