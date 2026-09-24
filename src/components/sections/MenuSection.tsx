@@ -4,7 +4,8 @@ import { Card } from "../ui/Card";
 import { Badge } from "../ui/Badge";
 import { Photo } from "../ui/Photo";
 import { Reveal } from "../ui/Reveal";
-import { DISHES, FILTERS, matchesFilter, type Dish } from "../../data/dishes";
+import { AddToTable } from "../ui/AddToTable";
+import { DISHES, FILTERS, arrangeWholePhotos, matchesFilter, type Dish } from "../../data/dishes";
 
 type IndicatorRect = { top: number; left: number; width: number; height: number };
 
@@ -13,7 +14,7 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
   const toggle = () => setOpen((v) => !v);
   
   return (
-    <Reveal delay={delay}>
+    <Reveal delay={delay} className="relative min-w-0">
       <div
         role="button"
         tabIndex={0}
@@ -31,7 +32,7 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
             toggle();
           }
         }}
-        className="flip-card h-full cursor-pointer transition-transform duration-200 ease-standard hover:-translate-y-1 focus-visible:outline focus-visible:outline-3 focus-visible:outline-amber-500 focus-visible:outline-offset-2"
+        className="flip-card h-full w-full min-w-0 cursor-pointer transition-transform duration-200 ease-standard hover:-translate-y-1 focus-visible:outline focus-visible:outline-3 focus-visible:outline-amber-500 focus-visible:outline-offset-2"
         style={{ perspective: "1400px", aspectRatio: dish.photo.whole && !open ? "1080 / 668" : "3 / 4" }}
       >
         <div
@@ -121,6 +122,9 @@ function PhotoDishCard({ dish, delay }: { dish: Dish & Required<Pick<Dish, "phot
           </div>
         </div>
       </div>
+      <div className="absolute right-3 top-3 z-10">
+        <AddToTable name={dish.name} collapsed />
+      </div>
     </Reveal>
   );
 }
@@ -138,7 +142,7 @@ function TextDishCard({ dish, tone }: { dish: Dish; tone: "cream" | "sage" }) {
           </span>
         </div>
         <p className="m-0 font-body text-body-md leading-relaxed text-green-700">{dish.desc}</p>
-        {dish.tags.length > 0 ? (
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap gap-2">
             {dish.tags.map((tag) => (
               <Badge key={tag.label} tone={tag.tone}>
@@ -146,7 +150,8 @@ function TextDishCard({ dish, tone }: { dish: Dish; tone: "cream" | "sage" }) {
               </Badge>
             ))}
           </div>
-        ) : null}
+          <AddToTable name={dish.name} />
+        </div>
       </div>
     </Card>
   );
@@ -160,7 +165,7 @@ export function MenuSection() {
   const [indicator, setIndicator] = useState<IndicatorRect | null>(null);
 
   const dishes = useMemo(
-    () => DISHES.filter((d) => matchesFilter(d, filter, gfOnly)),
+    () => arrangeWholePhotos(DISHES.filter((d) => matchesFilter(d, filter, gfOnly))),
     [filter, gfOnly],
   );
 

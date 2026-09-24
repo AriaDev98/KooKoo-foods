@@ -11,26 +11,31 @@ import { OccasionsSection } from "./components/sections/OccasionsSection";
 import { StorySection } from "./components/sections/StorySection";
 import { ProcessSection } from "./components/sections/ProcessSection";
 import { EnquireSection } from "./components/sections/EnquireSection";
+import { TableProvider } from "./context/TableContext";
+import { TableTray } from "./components/navigation/TableTray";
 
 function App() {
   return (
-    <div id="top" className="bg-cream-200 font-ui overflow-x-hidden">
-      <SiteHeader />
-      <StickyBar />
-      <BackToTop />
+    <TableProvider>
+      <div id="top" className="bg-cream-200 font-ui overflow-x-hidden">
+        <SiteHeader />
+        <StickyBar />
+        <BackToTop />
+        <TableTray />
 
-      <HeroSection />
-      <IntroSection />
-      <MenuSection />
-      <HowItWorksSection />
-      <PantrySection />
-      <OccasionsSection />
-      <StorySection />
-      <ProcessSection />
-      <EnquireSection />
+        <HeroSection />
+        <IntroSection />
+        <MenuSection />
+        <HowItWorksSection />
+        <PantrySection />
+        <OccasionsSection />
+        <StorySection />
+        <ProcessSection />
+        <EnquireSection />
 
-      <SiteFooter />
-    </div>
+        <SiteFooter />
+      </div>
+    </TableProvider>
   );
 }
 
