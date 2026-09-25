@@ -8,7 +8,8 @@ export function Input({
 }: InputHTMLAttributes<HTMLInputElement> & { invalid?: boolean }) {
   return (
     <input
-      className={`${controlClasses} ${invalid ? "border-clay-700" : ""} ${className}`}
+      aria-invalid={invalid || undefined}
+      className={`${controlClasses} ${invalid ? "border-clay-700! bg-[rgba(76,33,24,0.04)]!" : ""} ${className}`}
       {...rest}
     />
   );

@@ -9,6 +9,7 @@ import { Button } from "../ui/Button";
 import { Reveal } from "../ui/Reveal";
 import { OCCASIONS, SITE } from "../../data/content";
 import { useTable } from "../../context/TableContext";
+import { isValidContact } from "../../utils/contact";
 
 interface FormState {
   name: string;
@@ -47,19 +48,29 @@ export function EnquireSection() {
     const guestsNum = Number(form.guests);
     const guestsMissing = !form.guests.trim();
     const guestsTooFew = !guestsMissing && guestsNum > 0 && guestsNum < 10;
+    const contact = form.contact.trim();
+    const contactMissing = !contact;
+    const contactInvalid = !contactMissing && !isValidContact(contact);
 
     const missing: string[] = [];
     if (!form.name.trim()) missing.push("your name");
-    if (!form.contact.trim()) missing.push("an email or phone number");
+    if (contactMissing) missing.push("an email or phone number");
     if (guestsMissing) missing.push("the number of guests");
 
-    if (missing.length || guestsTooFew) {
-      setErrors({ name: !form.name.trim(), contact: !form.contact.trim(), guests: guestsMissing || guestsTooFew });
+    if (missing.length || guestsTooFew || contactInvalid) {
+      setErrors({
+        name: !form.name.trim(),
+        contact: contactMissing || contactInvalid,
+        guests: guestsMissing || guestsTooFew,
+      });
       setSent(false);
+      const problems: string[] = [];
+      if (missing.length) problems.push(`we still need ${missing.join(" and ")}`);
+      if (contactInvalid) problems.push("that email or phone number doesn't look right — please check it");
       setStatus(
         guestsTooFew
           ? `We cater from 10 guests up — for a smaller group, call us on ${SITE.phone} and we'll see what we can do.`
-          : `Almost there — we still need ${missing.join(" and ")}.`,
+          : `Almost there — ${problems.join(", and ")}.`,
       );
       return;
     }
@@ -123,9 +134,10 @@ export function EnquireSection() {
                 invalid={!!errors.name}
               />
             </Field>
-            <Field label="Email or phone" required>
+            <Field label="Email or phone" required hint="So we can reply to you">
               <Input
                 value={form.contact}
+                autoComplete="email"
                 onChange={(e) => setField("contact", e.target.value)}
                 placeholder="you@example.com"
                 invalid={!!errors.contact}
