@@ -179,7 +179,14 @@ export const DISHES: Dish[] = [
     tags: [
       { label: "Veg", tone: "sage" },
       { label: "GF", tone: "sage" },
+      { label: "CN", tone: "amber" },
     ],
+    photo: {
+      src: "/images/photos/maste-khiar.jpg",
+      ingredients:
+        "Yoghurt, diced cucumber, dried mint and garlic, finished with chopped walnuts and raisins.",
+      allergens: "Contains walnuts. Dairy. Gluten free.",
+    },
   },
   {
     name: "Koofteh (Persian Meatballs)",
