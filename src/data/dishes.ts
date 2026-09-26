@@ -113,6 +113,11 @@ export const DISHES: Dish[] = [
     course: "Side",
     desc: "Pan-fried potato and beef patties. The lunchbox classic of every Iranian childhood.",
     tags: [],
+    photo: {
+      src: "/images/photos/kotlet.jpg",
+      ingredients: "Potato, beef mince, onion and egg, coated and pan-fried until golden and crisp. Served with fresh tomato and herbs.",
+      allergens: "Contains egg and gluten. Dairy free, nut free.",
+    },
   },
   {
     name: "Zeitun parvarde",
