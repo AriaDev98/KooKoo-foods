@@ -41,7 +41,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Ash Reshteh",
+    name: "Ash Reshteh (Persian Herb & Noodle Soup)",
     course: "Appetizer",
     desc: "Persian herb and noodle soup with chickpeas, lentils, beans, crispy fried onions and kashk.",
     tags: [{ label: "Veg", tone: "sage" }],
@@ -54,7 +54,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Dolmeh (Cabbage Stuffed)",
+    name: "Dolmeh (Stuffed Cabbage Rolls)",
     course: "Appetizer",
     desc: "Cabbage leaves rolled around a herb and rice filling, slow-cooked until soft.",
     tags: [
@@ -69,13 +69,18 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Mirza ghasemi",
+    name: "Mirza Ghasemi (Smoky Eggplant & Tomato Dip)",
     course: "Appetizer",
     desc: "Smoked eggplant cooked down with tomato and plenty of garlic.",
     tags: [
       { label: "Veg", tone: "sage" },
       { label: "GF", tone: "sage" },
     ],
+    photo: {
+      src: "/images/photos/mirza-ghasemi.jpg",
+      ingredients: "Smoked eggplant, tomato and garlic, cooked down and finished with fresh chives.",
+      allergens: "Gluten free, dairy free, nut free.",
+    },
   },
   {
     name: "Zucchini Kookoo",
@@ -93,10 +98,15 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Kookoo sibzamini",
+    name: "Kookoo Sibzamini (Potato Patties)",
     course: "Appetizer",
     desc: "Golden potato patties, crisp at the edge and soft through the middle.",
     tags: [{ label: "Veg", tone: "sage" }],
+    photo: {
+      src: "/images/photos/kookoo-sibzamini.jpg",
+      ingredients: "Potato, egg, onion and herbs, pan-fried until golden. Served with parsley and tomato.",
+      allergens: "Contains egg. Gluten free, dairy free, nut free.",
+    },
   },
   {
     name: "Persian Rice",
@@ -107,9 +117,15 @@ export const DISHES: Dish[] = [
       { label: "V", tone: "sage" },
       { label: "CN", tone: "amber" },
     ],
+    photo: {
+      src: "/images/photos/persian-rice.jpg",
+      ingredients:
+        "Steamed basmati rice with saffron, carrot and orange zest, raisins, shaved almonds and pistachio.",
+      allergens: "Contains almonds and pistachio. Gluten free, dairy free.",
+    },
   },
   {
-    name: "Kotlet",
+    name: "Kotlet (Persian Beef & Potato Patties)",
     course: "Side",
     desc: "Pan-fried potato and beef patties. The lunchbox classic of every Iranian childhood.",
     tags: [],
@@ -120,13 +136,19 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Zeitun parvarde",
+    name: "Zeitun Parvarde (Walnut & Pomegranate Olives)",
     course: "Side",
     desc: "Olives dressed with walnut, pomegranate paste, garlic and mint — sharp, sweet and northern.",
     tags: [
       { label: "Veg", tone: "sage" },
       { label: "CN", tone: "amber" },
     ],
+    photo: {
+      src: "/images/photos/zeitun-parvarde.jpg",
+      ingredients:
+        "Green olives dressed with crushed walnuts, pomegranate paste, garlic and dried mint, finished with fresh pomegranate seeds.",
+      allergens: "Contains walnuts. Gluten free, dairy free.",
+    },
   },
   {
     name: "Mom's and dad's pickles",
@@ -209,7 +231,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Ghormeh sabzi",
+    name: "Ghormeh Sabzi (Persian Herb & Lamb Stew)",
     course: "Main",
     desc: "Slow-cooked herbs with lamb, kidney beans and dried lime — the stew every Persian table knows.",
     tags: [
@@ -224,7 +246,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Kabab koobideh",
+    name: "Kabab Koobideh (Grilled Minced Lamb & Beef Skewers)",
     course: "Main",
     desc: "Hand-minced lamb and beef skewers, charcoal-grilled, served with saffron rice.",
     tags: [],
@@ -237,7 +259,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Zereshk polo ba morgh",
+    name: "Zereshk Polo ba Morgh (Saffron Chicken with Barberry Rice)",
     course: "Main",
     desc: "Saffron chicken with barberry rice — sweet, sour and the dish everyone asks for again.",
     tags: [],
@@ -248,7 +270,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Tahchin",
+    name: "Tahchin (Baked Saffron Rice Cake)",
     course: "Main",
     desc: "Baked saffron rice cake with a crisp golden crust, layered with chicken.",
     tags: [],
@@ -260,7 +282,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Chicken auchma",
+    name: "Chicken Auchma (Baked Chicken Pastry)",
     course: "Main",
     desc: "Baked chicken and onion folded into an enriched dough, served with dips on the side.",
     tags: [],
@@ -279,6 +301,11 @@ export const DISHES: Dish[] = [
       { label: "GF", tone: "sage" },
       { label: "V", tone: "sage" },
     ],
+    photo: {
+      src: "/images/photos/pear-carrot-herb-salad.jpg",
+      ingredients: "Shredded red cabbage and carrot with fresh mint and parsley, dressed with lemon juice.",
+      allergens: "Gluten free, dairy free, nut free.",
+    },
   },
   {
     name: "Gluten-free cake",
