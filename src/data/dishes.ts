@@ -301,6 +301,11 @@ export const DISHES: Dish[] = [
       { label: "GF", tone: "sage" },
       { label: "V", tone: "sage" },
     ],
+    photo: {
+      src: "/images/photos/pear-carrot-herb-salad.jpg",
+      ingredients: "Shredded red cabbage and carrot with fresh mint and parsley, dressed with lemon juice.",
+      allergens: "Gluten free, dairy free, nut free.",
+    },
   },
   {
     name: "Gluten-free cake",
