@@ -16,9 +16,13 @@ const STEP_TARGETS = [0.08, 0.55, 0.95];
 const sentence = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  // Always starts false, matching the prerendered HTML — this picks the real
+  // value on mount instead, since a mismatch here would mean hydrating an
+  // entirely different component tree (StaticProcess vs PinnedProcess below).
+  const [reduced, setReduced] = useState(false);
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
     const on = () => setReduced(mq.matches);
     mq.addEventListener("change", on);
     return () => mq.removeEventListener("change", on);

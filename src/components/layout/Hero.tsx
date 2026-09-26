@@ -41,7 +41,7 @@ export function Hero({
         <HighlightHeading tone={tone} align="center" animateIn={animateHeadline}>
           {headline}
         </HighlightHeading>
-        {animateHeadline ? <div className="hero-content-rise">{children}</div> : children}
+        {children}
       </div>
       {showScrollCue ? (
         <button
