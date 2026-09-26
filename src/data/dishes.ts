@@ -112,6 +112,12 @@ export const DISHES: Dish[] = [
       { label: "V", tone: "sage" },
       { label: "CN", tone: "amber" },
     ],
+    photo: {
+      src: "/images/photos/persian-rice.jpg",
+      ingredients:
+        "Steamed basmati rice with saffron, carrot and orange zest, raisins, shaved almonds and pistachio.",
+      allergens: "Contains almonds and pistachio. Gluten free, dairy free.",
+    },
   },
   {
     name: "Kotlet (Persian Beef & Potato Patties)",
