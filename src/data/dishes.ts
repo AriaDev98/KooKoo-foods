@@ -98,10 +98,15 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Kookoo Sibzamini (Persian Potato Patties)",
+    name: "Kookoo Sibzamini (Potato Patties)",
     course: "Appetizer",
     desc: "Golden potato patties, crisp at the edge and soft through the middle.",
     tags: [{ label: "Veg", tone: "sage" }],
+    photo: {
+      src: "/images/photos/kookoo-sibzamini.jpg",
+      ingredients: "Potato, egg, onion and herbs, pan-fried until golden. Served with parsley and tomato.",
+      allergens: "Contains egg. Gluten free, dairy free, nut free.",
+    },
   },
   {
     name: "Persian Rice",
