@@ -173,7 +173,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Maste khiar",
+    name: "Mast O'Khiar (Yogurt and Cucumber Dip)",
     course: "Side",
     desc: "Yoghurt with cucumber, dried mint and a little garlic. Cool, and on every Persian table.",
     tags: [
