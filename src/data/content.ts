@@ -60,17 +60,17 @@ export const OCCASIONS = [
 
 export const PANTRY = [
   {
-    src: "/images/photos/crackers-hands-2.jpg",
+    src: "/images/photos/crackers-hands-2.webp",
     name: "Persian crackers",
     desc: "Seeded, snappable crackers in a sealed pack — made to go with kashke bademjan.",
   },
   {
-    src: "/images/photos/jars.jpg",
+    src: "/images/photos/jars.webp",
     name: "Jars and relishes",
     desc: "Small-batch preserves, put up by hand. Ask what is on the shelf this week.",
   },
   {
-    src: "/images/photos/samanu.jpg",
+    src: "/images/photos/samanu.webp",
     name: "Samanu",
     desc: "Persian wheat-sprout pudding, dark and slow-cooked. A Nowruz table staple.",
   },
@@ -79,19 +79,19 @@ export const PANTRY = [
 export const PROCESS_STEPS = [
   {
     n: "01",
-    src: "/images/photos/auchma-sesame.jpg",
+    src: "/images/photos/auchma-sesame.webp",
     label: "brushing the egg wash",
     caption: "Rolled by hand, then brushed with egg wash.",
   },
   {
     n: "02",
-    src: "/images/photos/auchma-eggwash.jpg",
+    src: "/images/photos/auchma-eggwash.webp",
     label: "sprinkling the sesame",
     caption: "Sesame seeds scattered over the glaze.",
   },
   {
     n: "03",
-    src: "/images/photos/auchma-hero-studio.jpg",
+    src: "/images/photos/auchma-hero-studio.webp",
     label: "baked and glazed",
     caption: "Out of the oven — golden, flaky, sesame-crusted.",
   },

@@ -11,7 +11,7 @@ export function StickyBar() {
     >
       <a href="#top" className="group flex items-center no-underline">
         <img
-          src="/images/logos/kookoo-logo-gold.png"
+          src="/images/logos/kookoo-logo-gold.webp"
           alt={SITE.brand}
           className="h-[34px] w-auto block transition-transform duration-150 ease-standard group-hover:scale-105"
         />
