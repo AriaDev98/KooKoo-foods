@@ -76,9 +76,14 @@ export const DISHES: Dish[] = [
       { label: "Veg", tone: "sage" },
       { label: "GF", tone: "sage" },
     ],
+    photo: {
+      src: "/images/photos/mirza-ghasemi.jpg",
+      ingredients: "Smoked eggplant, tomato and garlic, cooked down and finished with fresh chives.",
+      allergens: "Gluten free, dairy free, nut free.",
+    },
   },
   {
-    name: "Zucchini Kookoo (Persian Zucchini Frittata)",
+    name: "Zucchini Kookoo",
     course: "Appetizer",
     desc: "Kuku kadoo — zucchini and potato omelette with fried onions and herbs.",
     tags: [
