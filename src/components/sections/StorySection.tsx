@@ -9,7 +9,7 @@ export function StorySection() {
       imageSide="right"
       surface="cream"
       minHeight="560px"
-      imageSrc="/images/photos/founder-cake.jpg"
+      imageSrc="/images/photos/founder-cake.webp"
       imageLabel="the baker with a finished cake at FoodLab"
       revealImage
     >

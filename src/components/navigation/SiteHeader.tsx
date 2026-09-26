@@ -29,7 +29,7 @@ export function SiteHeader() {
       <div className="sm:hidden flex items-center justify-between px-6 py-4">
         <a href="#top" className="group flex items-center no-underline">
           <img
-            src="/images/logos/kookoo-logo-gold.png"
+            src="/images/logos/kookoo-logo-gold.webp"
             alt={SITE.brand}
             className="h-10 w-auto transition-transform duration-150 ease-standard group-hover:scale-105"
           />
@@ -92,7 +92,7 @@ export function SiteHeader() {
             className="group inline-block transition-transform duration-150 ease-standard hover:scale-105"
           >
             <span className="relative block overflow-hidden">
-              <img src="/images/logos/kookoo-logo-gold.png" alt={SITE.brand} className="h-[120px] w-auto" />
+              <img src="/images/logos/kookoo-logo-gold.webp" alt={SITE.brand} className="h-[120px] w-auto" />
               <span className="logo-shine" aria-hidden="true" />
             </span>
           </a>

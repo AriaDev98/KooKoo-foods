@@ -33,7 +33,7 @@ export const DISHES: Dish[] = [
     desc: "Roasted eggplant with fried onion, garlic and kashk, dried mint and walnuts, crackers on the side.",
     tags: [{ label: "CN", tone: "amber" }],
     photo: {
-      src: "/images/photos/kashke-bademjan-tray.jpg",
+      src: "/images/photos/kashke-bademjan-tray.webp",
       ingredients:
         "Roasted eggplant, fried onion, garlic, kashk, dried mint, walnuts, olive oil. Crackers on the side.",
       allergens:
@@ -46,7 +46,7 @@ export const DISHES: Dish[] = [
     desc: "Persian herb and noodle soup with chickpeas, lentils, beans, crispy fried onions and kashk.",
     tags: [{ label: "Veg", tone: "sage" }],
     photo: {
-      src: "/images/photos/ash-reshteh.jpg",
+      src: "/images/photos/ash-reshteh.webp",
       ingredients:
         "Persian herb and noodle soup with chickpeas, lentils, beans, fresh herbs, crispy fried onions and kashk. A vegetarian favourite.",
       allergens:
@@ -62,7 +62,7 @@ export const DISHES: Dish[] = [
       { label: "GF", tone: "sage" },
     ],
     photo: {
-      src: "/images/photos/dolmeh-cabbage.jpg",
+      src: "/images/photos/dolmeh-cabbage.webp",
       ingredients:
         "Cabbage leaves wrapped around a filling of fresh herbs and rice, slow-cooked and finished with tomato, parsley and red onion.",
       allergens: "Gluten free, dairy free, nut free.",
@@ -77,7 +77,7 @@ export const DISHES: Dish[] = [
       { label: "GF", tone: "sage" },
     ],
     photo: {
-      src: "/images/photos/mirza-ghasemi.jpg",
+      src: "/images/photos/mirza-ghasemi.webp",
       ingredients: "Smoked eggplant, tomato and garlic, cooked down and finished with fresh chives.",
       allergens: "Gluten free, dairy free, nut free.",
     },
@@ -91,7 +91,7 @@ export const DISHES: Dish[] = [
       { label: "GF", tone: "sage" },
     ],
     photo: {
-      src: "/images/photos/zucchini-kookoo.jpg",
+      src: "/images/photos/zucchini-kookoo.webp",
       whole: true,
       ingredients: "Zucchini, potato, egg, onion and fresh herbs, pan-baked until golden.",
       allergens: "Contains egg. Gluten free, dairy free, nut free.",
@@ -103,7 +103,7 @@ export const DISHES: Dish[] = [
     desc: "Golden potato patties, crisp at the edge and soft through the middle.",
     tags: [{ label: "Veg", tone: "sage" }],
     photo: {
-      src: "/images/photos/kookoo-sibzamini.jpg",
+      src: "/images/photos/kookoo-sibzamini.webp",
       ingredients: "Potato, egg, onion and herbs, pan-fried until golden. Served with parsley and tomato.",
       allergens: "Contains egg. Gluten free, dairy free, nut free.",
     },
@@ -118,7 +118,7 @@ export const DISHES: Dish[] = [
       { label: "CN", tone: "amber" },
     ],
     photo: {
-      src: "/images/photos/persian-rice.jpg",
+      src: "/images/photos/persian-rice.webp",
       ingredients:
         "Steamed basmati rice with saffron, carrot and orange zest, raisins, shaved almonds and pistachio.",
       allergens: "Contains almonds and pistachio. Gluten free, dairy free.",
@@ -130,7 +130,7 @@ export const DISHES: Dish[] = [
     desc: "Pan-fried potato and beef patties. The lunchbox classic of every Iranian childhood.",
     tags: [],
     photo: {
-      src: "/images/photos/kotlet.jpg",
+      src: "/images/photos/kotlet.webp",
       ingredients: "Potato, beef mince, onion and egg, coated and pan-fried until golden and crisp. Served with fresh tomato and herbs.",
       allergens: "Contains egg and gluten. Dairy free, nut free.",
     },
@@ -144,7 +144,7 @@ export const DISHES: Dish[] = [
       { label: "CN", tone: "amber" },
     ],
     photo: {
-      src: "/images/photos/zeitun-parvarde.jpg",
+      src: "/images/photos/zeitun-parvarde.webp",
       ingredients:
         "Green olives dressed with crushed walnuts, pomegranate paste, garlic and dried mint, finished with fresh pomegranate seeds.",
       allergens: "Contains walnuts. Gluten free, dairy free.",
@@ -159,7 +159,7 @@ export const DISHES: Dish[] = [
       { label: "GF", tone: "sage" },
     ],
     photo: {
-      src: "/images/photos/jars.jpg",
+      src: "/images/photos/jars.webp",
       ingredients: "Mixed vegetables, vinegar, herbs and garlic, put up by hand in small batches.",
       allergens: "Gluten free, dairy free, nut free.",
     },
@@ -170,7 +170,7 @@ export const DISHES: Dish[] = [
     desc: "Thin baked crackers with pumpkin, sunflower and sesame seeds, made to go with the eggplant dip.",
     tags: [{ label: "V", tone: "sage" }],
     photo: {
-      src: "/images/photos/crackers-tray.jpg",
+      src: "/images/photos/crackers-tray.webp",
       ingredients:
         "Thin baked crackers with pumpkin seeds, sunflower seeds and sesame, snapped by hand into pieces. Made to go with the eggplant dip.",
       allergens: "Contains gluten and sesame. Contains seeds. No nuts, no dairy.",
@@ -182,7 +182,7 @@ export const DISHES: Dish[] = [
     desc: "Homemade barbari — golden, soft-crumbed flatbread, scored by hand and scattered with sesame.",
     tags: [{ label: "V", tone: "sage" }],
     photo: {
-      src: "/images/photos/barbari-homemade.jpg",
+      src: "/images/photos/barbari-homemade.webp",
       ingredients: "Flour, water, yeast, salt, topped with sesame seeds. Baked flat and scored by hand.",
       allergens: "Contains gluten and sesame. Dairy free, egg free, nut free.",
     },
@@ -193,7 +193,7 @@ export const DISHES: Dish[] = [
     desc: "Soft flatbread, baked fresh and served warm alongside the dips and mains.",
     tags: [{ label: "Veg", tone: "sage" }],
     photo: {
-      src: "/images/photos/pita-bread-v2.jpg",
+      src: "/images/photos/pita-bread-v2.webp",
       ingredients:
         "Flour and yoghurt. Soft flatbread, baked fresh and served warm alongside the dips and mains.",
       allergens: "Contains gluten and dairy. Egg free, nut free.",
@@ -209,7 +209,7 @@ export const DISHES: Dish[] = [
       { label: "CN", tone: "amber" },
     ],
     photo: {
-      src: "/images/photos/maste-khiar.jpg",
+      src: "/images/photos/maste-khiar.webp",
       ingredients:
         "Yoghurt, diced cucumber, dried mint and garlic, finished with chopped walnuts and raisins.",
       allergens: "Contains walnuts. Dairy. Gluten free.",
@@ -224,7 +224,7 @@ export const DISHES: Dish[] = [
       { label: "DF", tone: "sage" },
     ],
     photo: {
-      src: "/images/photos/koofteh-tomato.jpg",
+      src: "/images/photos/koofteh-tomato.webp",
       ingredients:
         "Lamb and beef mince, onion, chickpeas, rice, fresh herbs, dried plum, turmeric, tomato.",
       allergens: "Gluten free and dairy free as cooked. No nuts.",
@@ -239,7 +239,7 @@ export const DISHES: Dish[] = [
       { label: "DF", tone: "sage" },
     ],
     photo: {
-      src: "/images/photos/ghormeh-sabzi.jpg",
+      src: "/images/photos/ghormeh-sabzi.webp",
       ingredients:
         "Slow-cooked herbs — parsley, coriander, fenugreek — with lamb, red kidney beans, dried lime and onion.",
       allergens: "Gluten free, dairy free, nut free. Served with saffron rice.",
@@ -251,7 +251,7 @@ export const DISHES: Dish[] = [
     desc: "Hand-minced lamb and beef skewers, charcoal-grilled, served with saffron rice.",
     tags: [],
     photo: {
-      src: "/images/photos/koobideh.jpg",
+      src: "/images/photos/koobideh.webp",
       ingredients:
         "Hand-minced lamb and beef, grated onion, saffron, turmeric. Charcoal grilled, served with grilled tomato.",
       allergens:
@@ -264,7 +264,7 @@ export const DISHES: Dish[] = [
     desc: "Saffron chicken with barberry rice — sweet, sour and the dish everyone asks for again.",
     tags: [],
     photo: {
-      src: "/images/photos/barberry-rice-full.jpg",
+      src: "/images/photos/barberry-rice-full.webp",
       ingredients: "Chicken, onion, tomatoes, saffron, rice, Persian barberry.",
       allergens: "Gluten free, nut free. Served with pickles and olives on the side.",
     },
@@ -275,7 +275,7 @@ export const DISHES: Dish[] = [
     desc: "Baked saffron rice cake with a crisp golden crust, layered with chicken.",
     tags: [],
     photo: {
-      src: "/images/photos/tahchin-v7.jpg",
+      src: "/images/photos/tahchin-v7.webp",
       ingredients:
         "Baked saffron rice cake layered with chicken, yoghurt and egg, topped with barberries. Strong saffron flavour.",
       allergens: "Contains dairy and egg. Gluten free, nut free.",
@@ -287,7 +287,7 @@ export const DISHES: Dish[] = [
     desc: "Baked chicken and onion folded into an enriched dough, served with dips on the side.",
     tags: [],
     photo: {
-      src: "/images/photos/auchma-2.jpg",
+      src: "/images/photos/auchma-2.webp",
       ingredients:
         "Wheat flour, egg, butter, chicken, onion, herbs, sesame seeds. Served with dips on the side.",
       allergens: "Contains gluten, egg, dairy and sesame.",
@@ -302,7 +302,7 @@ export const DISHES: Dish[] = [
       { label: "V", tone: "sage" },
     ],
     photo: {
-      src: "/images/photos/pear-carrot-herb-salad.jpg",
+      src: "/images/photos/pear-carrot-herb-salad.webp",
       ingredients: "Shredded red cabbage and carrot with fresh mint and parsley, dressed with lemon juice.",
       allergens: "Gluten free, dairy free, nut free.",
     },
@@ -313,7 +313,7 @@ export const DISHES: Dish[] = [
     desc: "Baked to order for the table that needs it, and good enough for the table that does not.",
     tags: [{ label: "GF", tone: "sage" }],
     photo: {
-      src: "/images/photos/cream-cake.jpg",
+      src: "/images/photos/cream-cake.webp",
       ingredients: "Wheat flour, eggs, sugar, cream, vanilla, strawberries, blueberries.",
       allergens: "Contains gluten, egg and dairy. A gluten-free sponge is available to order.",
     },
@@ -324,7 +324,7 @@ export const DISHES: Dish[] = [
     desc: "Dark, dense and not too sweet — the way it is served with tea at home.",
     tags: [],
     photo: {
-      src: "/images/photos/chocolate-cake-2.jpg",
+      src: "/images/photos/chocolate-cake-2.webp",
       ingredients:
         "Dark chocolate sponge with a chocolate cream layer and a walnut and caramel middle, dusted with cocoa.",
       allergens: "Contains gluten, egg, dairy and walnuts.",
@@ -336,7 +336,7 @@ export const DISHES: Dish[] = [
     desc: "Bright and syrupy, cut into squares for a crowd.",
     tags: [],
     photo: {
-      src: "/images/photos/semolina-lemon-cake.jpg",
+      src: "/images/photos/semolina-lemon-cake.webp",
       ingredients:
         "Semolina and wheat flour, eggs, sugar, yoghurt, lemon and a lemon syrup, finished with chopped pistachio.",
       allergens: "Contains gluten, egg, dairy and pistachio.",
@@ -348,7 +348,7 @@ export const DISHES: Dish[] = [
     desc: "Fresh orange folded through a moist sponge, finished with chopped pistachio.",
     tags: [{ label: "CN", tone: "amber" }],
     photo: {
-      src: "/images/photos/orange-cake.jpg",
+      src: "/images/photos/orange-cake.webp",
       ingredients: "Flour, eggs, yoghurt, milk, oil and fresh orange, finished with chopped pistachio.",
       allergens: "Contains gluten, egg, dairy and pistachio.",
     },
@@ -359,7 +359,7 @@ export const DISHES: Dish[] = [
     desc: "A sweet enriched dough rolled with walnuts, dates and cinnamon.",
     tags: [{ label: "CN", tone: "amber" }],
     photo: {
-      src: "/images/photos/sweet-bread.jpg",
+      src: "/images/photos/sweet-bread.webp",
       ingredients: "Wheat flour, butter, eggs, milk, sugar, walnuts, dates, cinnamon.",
       allergens: "Contains gluten, egg, dairy and walnuts.",
     },
@@ -370,7 +370,7 @@ export const DISHES: Dish[] = [
     desc: "A mixed tray — chickpea stars, almond crinkle cookies, chocolate buttons and almond-topped slices.",
     tags: [{ label: "CN", tone: "amber" }],
     photo: {
-      src: "/images/photos/persian-sweets-tray2.jpg",
+      src: "/images/photos/persian-sweets-tray2.webp",
       ingredients:
         "Flour, eggs, butter, almond flour, cocoa powder. A mixed tray — chickpea stars, almond crinkle cookies, chocolate buttons and almond-topped slices.",
       allergens: "Contains gluten, egg, dairy and almonds.",
@@ -382,7 +382,7 @@ export const DISHES: Dish[] = [
     desc: "Almond slices baked into a short, buttery biscuit, cinnamon-dusted and finished with flaked almonds.",
     tags: [{ label: "CN", tone: "amber" }],
     photo: {
-      src: "/images/photos/persian-sweets-2.jpg",
+      src: "/images/photos/persian-sweets-2.webp",
       ingredients:
         "Almond slices baked into a short, buttery biscuit and cut into fingers — cinnamon-dusted and finished with flaked almonds.",
       allergens: "Contains gluten, egg, dairy and almonds. Ask about the gluten-free options.",
