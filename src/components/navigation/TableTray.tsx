@@ -109,6 +109,11 @@ export function TableTray() {
           <span
             id="table-tray-count"
             key={bump}
+            // The prerendered HTML always bakes in 0 (no build-time visitor to read
+            // localStorage from). A returning visitor's real count differs on their
+            // very first client render, which is expected, not a bug — this just
+            // tells React to take the client's value instead of warning about it.
+            suppressHydrationWarning
             className="table-tray-count grid h-8 w-8 place-items-center rounded-full bg-amber-500 text-green-800 text-body-md font-extrabold"
           >
             {count}

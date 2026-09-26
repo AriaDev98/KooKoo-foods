@@ -16,6 +16,7 @@ interface TableValue {
 const TableContext = createContext<TableValue | null>(null);
 
 function load(): string[] {
+  if (typeof window === "undefined") return [];
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     const parsed = raw ? JSON.parse(raw) : [];

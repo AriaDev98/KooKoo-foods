@@ -10,6 +10,7 @@ import { Reveal } from "../ui/Reveal";
 import { OCCASIONS, SITE } from "../../data/content";
 import { useTable } from "../../context/TableContext";
 import { isValidContact } from "../../utils/contact";
+import { useHasMounted } from "../../hooks/useHasMounted";
 
 interface FormState {
   name: string;
@@ -31,6 +32,7 @@ const initialForm: FormState = {
 
 export function EnquireSection() {
   const { selected, remove } = useTable();
+  const mounted = useHasMounted();
   const [form, setForm] = useState<FormState>(initialForm);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, boolean>>>({});
   const [sent, setSent] = useState(false);
@@ -174,7 +176,7 @@ export function EnquireSection() {
               <div className="font-ui text-caption font-bold uppercase tracking-eyebrow text-green-600">
                 Your table
               </div>
-              {selected.length ? (
+              {mounted && selected.length ? (
                 <>
                   <ul className="m-0 mt-3 p-0 list-none flex flex-wrap gap-2">
                     {selected.map((name) => (

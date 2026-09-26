@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Check, Plus } from "lucide-react";
 import { useTable } from "../../context/TableContext";
+import { useHasMounted } from "../../hooks/useHasMounted";
 
 // A small amber dot that flies from the button to the tray, so adding a dish
 // feels like dropping it onto the table. Skipped for reduced-motion users.
@@ -54,7 +55,12 @@ export function AddToTable({
 }) {
   const { has, toggle } = useTable();
   const ref = useRef<HTMLButtonElement>(null);
-  const added = has(name);
+  // Prerendered HTML always shows "not added" (no build-time visitor to read
+  // localStorage from). Gating on mounted keeps the client's very first render
+  // matching that, so a returning visitor's real state applies a tick later
+  // instead of causing a hydration mismatch on the icon/label/class here.
+  const mounted = useHasMounted();
+  const added = mounted && has(name);
 
   const onClick = () => {
     const adding = toggle(name);
