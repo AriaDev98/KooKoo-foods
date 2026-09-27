@@ -125,6 +125,17 @@ export const DISHES: Dish[] = [
     },
   },
   {
+    name: "Tadig (Crispy Persian Rice)",
+    course: "Side",
+    desc: "The golden, crispy rice crust every Persian table fights over.",
+    tags: [{ label: "GF", tone: "sage" }],
+    photo: {
+      src: "/images/photos/tadig.webp",
+      ingredients: "Basmati rice, saffron and oil, pan-fried until deep golden and crisp. Served with carrot and fresh basil.",
+      allergens: "Gluten free, nut free.",
+    },
+  },
+  {
     name: "Kotlet (Persian Beef & Potato Patties)",
     course: "Side",
     desc: "Pan-fried potato and beef patties. The lunchbox classic of every Iranian childhood.",
@@ -227,6 +238,18 @@ export const DISHES: Dish[] = [
       src: "/images/photos/koofteh-tomato.webp",
       ingredients:
         "Lamb and beef mince, onion, chickpeas, rice, fresh herbs, dried plum, turmeric, tomato.",
+      allergens: "Gluten free and dairy free as cooked. No nuts.",
+    },
+  },
+  {
+    name: "Meatball and Rice (Persian Style)",
+    course: "Main",
+    desc: "Hand-rolled meatballs in a rich tomato sauce, finished with fresh herbs and served with rice.",
+    tags: [],
+    photo: {
+      src: "/images/photos/meatball-rice.webp",
+      ingredients:
+        "Beef and lamb mince meatballs in a slow-cooked tomato sauce, finished with fresh parsley. Served with steamed rice.",
       allergens: "Gluten free and dairy free as cooked. No nuts.",
     },
   },
@@ -386,6 +409,21 @@ export const DISHES: Dish[] = [
       ingredients:
         "Almond slices baked into a short, buttery biscuit and cut into fingers — cinnamon-dusted and finished with flaked almonds.",
       allergens: "Contains gluten, egg, dairy and almonds. Ask about the gluten-free options.",
+    },
+  },
+  {
+    name: "Halva (Persian Style)",
+    course: "Sweets",
+    desc: "Toffee-soft Persian halva, piped by hand and finished with almond and pistachio.",
+    tags: [
+      { label: "Veg", tone: "sage" },
+      { label: "CN", tone: "amber" },
+    ],
+    photo: {
+      src: "/images/photos/halva.webp",
+      ingredients:
+        "Flour, sugar, rosewater and saffron, slow-cooked until toffee-soft, piped by hand and finished with almond and pistachio.",
+      allergens: "Contains almonds and pistachio. Contains gluten.",
     },
   },
 ];
