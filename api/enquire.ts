@@ -24,6 +24,7 @@ const BUSINESS_PHONE = "+61 477 489 613";
 // "Kookoo Foods <enquiries@kookoofoods.com.au>") and this picks it up with
 // no code change.
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "Kookoo Foods <onboarding@resend.dev>";
+const LOGO_URL = "https://koo-koo-foods.vercel.app/images/logos/kookoo-logo-gold.png";
 
 function escapeHtml(input: string): string {
   return input
@@ -113,7 +114,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     and we'll come back to you with a spread and a price, usually the same day.</p>
     ${dishListHtml ? `<p>Here's what you told us you liked the look of:</p>${dishListHtml}` : ""}
     <p>Need to reach us sooner? Call us on ${BUSINESS_PHONE}, or just reply to this email.</p>
-    <p>— Kookoo Foods</p>
+    <div style="margin-top:32px;padding-top:24px;border-top:1px solid #e4ddc8;text-align:center;">
+      <img
+        src="${LOGO_URL}"
+        alt="Kookoo Foods"
+        width="140"
+        height="75"
+        style="display:block;margin:0 auto 8px;width:140px;height:75px;"
+      />
+      <p style="margin:0;color:#263f14;font-size:12px;">Persian home-style catering in Strathfield South, NSW</p>
+    </div>
   `;
 
   try {
