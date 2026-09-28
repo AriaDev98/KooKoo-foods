@@ -4,7 +4,7 @@ type Variant = "primary" | "secondary" | "outline" | "outlineInverse" | "ghost";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-ui font-bold leading-none rounded-control transition-colors duration-150 ease-standard no-underline";
+  "inline-flex items-center justify-center gap-2 font-ui font-bold leading-none rounded-control transition-colors duration-150 ease-standard no-underline disabled:opacity-60 disabled:cursor-not-allowed";
 
 const sizes: Record<Size, string> = {
   sm: "text-body-sm px-[18px] py-[10px]",
