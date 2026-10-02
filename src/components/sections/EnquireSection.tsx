@@ -34,8 +34,11 @@ export function EnquireSection() {
   const { selected, remove } = useTable();
   const mounted = useHasMounted();
   const [form, setForm] = useState<FormState>(initialForm);
+  const [website, setWebsite] = useState(""); // honeypot — see the field below
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, boolean>>>({});
   const [sent, setSent] = useState(false);
+  const [sendFailed, setSendFailed] = useState(false);
+  const [sending, setSending] = useState(false);
   const [status, setStatus] = useState(`Or email ${SITE.email} directly.`);
 
   const setField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
@@ -45,8 +48,10 @@ export function EnquireSection() {
 
   const hasError = Object.values(errors).some(Boolean);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (sending) return;
+
     const guestsNum = Number(form.guests);
     const guestsMissing = !form.guests.trim();
     const guestsTooFew = !guestsMissing && guestsNum > 0 && guestsNum < 10;
@@ -66,6 +71,7 @@ export function EnquireSection() {
         guests: guestsMissing || guestsTooFew,
       });
       setSent(false);
+      setSendFailed(false);
       const problems: string[] = [];
       if (missing.length) problems.push(`we still need ${missing.join(" and ")}`);
       if (contactInvalid) problems.push("that email or phone number doesn't look right — please check it");
@@ -77,33 +83,46 @@ export function EnquireSection() {
       return;
     }
 
-    const body = [
-      `Name: ${form.name}`,
-      `Contact: ${form.contact}`,
-      `Occasion: ${form.occasion}`,
-      `Guests: ${form.guests || "not sure yet"}`,
-      `Date: ${form.date || "flexible"}`,
-      ...(selected.length ? ["", "Dishes I would like on my table:", ...selected.map((n) => `- ${n}`)] : []),
-      "",
-      form.notes,
-    ].join("\n");
-
-    window.location.href =
-      `mailto:${SITE.email}?subject=` +
-      encodeURIComponent(`Catering enquiry — ${form.occasion} — ${form.name}`) +
-      "&body=" +
-      encodeURIComponent(body);
-
     setErrors({});
-    setSent(true);
-    setStatus(
-      `Thank you, ${form.name.trim().split(" ")[0]} — your email app is opening with everything filled in. Just press send, or call us on ${SITE.phone}.`,
-    );
+    setSending(true);
+    setSendFailed(false);
+    setStatus("Sending your enquiry…");
+
+    try {
+      const res = await fetch("/api/enquire", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          contact: form.contact,
+          occasion: form.occasion,
+          guests: guestsNum,
+          date: form.date,
+          notes: form.notes,
+          dishes: selected,
+          website, // honeypot, always empty for a real visitor
+        }),
+      });
+
+      if (!res.ok) throw new Error(`request failed: ${res.status}`);
+
+      setSent(true);
+      setStatus(
+        `Thank you, ${form.name.trim().split(" ")[0]} — we've got your enquiry and sent you a confirmation email. We'll reply with a spread and a price, usually the same day.`,
+      );
+    } catch {
+      setSendFailed(true);
+      setStatus(
+        `Something went wrong sending that automatically — please call us on ${SITE.phone}, or email ${SITE.email} directly, and we'll sort you out.`,
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   const statusClasses = sent
     ? "border-green-700 bg-sage-200 text-green-700"
-    : hasError
+    : hasError || sendFailed
       ? "border-clay-700 bg-[rgba(76,33,24,0.08)] text-clay-700"
       : "border-sage-300 bg-cream-200 text-green-700";
 
@@ -221,16 +240,31 @@ export function EnquireSection() {
                 placeholder="Nowruz lunch for 40 in Parramatta — two vegan guests."
               />
             </Field>
+            {/* Honeypot: hidden from sighted and screen-reader users alike, but
+                present in the DOM/tab order for anything that fills every
+                field blindly. A real visitor never sees or touches this. */}
+            <div className="absolute w-px h-px overflow-hidden opacity-0 -z-10" aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+              />
+            </div>
             <div className="flex flex-wrap gap-4 items-center">
-              <Button type="submit" variant="primary" size="lg" premium>
-                Send my enquiry
+              <Button type="submit" variant="primary" size="lg" premium disabled={sending}>
+                {sending ? "Sending…" : "Send my enquiry"}
               </Button>
               <Button variant="outline" size="lg" href={SITE.phoneHref}>
                 Call instead
               </Button>
             </div>
             <p role="status" className={`m-0 font-body text-body-md leading-normal px-5 py-4 border-l-4 ${statusClasses}`}>
-              {!sent && !hasError ? (
+              {!sent && !hasError && !sendFailed && !sending ? (
                 <>
                   Or email{" "}
                   <a href={`mailto:${SITE.email}`} className="link-underline font-bold text-green-800">
