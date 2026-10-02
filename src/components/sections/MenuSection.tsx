@@ -266,6 +266,13 @@ export function MenuSection() {
             ),
           )}
         </div>
+
+        <p className="m-0 mt-10 font-body text-body-sm text-green-500 max-w-[52em]">
+          Ingredient and allergen notes above are correct to our knowledge, but everything is cooked
+          in a home kitchen that also handles gluten, dairy, eggs and nuts, so we can't guarantee a
+          completely allergen-free environment. Tell us about any allergy when you enquire and we'll
+          do our best to accommodate it.
+        </p>
       </div>
     </section>
   );
