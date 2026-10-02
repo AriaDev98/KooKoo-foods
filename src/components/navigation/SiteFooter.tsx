@@ -35,6 +35,10 @@ export function SiteFooter() {
       <div className="relative z-10 max-w-[1180px] mx-auto mt-16 pt-6 border-t border-[rgba(240,235,220,0.24)] font-ui text-caption text-sage-300 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <p className="m-0">
           &copy; {new Date().getFullYear()} Kookoo Foods &middot; ABN {SITE.abn}. All rights reserved.
+          &middot;{" "}
+          <a href="/privacy-policy.html" className="link-underline hover:text-amber-500">
+            Privacy Policy
+          </a>
         </p>
         <p className="m-0">
           Persian cuisine, established 2024. Food safety registration through FoodLab Sydney.
