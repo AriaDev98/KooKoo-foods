@@ -9,7 +9,7 @@ import { Button } from "../ui/Button";
 import { Reveal } from "../ui/Reveal";
 import { OCCASIONS, SITE } from "../../data/content";
 import { useTable } from "../../context/TableContext";
-import { isValidContact } from "../../utils/contact";
+import { isEmail, isValidContact } from "../../utils/contact";
 import { useHasMounted } from "../../hooks/useHasMounted";
 
 interface FormState {
@@ -107,8 +107,11 @@ export function EnquireSection() {
       if (!res.ok) throw new Error(`request failed: ${res.status}`);
 
       setSent(true);
+      const firstName = form.name.trim().split(" ")[0];
       setStatus(
-        `Thank you, ${form.name.trim().split(" ")[0]} — we've got your enquiry and sent you a confirmation email. We'll reply with a spread and a price, usually the same day.`,
+        isEmail(contact)
+          ? `Thank you, ${firstName} — we've got your enquiry and sent you a confirmation email. We'll reply with a spread and a price, usually the same day.`
+          : `Thank you, ${firstName} — we've got your enquiry. We'll call or text you with a spread and a price, usually the same day.`,
       );
     } catch {
       setSendFailed(true);
