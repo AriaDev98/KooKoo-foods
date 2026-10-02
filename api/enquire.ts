@@ -24,7 +24,7 @@ const BUSINESS_PHONE = "+61 477 489 613";
 // "Kookoo Foods <enquiries@kookoofoods.com.au>") and this picks it up with
 // no code change.
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "Kookoo Foods <onboarding@resend.dev>";
-const LOGO_URL = "https://koo-koo-foods.vercel.app/images/logos/kookoo-logo-gold.png";
+const LOGO_URL = "https://www.kookoofoods.com.au/images/logos/kookoo-logo-gold.png";
 
 function escapeHtml(input: string): string {
   return input
