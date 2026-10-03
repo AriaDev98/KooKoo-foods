@@ -71,38 +71,10 @@
       }
     </style>
 
-    <!-- Structured data for local search (Google Business panel, rich results) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "CateringService",
-        "name": "Kookoo Foods",
-        "image": "https://www.kookoofoods.com.au/images/og-image.jpg",
-        "description": "Authentic Persian catering, homemade with heart. Cooked to order at FoodLab Strathfield South and delivered across New South Wales.",
-        "url": "https://www.kookoofoods.com.au/",
-        "telephone": "+61477489613",
-        "email": "kookoofoods.au@gmail.com",
-        "servesCuisine": "Persian",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "34 Cosgrove Rd",
-          "addressLocality": "Strathfield South",
-          "addressRegion": "NSW",
-          "postalCode": "2136",
-          "addressCountry": "AU"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": -33.897,
-          "longitude": 151.077
-        },
-        "areaServed": {
-          "@type": "State",
-          "name": "New South Wales"
-        },
-        "sameAs": ["https://instagram.com/kookoo.au"]
-      }
-    </script>
+    <!-- Structured data (JSON-LD) is rendered by <StructuredData> in the React
+         tree — src/components/seo/StructuredData.tsx — so the menu section
+         of the schema is generated from the same DISHES data the page
+         itself renders, instead of a second hand-maintained copy here. -->
   </head>
   <body>
     <div id="root"><!--app-html--></div>
