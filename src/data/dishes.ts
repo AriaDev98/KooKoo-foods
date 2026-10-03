@@ -464,3 +464,12 @@ export function arrangeWholePhotos(list: Dish[]): Dish[] {
   }
   return list;
 }
+
+// Shared lookup so occasion pages and home-page teasers can reference a
+// dish by name and stay in sync with its real description/photo, instead of
+// holding a second, driftable copy of the same text.
+export function getDish(name: string): Dish {
+  const dish = DISHES.find((d) => d.name === name);
+  if (!dish) throw new Error(`getDish: no dish named "${name}" in DISHES`);
+  return dish;
+}

@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Card } from "../ui/Card";
 import { Field } from "../ui/Field";
@@ -40,6 +40,17 @@ export function EnquireSection() {
   const [sendFailed, setSendFailed] = useState(false);
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState(`Or email ${SITE.email} directly.`);
+
+  // Occasion cards/chips on other pages (e.g. the Home "Who's coming?"
+  // section) link here with ?occasion=<name> to pre-select it — only ever
+  // applied client-side, after mount, so it never causes a hydration
+  // mismatch against the SSR'd default.
+  useEffect(() => {
+    const occasionParam = new URLSearchParams(window.location.search).get("occasion");
+    if (occasionParam && (OCCASIONS as readonly string[]).includes(occasionParam)) {
+      setForm((f) => ({ ...f, occasion: occasionParam }));
+    }
+  }, []);
 
   const setField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm((f) => ({ ...f, [key]: value }));
@@ -140,9 +151,9 @@ export function EnquireSection() {
             <SectionHeading icon="mail" tone="amber">
               Book your event
             </SectionHeading>
-            <h2 className="mt-6 mb-6 font-display text-h2 font-extrabold tracking-heading leading-snug text-green-800">
+            <h1 className="mt-6 mb-6 font-display text-h2 font-extrabold tracking-heading leading-snug text-green-800">
               Tell us what you are planning
-            </h2>
+            </h1>
           </Reveal>
           <p className="m-0 mb-10 font-body text-body-lg leading-relaxed text-green-700 max-w-[32em]">
             Send the date, the number of guests and any dietary needs. We reply with a spread and a
@@ -225,7 +236,7 @@ export function EnquireSection() {
               ) : (
                 <p className="m-0 mt-2 font-body text-body-md text-green-700">
                   Nothing picked yet. Tap <b>Add to my table</b> on any dish in the{" "}
-                  <a href="#menu" className="link-underline font-bold text-green-800">
+                  <a href="/menu" className="link-underline font-bold text-green-800">
                     menu
                   </a>{" "}
                   and it will appear here.

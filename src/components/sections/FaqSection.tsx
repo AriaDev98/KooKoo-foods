@@ -10,9 +10,9 @@ export function FaqSection() {
           <SectionHeading icon="circle-help" tone="sage">
             Questions
           </SectionHeading>
-          <h2 className="mt-6 mb-10 font-display text-h2 font-extrabold tracking-heading leading-snug text-green-800">
+          <h1 className="mt-6 mb-10 font-display text-h2 font-extrabold tracking-heading leading-snug text-green-800">
             Frequently asked questions
-          </h2>
+          </h1>
         </Reveal>
 
         <div className="flex flex-col">

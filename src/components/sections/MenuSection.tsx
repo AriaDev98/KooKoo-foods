@@ -197,9 +197,9 @@ export function MenuSection() {
             <SectionHeading icon="chef-hat" tone="amber">
               The menu
             </SectionHeading>
-            <h2 className="mt-6 font-display text-h2 font-extrabold tracking-heading leading-snug text-green-800">
-              Everything we cook, in one place
-            </h2>
+            <h1 className="mt-6 font-display text-h2 font-extrabold tracking-heading leading-snug text-green-800">
+              Our Persian Catering Menu
+            </h1>
           </Reveal>
           <p className="m-0 font-body text-body-md text-green-500 max-w-[30em]">
             Vegetarian (Veg) · Vegan (V) · Gluten Free (GF) · Dairy Free (DF) · Contains Nuts (CN)

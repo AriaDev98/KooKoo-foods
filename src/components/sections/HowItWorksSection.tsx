@@ -73,7 +73,7 @@ export function HowItWorksSection() {
         </div>
 
         <div className="flex flex-wrap gap-5 items-center mt-16 pt-10 border-t border-[rgba(240,235,220,0.24)]">
-          <Button variant="primary" size="lg" href="#enquire">
+          <Button variant="primary" size="lg" href="/contact">
             Send an enquiry
           </Button>
           <span className="font-body text-body-lg text-cream-200">

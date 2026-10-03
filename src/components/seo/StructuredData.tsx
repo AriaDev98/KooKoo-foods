@@ -42,7 +42,7 @@ function buildFaqPage() {
   };
 }
 
-export function StructuredData() {
+export function StructuredData({ includeFaq = false }: { includeFaq?: boolean }) {
   const data = {
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
@@ -76,12 +76,12 @@ export function StructuredData() {
     hasMenu: buildMenu(),
   };
 
-  const faqData = buildFaqPage();
-
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }} />
+      {includeFaq ? (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqPage()) }} />
+      ) : null}
     </>
   );
 }

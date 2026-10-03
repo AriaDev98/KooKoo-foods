@@ -3,9 +3,11 @@ import { Menu, X } from "lucide-react";
 import { Button } from "../ui/Button";
 import { CreepyButton } from "../ui/CreepyButton";
 import { NAV_ITEMS, HEADER_CTA, SITE } from "../../data/content";
+import { isNavActive, useCurrentPath } from "../../context/PathContext";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const currentPath = useCurrentPath();
 
   useEffect(() => {
     if (!open) return;
@@ -27,7 +29,7 @@ export function SiteHeader() {
     <header className="relative header-echo-bg">
       {/* Compact bar + slide-down menu, phones only */}
       <div className="sm:hidden flex items-center justify-between px-6 py-4">
-        <a href="#top" className="group flex items-center no-underline">
+        <a href="/" className="group flex items-center no-underline">
           <img
             src="/images/logos/kookoo-logo-gold.webp"
             alt={SITE.brand}
@@ -64,7 +66,10 @@ export function SiteHeader() {
             key={item.id}
             href={item.href}
             onClick={() => setOpen(false)}
-            className="font-ui text-body-lg font-extrabold text-cream-200 no-underline"
+            aria-current={isNavActive(item.href, currentPath) ? "page" : undefined}
+            className={`font-ui text-body-lg font-extrabold no-underline ${
+              isNavActive(item.href, currentPath) ? "text-amber-500" : "text-cream-200"
+            }`}
           >
             {item.label}
           </a>
@@ -88,7 +93,7 @@ export function SiteHeader() {
         </div>
         <div className="flex flex-col items-center gap-10">
           <a
-            href="#top"
+            href="/"
             className="group inline-block transition-transform duration-150 ease-standard hover:scale-105"
           >
             <span className="relative block overflow-hidden">
@@ -101,7 +106,10 @@ export function SiteHeader() {
               <a
                 key={item.id}
                 href={item.href}
-                className="font-ui text-body-lg font-extrabold text-cream-200 no-underline transition-colors duration-150 ease-standard hover:text-amber-500"
+                aria-current={isNavActive(item.href, currentPath) ? "page" : undefined}
+                className={`font-ui text-body-lg font-extrabold no-underline transition-colors duration-150 ease-standard hover:text-amber-500 ${
+                  isNavActive(item.href, currentPath) ? "text-amber-500" : "text-cream-200"
+                }`}
               >
                 {item.label}
               </a>

@@ -21,14 +21,14 @@ export const SITE = {
 };
 
 export const NAV_ITEMS = [
-  { id: "menu", label: "Menu", href: "#menu" },
-  { id: "pantry", label: "Jars & pantry", href: "#pantry" },
-  { id: "story", label: "Our story", href: "#story" },
-  { id: "faq", label: "FAQ", href: "#faq" },
-  { id: "enquire", label: "Contact", href: "#enquire" },
+  { id: "menu", label: "Menu", href: "/menu" },
+  { id: "pantry", label: "Jars & pantry", href: "/menu#pantry" },
+  { id: "story", label: "Our story", href: "/our-story" },
+  { id: "faq", label: "FAQ", href: "/faq" },
+  { id: "enquire", label: "Contact", href: "/contact" },
 ];
 
-export const HEADER_CTA = { label: "Enquire now", href: "#enquire" };
+export const HEADER_CTA = { label: "Enquire now", href: "/contact" };
 
 export const STEPS = [
   {
@@ -40,7 +40,7 @@ export const STEPS = [
     n: "02",
     title: "We plan the menu",
     desc: "We come back with a spread and a price. Change what you like until it is the table you wanted.",
-    link: { label: "Pick your dishes", href: "#menu" },
+    link: { label: "Pick your dishes", href: "/menu" },
   },
   {
     n: "03",
@@ -102,24 +102,31 @@ export const FOOTER_COLUMNS = [
   {
     title: "Menu",
     links: [
-      { label: "All dishes", href: "#menu" },
-      { label: "How it works", href: "#how" },
-      { label: "Sweets", href: "#menu" },
+      { label: "All dishes", href: "/menu" },
+      { label: "How it works", href: "/#how" },
+      { label: "Jars & pantry", href: "/menu#pantry" },
     ],
   },
   {
     title: "Catering",
     links: [
-      { label: "Book your event", href: "#enquire" },
-      { label: "Jars & pantry", href: "#pantry" },
-      { label: "Delivery across NSW", href: "#enquire" },
+      { label: "Weddings", href: "/wedding-catering" },
+      { label: "Corporate catering", href: "/corporate-catering" },
+      { label: "Persian occasions", href: "/nowruz-catering" },
     ],
   },
   {
     title: "Contact",
     links: [
+      { label: "Get a quote", href: "/contact" },
       { label: SITE.email, href: `mailto:${SITE.email}` },
       { label: SITE.phone, href: SITE.phoneHref },
     ],
   },
 ];
+
+export function getPantryItem(name: string) {
+  const item = PANTRY.find((p) => p.name === name);
+  if (!item) throw new Error(`getPantryItem: no pantry item named "${name}" in PANTRY`);
+  return item;
+}

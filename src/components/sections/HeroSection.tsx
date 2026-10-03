@@ -23,10 +23,10 @@ export function HeroSection() {
           events.
         </p>
         <div className="hero-content-rise flex flex-wrap gap-4 justify-center">
-          <Button variant="primary" size="lg" href="#menu">
+          <Button variant="primary" size="lg" href="/menu">
             Browse the menu
           </Button>
-          <Button variant="outlineInverse" size="lg" href="#enquire">
+          <Button variant="outlineInverse" size="lg" href="/contact">
             Book your event
           </Button>
         </div>

@@ -1,12 +1,17 @@
 import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.tsx'
+import { getRouteByPath, normalizePath } from './routes'
+import { PathContext } from './context/PathContext'
 
 const root = document.getElementById('root')!
+const path = normalizePath(window.location.pathname)
+const { Component } = getRouteByPath(path)
 const app = (
   <StrictMode>
-    <App />
+    <PathContext.Provider value={path}>
+      <Component />
+    </PathContext.Provider>
   </StrictMode>
 )
 
