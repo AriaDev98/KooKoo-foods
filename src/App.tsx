@@ -13,11 +13,13 @@ import { ProcessSection } from "./components/sections/ProcessSection";
 import { EnquireSection } from "./components/sections/EnquireSection";
 import { TableProvider } from "./context/TableContext";
 import { TableTray } from "./components/navigation/TableTray";
+import { StructuredData } from "./components/seo/StructuredData";
 
 function App() {
   return (
     <TableProvider>
       <div id="top" className="bg-cream-200 font-ui overflow-x-clip">
+        <StructuredData />
         <SiteHeader />
         <StickyBar />
         <BackToTop />
