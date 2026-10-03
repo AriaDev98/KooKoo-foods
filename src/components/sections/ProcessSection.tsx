@@ -178,7 +178,7 @@ function PinnedProcess() {
                 <img
                   key={step.n}
                   src={step.src}
-                  alt={i === active ? step.label : ""}
+                  alt={step.label}
                   aria-hidden={i === active ? undefined : true}
                   loading="lazy"
                   decoding="async"
