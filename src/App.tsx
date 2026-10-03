@@ -10,6 +10,7 @@ import { PantrySection } from "./components/sections/PantrySection";
 import { OccasionsSection } from "./components/sections/OccasionsSection";
 import { StorySection } from "./components/sections/StorySection";
 import { ProcessSection } from "./components/sections/ProcessSection";
+import { FaqSection } from "./components/sections/FaqSection";
 import { EnquireSection } from "./components/sections/EnquireSection";
 import { TableProvider } from "./context/TableContext";
 import { TableTray } from "./components/navigation/TableTray";
@@ -33,6 +34,7 @@ function App() {
         <OccasionsSection />
         <StorySection />
         <ProcessSection />
+        <FaqSection />
         <EnquireSection />
 
         <SiteFooter />

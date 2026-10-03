@@ -1,5 +1,6 @@
 import { SITE } from "../../data/content";
 import { DISHES, FILTERS, type DishCourse } from "../../data/dishes";
+import { FAQ } from "../../data/faq";
 
 const SITE_URL = "https://www.kookoofoods.com.au/";
 
@@ -20,6 +21,23 @@ function buildMenu() {
         name: d.name,
         description: d.desc,
       })),
+    })),
+  };
+}
+
+// Built from the same FAQ array the FAQ section renders — adding, editing
+// or removing a question there updates this automatically.
+function buildFaqPage() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
     })),
   };
 }
@@ -58,5 +76,12 @@ export function StructuredData() {
     hasMenu: buildMenu(),
   };
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
+  const faqData = buildFaqPage();
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }} />
+    </>
+  );
 }

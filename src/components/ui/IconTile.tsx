@@ -1,6 +1,7 @@
 import {
   Camera,
   ChefHat,
+  CircleHelp,
   CookingPot,
   Leaf,
   Mail,
@@ -18,7 +19,8 @@ export type IconName =
   | "chef-hat"
   | "notebook-pen"
   | "mail"
-  | "camera";
+  | "camera"
+  | "circle-help";
 
 type Tone = "clay" | "green" | "amber" | "sage";
 
@@ -31,6 +33,7 @@ const icons: Record<IconName, LucideIcon> = {
   "notebook-pen": NotebookPen,
   mail: Mail,
   camera: Camera,
+  "circle-help": CircleHelp,
 };
 
 const tones: Record<Tone, string> = {
