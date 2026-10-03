@@ -15,7 +15,7 @@ export const FAQ: FaqItem[] = [
   },
   {
     question: "Which areas do you deliver to?",
-    answer: "We deliver across New South Wales.",
+    answer: "We deliver across New South Wales, including all of Sydney.",
   },
   {
     question: "Can I collect the food myself?",
@@ -30,7 +30,7 @@ export const FAQ: FaqItem[] = [
   {
     question: "Can you handle allergies?",
     answer:
-      "We list the ingredients and allergens for every dish on the menu, and you can tell us about any allergy when you enquire — we'll do our best to accommodate it. Everything is cooked in a home kitchen that also handles gluten, dairy, eggs and nuts, so we can't guarantee a completely allergen-free environment.",
+      "We list the ingredients and allergens for every dish on the menu, and you can tell us about any allergy when you enquire — we'll do our best to accommodate it. Everything is cooked in a shared kitchen at FoodLab that also handles gluten, dairy, eggs and nuts, so we can't guarantee a completely allergen-free environment.",
   },
   {
     question: "What events do you cater?",
