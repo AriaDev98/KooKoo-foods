@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.kookoofoods.com.au/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- privacy-policy.html is intentionally left out: it's set to
+       noindex (see its own <meta name="robots">), and listing a noindex
+       page in the sitemap sends search engines a contradictory signal. -->
+</urlset>
