@@ -131,8 +131,8 @@ export const DISHES: Dish[] = [
     tags: [{ label: "GF", tone: "sage" }],
     photo: {
       src: "/images/photos/tadig.webp",
-      ingredients: "Basmati rice, saffron and oil, pan-fried until deep golden and crisp. Served with carrot and fresh basil.",
-      allergens: "Gluten free, nut free.",
+      ingredients: "Basmati rice, yoghurt, eggs, onion and saffron, pan-fried until deep golden and crisp.",
+      allergens: "Contains dairy and egg. Gluten free, nut free.",
     },
   },
   {
@@ -178,13 +178,12 @@ export const DISHES: Dish[] = [
   {
     name: "Persian crackers",
     course: "Side",
-    desc: "Thin baked crackers with pumpkin, sunflower and sesame seeds, made to go with the eggplant dip.",
-    tags: [{ label: "V", tone: "sage" }],
+    desc: "Thin baked crackers with pumpkin and sunflower seeds, made to go with the eggplant dip.",
+    tags: [{ label: "Veg", tone: "sage" }],
     photo: {
       src: "/images/photos/crackers-tray.webp",
-      ingredients:
-        "Thin baked crackers with pumpkin seeds, sunflower seeds and sesame, snapped by hand into pieces. Made to go with the eggplant dip.",
-      allergens: "Contains gluten and sesame. Contains seeds. No nuts, no dairy.",
+      ingredients: "Flour, yoghurt, water, sunflower seeds and pumpkin seeds, snapped by hand into pieces.",
+      allergens: "Contains gluten and dairy. Contains seeds (sunflower, pumpkin). No nuts.",
     },
   },
   {
@@ -300,7 +299,7 @@ export const DISHES: Dish[] = [
     photo: {
       src: "/images/photos/tahchin-v7.webp",
       ingredients:
-        "Baked saffron rice cake layered with chicken, yoghurt and egg, topped with barberries. Strong saffron flavour.",
+        "Layers of rice, chicken, eggplant, onion, egg and yoghurt, baked with saffron into a crisp golden rice cake.",
       allergens: "Contains dairy and egg. Gluten free, nut free.",
     },
   },
