@@ -24,13 +24,28 @@ export function StorySection() {
         </Reveal>
         <div className="font-body text-body-lg leading-relaxed text-green-700 max-w-[34em] space-y-6 mb-8">
           <p className="m-0">
-            I am an immigrant from Iran who moved to Australia to run my own business, follow my
-            passion and share the rich traditions of Persian cuisine through baked and cooked foods.
+            I came to Australia from Iran to follow my passion, build my own business, and share the
+            rich traditions of Persian cuisine.
           </p>
           <p className="m-0">
-            Our food carries stories — some rooted in specific regions, others passed down through
-            families and tribes. Kookoo Foods has been cooking since <b className="font-bold">2024</b>,
-            and every order is still made by hand.
+            Persian food carries stories — from different regions, families and generations. At
+            Kookoo Foods, every dish is handmade with love, using recipes and traditions passed down
+            through generations.
+          </p>
+          <p className="m-0">
+            Since <b className="font-bold">2024</b>, we have been proudly supported and based at{" "}
+            <a
+              href="https://www.foodlabsydney.org.au/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline font-bold text-green-800"
+            >
+              FoodLab Sydney
+            </a>
+            , a community helping food entrepreneurs turn their passion into thriving businesses.
+          </p>
+          <p className="m-0">
+            For us, Kookoo Foods is a way to share a little taste of Persian home with Australia.
           </p>
         </div>
         <Badge tone="sage">Based at FoodLab, Strathfield South</Badge>
