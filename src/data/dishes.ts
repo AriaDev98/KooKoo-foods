@@ -162,7 +162,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Mom's and dad's pickles",
+    name: "Mum & Dad Pickle",
     course: "Side",
     desc: "Our family torshi, put up by hand in small batches. Vinegar, vegetables, herbs and time.",
     tags: [
@@ -210,7 +210,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Mast O'Khiar (Yogurt and Cucumber Dip)",
+    name: "Mast O'Khiar (Yoghurt and Cucumber Dip)",
     course: "Side",
     desc: "Yoghurt with cucumber, dried mint and a little garlic. Cool, and on every Persian table.",
     tags: [
