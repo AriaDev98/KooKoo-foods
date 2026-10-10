@@ -28,7 +28,7 @@ export const FILTERS: Array<DishCourse | "All"> = [
 
 export const DISHES: Dish[] = [
   {
-    name: "Kashke Bademjan (Persian Eggplant Dip)",
+    name: "Persian Eggplant Dip (Kashke Bademjan)",
     course: "Appetizer",
     desc: "Roasted eggplant with fried onion, garlic and kashk, dried mint and walnuts, crackers on the side.",
     tags: [{ label: "CN", tone: "amber" }],
@@ -41,7 +41,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Ash Reshteh (Persian Herb & Noodle Soup)",
+    name: "Persian Herb & Noodle Soup (Ash Reshteh)",
     course: "Appetizer",
     desc: "Persian herb and noodle soup with chickpeas, lentils, beans, crispy fried onions and kashk.",
     tags: [{ label: "Veg", tone: "sage" }],
@@ -54,7 +54,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Dolmeh (Stuffed Cabbage Rolls)",
+    name: "Stuffed Cabbage Rolls (Dolmeh)",
     course: "Appetizer",
     desc: "Cabbage leaves rolled around a herb and rice filling, slow-cooked until soft.",
     tags: [
@@ -69,7 +69,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Mirza Ghasemi (Smoky Eggplant & Tomato Dip)",
+    name: "Smoky Eggplant & Tomato Dip (Mirza Ghasemi)",
     course: "Appetizer",
     desc: "Smoked eggplant cooked down with tomato and plenty of garlic.",
     tags: [
@@ -98,7 +98,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Kookoo Sibzamini (Potato Patties)",
+    name: "Potato Patties (Kookoo Sibzamini)",
     course: "Appetizer",
     desc: "Golden potato patties, crisp at the edge and soft through the middle.",
     tags: [{ label: "Veg", tone: "sage" }],
@@ -125,7 +125,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Tadig (Crispy Persian Rice)",
+    name: "Crispy Persian Rice (Tadig)",
     course: "Side",
     desc: "The golden, crispy rice crust every Persian table fights over.",
     tags: [{ label: "GF", tone: "sage" }],
@@ -136,7 +136,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Kotlet (Persian Beef & Potato Patties)",
+    name: "Persian Beef & Potato Patties (Kotlet)",
     course: "Side",
     desc: "Pan-fried potato and beef patties. The lunchbox classic of every Iranian childhood.",
     tags: [],
@@ -147,7 +147,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Zeitun Parvarde (Walnut & Pomegranate Olives)",
+    name: "Walnut & Pomegranate Olives (Zeitun Parvarde)",
     course: "Side",
     desc: "Olives dressed with walnut, pomegranate paste, garlic and mint — sharp, sweet and northern.",
     tags: [
@@ -210,7 +210,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Mast O'Khiar (Yoghurt and Cucumber Dip)",
+    name: "Yoghurt and Cucumber Dip (Mast O'Khiar)",
     course: "Side",
     desc: "Yoghurt with cucumber, dried mint and a little garlic. Cool, and on every Persian table.",
     tags: [
@@ -226,7 +226,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Koofteh (Persian Meatballs)",
+    name: "Persian Meatballs (Koofteh)",
     course: "Main",
     desc: "Lamb and beef meatballs with onion, chickpeas, rice, herbs and dried plum.",
     tags: [
@@ -253,7 +253,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Ghormeh Sabzi (Persian Herb & Lamb Stew)",
+    name: "Persian Herb & Lamb Stew (Ghormeh Sabzi)",
     course: "Main",
     desc: "Slow-cooked herbs with lamb, kidney beans and dried lime — the stew every Persian table knows.",
     tags: [
@@ -268,7 +268,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Kabab Koobideh (Grilled Minced Lamb & Beef Skewers)",
+    name: "Grilled Minced Lamb & Beef Skewers (Kabab Koobideh)",
     course: "Main",
     desc: "Hand-minced lamb and beef skewers, charcoal-grilled, served with saffron rice.",
     tags: [],
@@ -281,7 +281,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Zereshk Polo ba Morgh (Saffron Chicken with Barberry Rice)",
+    name: "Saffron Chicken with Barberry Rice (Zereshk Polo ba Morgh)",
     course: "Main",
     desc: "Saffron chicken with barberry rice — sweet, sour and the dish everyone asks for again.",
     tags: [],
@@ -292,7 +292,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Tahchin (Baked Saffron Rice Cake)",
+    name: "Baked Saffron Rice Cake (Tahchin)",
     course: "Main",
     desc: "Baked saffron rice cake with a crisp golden crust, layered with chicken.",
     tags: [],
@@ -304,7 +304,7 @@ export const DISHES: Dish[] = [
     },
   },
   {
-    name: "Chicken Auchma (Baked Chicken Pastry)",
+    name: "Baked Chicken Pastry (Chicken Auchma)",
     course: "Main",
     desc: "Baked chicken and onion folded into an enriched dough, served with dips on the side.",
     tags: [],
