@@ -10,7 +10,8 @@ export function HeroSection() {
       className="bg-green-800"
       showScrollCue
       animateHeadline
-      living
+      imageSrc="/images/photos/auchma-crescents-hero.webp"
+      imageLabel="Freshly baked sesame-crusted auchma pastries"
     >
       <div className="flex flex-col items-center gap-8 max-w-[620px]">
         {/* No entrance animation on this specific element: it's the page's

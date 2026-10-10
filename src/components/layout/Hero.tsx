@@ -31,7 +31,16 @@ export function Hero({
     <section className={`relative isolate overflow-hidden grid ${className}`} style={{ minHeight: height }}>
       {imageSrc ? (
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <Photo src={imageSrc} alt={imageLabel ?? ""} ratio="auto" className="min-h-full" />
+          {/* Hero is always above the fold wherever it's used, so its photo
+              is always the page's LCP candidate — load it eagerly, never
+              lazily like every other Photo on the site. */}
+          <Photo src={imageSrc} alt={imageLabel ?? ""} ratio="auto" className="min-h-full" priority />
+          {/* A flat scrim, not a gradient: the headline can land anywhere
+              over this image depending on content length/viewport, so
+              contrast needs to hold everywhere, not just at fixed edges.
+              Matches the shadow colour HighlightHeading's dark tone
+              already uses, so the two read as one consistent treatment. */}
+          <div className="absolute inset-0 bg-[rgba(19,31,10,0.5)]" aria-hidden="true" />
         </div>
       ) : null}
       {living ? <LivingBackground /> : null}
