@@ -191,7 +191,19 @@ export function EnquireSection() {
                 />
               </Field>
               <Field label="Date">
-                <Input type="date" value={form.date} onChange={(e) => setField("date", e.target.value)} />
+                {/* appearance-none: iOS WebKit (every browser on iOS, not
+                    just Safari — Apple requires them all to use its engine)
+                    forces box-sizing:content-box on date inputs specifically,
+                    unless native appearance is stripped. With content-box,
+                    this field's own border+padding get added on top of
+                    width:100% instead of absorbed into it, pushing it past
+                    its container by exactly that amount. */}
+                <Input
+                  type="date"
+                  value={form.date}
+                  onChange={(e) => setField("date", e.target.value)}
+                  className="appearance-none box-border"
+                />
               </Field>
             </div>
             <div className="rounded-2xl border-2 border-dashed border-green-700 bg-cream-200 px-5 py-4">
