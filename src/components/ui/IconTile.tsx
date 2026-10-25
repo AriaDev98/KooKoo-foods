@@ -6,6 +6,7 @@ import {
   Leaf,
   Mail,
   NotebookPen,
+  Star,
   Users,
   Utensils,
   type LucideIcon,
@@ -20,7 +21,8 @@ export type IconName =
   | "notebook-pen"
   | "mail"
   | "camera"
-  | "circle-help";
+  | "circle-help"
+  | "star";
 
 type Tone = "clay" | "green" | "amber" | "sage";
 
@@ -34,6 +36,7 @@ const icons: Record<IconName, LucideIcon> = {
   mail: Mail,
   camera: Camera,
   "circle-help": CircleHelp,
+  star: Star,
 };
 
 const tones: Record<Tone, string> = {

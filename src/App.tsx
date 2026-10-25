@@ -11,6 +11,7 @@ import { OccasionsSection } from "./components/sections/OccasionsSection";
 import { StorySection } from "./components/sections/StorySection";
 import { ProcessSection } from "./components/sections/ProcessSection";
 import { FaqSection } from "./components/sections/FaqSection";
+import { ReviewsSection } from "./components/sections/ReviewsSection";
 import { EnquireSection } from "./components/sections/EnquireSection";
 import { TableProvider } from "./context/TableContext";
 import { TableTray } from "./components/navigation/TableTray";
@@ -35,6 +36,7 @@ function App() {
         <StorySection />
         <ProcessSection />
         <FaqSection />
+        <ReviewsSection />
         <EnquireSection />
 
         <SiteFooter />
