@@ -142,6 +142,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         await resend.emails.send({
           from: FROM_EMAIL,
           to: contact,
+          // The email itself invites "just reply to this email" — route
+          // that reply to the inbox the business actually reads, not the
+          // sending address (which has no mailbox behind it).
+          replyTo: BUSINESS_EMAIL,
           subject: `We've got your enquiry, ${firstName}!`,
           html: customerHtml,
         });
