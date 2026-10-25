@@ -628,7 +628,12 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  will-change: transform, clip-path;
+  /* No will-change here on purpose: on macOS desktop Safari specifically
+     (not iOS Safari — different compositor), will-change: transform,
+     clip-path on an image inside this position:sticky scene forces it onto
+     a GPU layer that WebKit then never actually paints, so the image loads
+     (confirmed in the Network tab) but never becomes visible. Letting Safari
+     decide its own compositing strategy here avoids the bug. */
 }
 .process-img-0 {
   transform: scale(calc(1.02 + var(--p, 0) * 0.07));
