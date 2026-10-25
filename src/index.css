@@ -900,6 +900,20 @@ body {
   }
 }
 
+@keyframes reviews-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.reviews-fade {
+  animation: reviews-fade-in 450ms var(--ease-standard) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue {
     animation: none;
@@ -957,6 +971,10 @@ body {
   .living-bg-blob-1,
   .living-bg-blob-2,
   .living-bg-blob-3 {
+    animation: none;
+  }
+
+  .reviews-fade {
     animation: none;
   }
 }
