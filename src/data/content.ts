@@ -18,6 +18,8 @@ export const SITE = {
     "https://maps.google.com/maps?q=FoodLab+34+Cosgrove+Rd+Strathfield+South+NSW+2136&z=16&output=embed",
   mapDirectionsUrl:
     "https://www.google.com/maps/search/?api=1&query=FoodLab+34+Cosgrove+Rd+Strathfield+South+NSW+2136",
+  googleReviewsUrl:
+    "https://www.google.com/maps/place/Kookoo+Foods/@-33.8919964,151.0705008,17z/data=!4m6!3m5!1s0x6b12a577b3ae9757:0x38ecc505ae37645d!8m2!3d-33.8920009!4d151.0730757!16s%2Fg%2F11vzvf350t",
 };
 
 export const NAV_ITEMS = [

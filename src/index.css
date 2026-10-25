@@ -900,6 +900,36 @@ body {
   }
 }
 
+@keyframes reviews-slide-next {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes reviews-slide-prev {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.reviews-slide-next {
+  animation: reviews-slide-next 420ms var(--ease-standard) both;
+}
+.reviews-slide-prev {
+  animation: reviews-slide-prev 420ms var(--ease-standard) both;
+}
+.reviews-height {
+  transition: height 350ms var(--ease-standard);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue {
     animation: none;
@@ -958,5 +988,14 @@ body {
   .living-bg-blob-2,
   .living-bg-blob-3 {
     animation: none;
+  }
+
+  .reviews-slide-next,
+  .reviews-slide-prev {
+    animation: none;
+  }
+
+  .reviews-height {
+    transition: none;
   }
 }
