@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { SiteHeader } from "./components/navigation/SiteHeader";
 import { StickyBar } from "./components/navigation/StickyBar";
 import { BackToTop } from "./components/navigation/BackToTop";
@@ -22,6 +23,7 @@ function App() {
     <TableProvider>
       <div id="top" className="bg-cream-200 font-ui overflow-x-clip">
         <StructuredData />
+        <Analytics />
         <SiteHeader />
         <StickyBar />
         <BackToTop />
