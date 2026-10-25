@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type TouchEvent } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type TouchEvent } from "react";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Badge } from "../ui/Badge";
@@ -25,11 +25,15 @@ const arrowButtonClass =
 export function ReviewsSection() {
   const count = REVIEWS.length;
   const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
   const [hovered, setHovered] = useState(false);
   const [interacted, setInteracted] = useState(false);
   const touchStartX = useRef<number | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState<number>();
 
   const go = useCallback((delta: number) => {
+    setDirection(delta < 0 ? -1 : 1);
     setIndex((i) => (i + delta + count) % count);
   }, [count]);
 
@@ -40,8 +44,15 @@ export function ReviewsSection() {
 
   const jumpTo = (i: number) => {
     setInteracted(true);
+    setDirection(i < index ? -1 : 1);
     setIndex(i);
   };
+
+  // Reviews vary a lot in length, so the card is measured after each swap
+  // and the wrapper eases to that height instead of snapping.
+  useLayoutEffect(() => {
+    if (contentRef.current) setContentHeight(contentRef.current.offsetHeight);
+  }, [index]);
 
   // Gently rotates through reviews on its own, but a visitor taking the
   // wheel (hover, a click, a swipe) is always the last word — autoplay
@@ -107,8 +118,17 @@ export function ReviewsSection() {
                 fill="currentColor"
                 className="mx-auto text-amber-300"
               />
-              <div aria-live="polite" aria-atomic="true">
-                <div key={index} className="reviews-fade mt-4">
+              <div
+                className="reviews-height mt-4 overflow-hidden"
+                style={{ height: contentHeight }}
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                <div
+                  key={index}
+                  ref={contentRef}
+                  className={direction === 1 ? "reviews-slide-next" : "reviews-slide-prev"}
+                >
                   <Stars />
                   <p className="mt-6 font-body text-body-lg leading-relaxed text-green-800 max-w-[42ch] mx-auto">
                     {review.text}
