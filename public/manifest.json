@@ -1,0 +1,13 @@
+{
+  "name": "Kookoo Foods — Persian Catering, Sydney",
+  "short_name": "Kookoo Foods",
+  "description": "Authentic Persian catering, homemade with heart. Cooked to order at FoodLab Strathfield South and delivered across New South Wales.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f0ebdc",
+  "theme_color": "#d69a1f",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
