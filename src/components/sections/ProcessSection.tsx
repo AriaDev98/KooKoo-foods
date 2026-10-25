@@ -66,67 +66,6 @@ function StaticProcess() {
   );
 }
 
-// TEMPORARY — diagnosing a macOS-Safari-only bug where these photos load
-// (confirmed in the user's own Network tab) but never paint. Only renders
-// with ?debug=process in the URL; remove once the bug's found.
-function ProcessDebugOverlay() {
-  const [info, setInfo] = useState("loading...");
-
-  useEffect(() => {
-    if (!window.location.search.includes("debug=process")) return;
-    const poll = () => {
-      const stage = document.querySelector<HTMLElement>(".process-stage");
-      const imgs = [...document.querySelectorAll<HTMLImageElement>(".process-img")];
-      if (!stage) {
-        setInfo("process-stage: NOT FOUND IN DOM");
-        return;
-      }
-      const sCs = getComputedStyle(stage);
-      const sRect = stage.getBoundingClientRect();
-      const lines = [
-        `UA: ${navigator.userAgent}`,
-        `dpr=${window.devicePixelRatio} win=${window.innerWidth}x${window.innerHeight}`,
-        `stage rect=${Math.round(sRect.width)}x${Math.round(sRect.height)} display=${sCs.display} overflow=${sCs.overflow} opacity=${sCs.opacity} visibility=${sCs.visibility} bg=${sCs.backgroundColor}`,
-        ...imgs.map((img, i) => {
-          const cs = getComputedStyle(img);
-          const r = img.getBoundingClientRect();
-          return `img${i} complete=${img.complete} naturalW=${img.naturalWidth} rect=${Math.round(r.width)}x${Math.round(r.height)} display=${cs.display} opacity=${cs.opacity} visibility=${cs.visibility} clipPath=${cs.clipPath} willChange=${cs.willChange} transform=${cs.transform}`;
-        }),
-      ];
-      setInfo(lines.join("\n"));
-    };
-    poll();
-    const id = window.setInterval(poll, 1000);
-    return () => window.clearInterval(id);
-  }, []);
-
-  if (typeof window === "undefined" || !window.location.search.includes("debug=process")) return null;
-
-  return (
-    <pre
-      style={{
-        position: "fixed",
-        bottom: 8,
-        left: 8,
-        right: 8,
-        maxHeight: "60vh",
-        overflow: "auto",
-        background: "#fff",
-        color: "#000",
-        fontSize: 11,
-        lineHeight: 1.5,
-        padding: 12,
-        border: "3px solid red",
-        zIndex: 999999,
-        whiteSpace: "pre-wrap",
-        fontFamily: "monospace",
-      }}
-    >
-      {info}
-    </pre>
-  );
-}
-
 // Pinned scene: the section is tall, its content sticks to the viewport, and the
 // scroll position drives which photo is showing — the dough goes from egg wash,
 // to sesame, to golden and baked. Visitors who prefer reduced motion get the
@@ -276,7 +215,6 @@ function PinnedProcess() {
           </div>
         </div>
       </div>
-      <ProcessDebugOverlay />
     </section>
   );
 }
