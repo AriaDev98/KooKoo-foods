@@ -609,6 +609,15 @@ body {
 
 .process-stage {
   height: min(70svh, 640px);
+  /* Width is spelled out to match the 3/4 aspect-ratio exactly, rather than
+     leaving the browser to derive it from aspect-ratio + height alone: this
+     is a flex item with align-items: center (not stretch), and that specific
+     combination — auto width from aspect-ratio on a centered flex child —
+     collapses to 0 width on some Safari versions (confirmed via a live
+     diagnostic: height resolved correctly, width computed as 0, clipping
+     three fully-loaded images to nothing). An explicit width sidesteps that
+     derivation instead of relying on it.  70svh * 3/4, 640px * 3/4. */
+  width: min(52.5svh, 480px);
   aspect-ratio: 3 / 4;
   max-width: 100%;
   overflow: hidden;
@@ -619,6 +628,7 @@ body {
 @media (max-width: 1023px) {
   .process-stage {
     height: min(50svh, 460px);
+    width: min(37.5svh, 345px);
   }
 }
 
