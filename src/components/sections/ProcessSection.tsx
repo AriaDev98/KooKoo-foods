@@ -180,7 +180,12 @@ function PinnedProcess() {
                   src={step.src}
                   alt={step.label}
                   aria-hidden={i === active ? undefined : true}
-                  loading="lazy"
+                  // Not loading="lazy": these three sit absolutely positioned
+                  // inside a position:sticky, overflow:hidden pinned scene, and
+                  // WebKit's lazy-load viewport heuristic never fires for images
+                  // in that kind of ancestor — they silently never load in
+                  // Safari. Chromium is lenient enough that this bug doesn't
+                  // show up there, which is why it went unnoticed.
                   decoding="async"
                   className={`process-img process-img-${i}`}
                 />
