@@ -41,7 +41,6 @@ function App() {
             through the content, defeating the point of the link. */}
         <main id="main-content" tabIndex={-1} className="outline-none">
           <HeroSection />
-          <HeroSection />
           <IntroSection />
           <MenuSection />
           <HowItWorksSection />
