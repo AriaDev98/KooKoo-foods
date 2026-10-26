@@ -94,7 +94,7 @@ export function ReviewsSection() {
         </Reveal>
         <Reveal delay={100}>
           <div className="mt-5 flex justify-center">
-            <Badge tone="amber">5.0★ on Google</Badge>
+            <Badge tone="amber">4.9★ on Google</Badge>
           </div>
         </Reveal>
 
