@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Badge } from "../ui/Badge";
 import { Reveal } from "../ui/Reveal";
-import { REVIEWS } from "../../data/reviews";
+import { REVIEWS, type ReviewItem } from "../../data/reviews";
 import { SITE } from "../../data/content";
 
 const AUTOPLAY_MS = 7000;
@@ -19,6 +19,20 @@ function Stars() {
   );
 }
 
+function ReviewBody({ review }: { review: ReviewItem }) {
+  return (
+    <>
+      <Stars />
+      <p className="mt-6 font-body text-body-lg leading-relaxed text-green-800 max-w-[42ch] mx-auto">
+        {review.text}
+      </p>
+      <p className="mt-6 font-ui text-body-sm font-bold uppercase tracking-eyebrow text-green-600">
+        {review.name}
+      </p>
+    </>
+  );
+}
+
 const arrowButtonClass =
   "inline-flex items-center justify-center w-11 h-11 flex-none rounded-full border-2 border-green-800 text-green-800 transition-colors duration-150 ease-standard hover:bg-green-800 hover:text-cream-200 focus-visible:outline focus-visible:outline-3 focus-visible:outline-amber-500 focus-visible:outline-offset-2";
 
@@ -29,7 +43,7 @@ export function ReviewsSection() {
   const [hovered, setHovered] = useState(false);
   const [interacted, setInteracted] = useState(false);
   const touchStartX = useRef<number | null>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
+  const measureRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState<number>();
 
   const go = useCallback((delta: number) => {
@@ -48,11 +62,26 @@ export function ReviewsSection() {
     setIndex(i);
   };
 
-  // Reviews vary a lot in length, so the card is measured after each swap
-  // and the wrapper eases to that height instead of snapping.
+  // Reviews vary a lot in length, so the card is locked to the tallest one
+  // instead of resizing itself as the carousel steps through them — letting
+  // the wrapper's own height track each review shifted the whole page below
+  // it, including while idle during autoplay. Measured once against every
+  // review's real text (re-measured on resize, since wrapping depends on
+  // the card's width), via a hidden stack rendered at the same width.
   useLayoutEffect(() => {
-    if (contentRef.current) setContentHeight(contentRef.current.offsetHeight);
-  }, [index]);
+    const measure = () => {
+      const el = measureRef.current;
+      if (!el) return;
+      let max = 0;
+      for (const child of el.children) {
+        max = Math.max(max, (child as HTMLElement).offsetHeight);
+      }
+      setContentHeight(max);
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
 
   // Gently rotates through reviews on its own, but a visitor taking the
   // wheel (hover, a click, a swipe) is always the last word — autoplay
@@ -126,17 +155,24 @@ export function ReviewsSection() {
               >
                 <div
                   key={index}
-                  ref={contentRef}
-                  className={direction === 1 ? "reviews-slide-next" : "reviews-slide-prev"}
+                  className={`h-full flex flex-col justify-center ${
+                    direction === 1 ? "reviews-slide-next" : "reviews-slide-prev"
+                  }`}
                 >
-                  <Stars />
-                  <p className="mt-6 font-body text-body-lg leading-relaxed text-green-800 max-w-[42ch] mx-auto">
-                    {review.text}
-                  </p>
-                  <p className="mt-6 font-ui text-body-sm font-bold uppercase tracking-eyebrow text-green-600">
-                    {review.name}
-                  </p>
+                  <ReviewBody review={review} />
                 </div>
+              </div>
+
+              <div
+                ref={measureRef}
+                aria-hidden="true"
+                className="invisible absolute inset-x-8 sm:inset-x-16 top-0 -z-10 pointer-events-none"
+              >
+                {REVIEWS.map((r) => (
+                  <div key={r.name}>
+                    <ReviewBody review={r} />
+                  </div>
+                ))}
               </div>
             </div>
 
