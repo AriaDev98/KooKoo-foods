@@ -2,6 +2,7 @@ export const SITE = {
   brand: "Kookoo Foods",
   phone: "+61 477 489 613",
   phoneHref: "tel:+61477489613",
+  whatsappUrl: "https://wa.me/61477489613",
   abn: "95 899 063 084",
   email: "kookoofoods.au@gmail.com",
   instagramHandle: "@kookoo.au",

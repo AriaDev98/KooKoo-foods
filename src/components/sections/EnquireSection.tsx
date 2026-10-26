@@ -35,7 +35,7 @@ export function EnquireSection() {
   const mounted = useHasMounted();
   const [form, setForm] = useState<FormState>(initialForm);
   const [website, setWebsite] = useState(""); // honeypot — see the field below
-  const [errors, setErrors] = useState<Partial<Record<keyof FormState, boolean>>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [sent, setSent] = useState(false);
   const [sendFailed, setSendFailed] = useState(false);
   const [sending, setSending] = useState(false);
@@ -43,7 +43,7 @@ export function EnquireSection() {
 
   const setField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm((f) => ({ ...f, [key]: value }));
-    setErrors((e) => ({ ...e, [key]: false }));
+    setErrors((e) => ({ ...e, [key]: undefined }));
   };
 
   const hasError = Object.values(errors).some(Boolean);
@@ -58,28 +58,28 @@ export function EnquireSection() {
     const contact = form.contact.trim();
     const contactMissing = !contact;
     const contactInvalid = !contactMissing && !isValidContact(contact);
+    const nameMissing = !form.name.trim();
 
-    const missing: string[] = [];
-    if (!form.name.trim()) missing.push("your name");
-    if (contactMissing) missing.push("an email or phone number");
-    if (guestsMissing) missing.push("the number of guests");
+    const fieldErrors: Partial<Record<keyof FormState, string>> = {
+      name: nameMissing ? "Please enter your name." : undefined,
+      contact: contactMissing
+        ? "Please enter an email or phone number."
+        : contactInvalid
+          ? "That doesn't look like a valid email or phone number."
+          : undefined,
+      guests: guestsMissing
+        ? "Please enter the number of guests."
+        : guestsTooFew
+          ? `We cater from 10 guests up — call us on ${SITE.phone} for a smaller group.`
+          : undefined,
+    };
+    const errorCount = Object.values(fieldErrors).filter(Boolean).length;
 
-    if (missing.length || guestsTooFew || contactInvalid) {
-      setErrors({
-        name: !form.name.trim(),
-        contact: contactMissing || contactInvalid,
-        guests: guestsMissing || guestsTooFew,
-      });
+    if (errorCount) {
+      setErrors(fieldErrors);
       setSent(false);
       setSendFailed(false);
-      const problems: string[] = [];
-      if (missing.length) problems.push(`we still need ${missing.join(" and ")}`);
-      if (contactInvalid) problems.push("that email or phone number doesn't look right — please check it");
-      setStatus(
-        guestsTooFew
-          ? `We cater from 10 guests up — for a smaller group, call us on ${SITE.phone} and we'll see what we can do.`
-          : `Almost there — ${problems.join(", and ")}.`,
-      );
+      setStatus(`Please check the highlighted field${errorCount > 1 ? "s" : ""} below.`);
       return;
     }
 
@@ -150,33 +150,51 @@ export function EnquireSection() {
           </p>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-6 max-w-[34em]" noValidate>
-            <Field label="Your name" required>
+            <Field label="Your name" required htmlFor="enquire-name" error={errors.name}>
               <Input
+                id="enquire-name"
                 value={form.name}
                 onChange={(e) => setField("name", e.target.value)}
                 placeholder="Sara Ahmadi"
                 invalid={!!errors.name}
+                aria-describedby={errors.name ? "enquire-name-message" : undefined}
               />
             </Field>
-            <Field label="Email or phone" required hint="So we can reply to you">
+            <Field
+              label="Email or phone"
+              required
+              hint="So we can reply to you"
+              htmlFor="enquire-contact"
+              error={errors.contact}
+            >
               <Input
+                id="enquire-contact"
                 value={form.contact}
                 autoComplete="email"
                 onChange={(e) => setField("contact", e.target.value)}
                 placeholder="you@example.com"
                 invalid={!!errors.contact}
+                aria-describedby="enquire-contact-message"
               />
             </Field>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              <Field label="Occasion">
+              <Field label="Occasion" htmlFor="enquire-occasion">
                 <Select
+                  id="enquire-occasion"
                   options={OCCASIONS}
                   value={form.occasion}
                   onChange={(e) => setField("occasion", e.target.value)}
                 />
               </Field>
-              <Field label="Guests" required hint="Minimum 10 guests">
+              <Field
+                label="Guests"
+                required
+                hint="Minimum 10 guests"
+                htmlFor="enquire-guests"
+                error={errors.guests}
+              >
                 <Input
+                  id="enquire-guests"
                   type="number"
                   min={10}
                   max={1000}
@@ -188,9 +206,10 @@ export function EnquireSection() {
                   }
                   placeholder="40"
                   invalid={!!errors.guests}
+                  aria-describedby="enquire-guests-message"
                 />
               </Field>
-              <Field label="Date">
+              <Field label="Date" htmlFor="enquire-date">
                 {/* appearance-none: iOS WebKit (every browser on iOS, not
                     just Safari — Apple requires them all to use its engine)
                     forces box-sizing:content-box on date inputs specifically,
@@ -199,6 +218,7 @@ export function EnquireSection() {
                     width:100% instead of absorbed into it, pushing it past
                     its container by exactly that amount. */}
                 <Input
+                  id="enquire-date"
                   type="date"
                   value={form.date}
                   onChange={(e) => setField("date", e.target.value)}
@@ -247,12 +267,15 @@ export function EnquireSection() {
             <Field
               label="What are you after"
               hint="Dishes you have your eye on, dietary needs, suburb for delivery."
+              htmlFor="enquire-notes"
             >
               <Textarea
+                id="enquire-notes"
                 value={form.notes}
                 onChange={(e) => setField("notes", e.target.value)}
                 rows={4}
                 placeholder="Nowruz lunch for 40 in Parramatta — two vegan guests."
+                aria-describedby="enquire-notes-message"
               />
             </Field>
             {/* Honeypot: hidden from sighted and screen-reader users alike, but
@@ -317,6 +340,19 @@ export function EnquireSection() {
                 </div>
                 <a href={SITE.phoneHref} className="text-body-lg font-extrabold text-green-800 no-underline">
                   {SITE.phone}
+                </a>
+              </div>
+              <div>
+                <div className="text-eyebrow font-bold tracking-eyebrow uppercase text-green-700">
+                  WhatsApp
+                </div>
+                <a
+                  href={SITE.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-body-lg font-extrabold text-green-800 no-underline link-underline"
+                >
+                  Message us
                 </a>
               </div>
               <div>

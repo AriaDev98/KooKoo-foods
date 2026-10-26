@@ -15,6 +15,10 @@ export function Field({
   htmlFor?: string;
   children: ReactNode;
 }) {
+  // Matches the id an <Input>/<Textarea> in this field passes to its own
+  // aria-describedby, so a screen reader announces this exact message
+  // (error, or otherwise the hint) when the control receives focus.
+  const messageId = htmlFor ? `${htmlFor}-message` : undefined;
   return (
     <div className="flex flex-col gap-2 min-w-0">
       {label ? (
@@ -25,9 +29,13 @@ export function Field({
       ) : null}
       {children}
       {error ? (
-        <span className="font-ui text-caption font-semibold text-clay-700">{error}</span>
+        <span id={messageId} className="font-ui text-caption font-semibold text-clay-700">
+          {error}
+        </span>
       ) : hint ? (
-        <span className="font-ui text-caption text-green-500">{hint}</span>
+        <span id={messageId} className="font-ui text-caption text-green-500">
+          {hint}
+        </span>
       ) : null}
     </div>
   );
