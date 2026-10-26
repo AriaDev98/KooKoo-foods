@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { SiteHeader } from "./components/navigation/SiteHeader";
 import { StickyBar } from "./components/navigation/StickyBar";
 import { BackToTop } from "./components/navigation/BackToTop";
@@ -24,22 +25,34 @@ function App() {
       <div id="top" className="bg-cream-200 font-ui overflow-x-clip">
         <StructuredData />
         <Analytics />
+        <SpeedInsights />
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <SiteHeader />
         <StickyBar />
         <BackToTop />
         <TableTray />
 
-        <HeroSection />
-        <IntroSection />
-        <MenuSection />
-        <HowItWorksSection />
-        <PantrySection />
-        <OccasionsSection />
-        <StorySection />
-        <ProcessSection />
-        <FaqSection />
-        <ReviewsSection />
-        <EnquireSection />
+        {/* tabIndex={-1}: focusable by the skip link's jump, but not part of
+            the normal tab order — without this, activating the skip link
+            scrolls here but leaves focus on <body>, so the very next Tab
+            press would jump back to the header instead of continuing
+            through the content, defeating the point of the link. */}
+        <main id="main-content" tabIndex={-1} className="outline-none">
+          <HeroSection />
+          <HeroSection />
+          <IntroSection />
+          <MenuSection />
+          <HowItWorksSection />
+          <PantrySection />
+          <OccasionsSection />
+          <StorySection />
+          <ProcessSection />
+          <FaqSection />
+          <ReviewsSection />
+          <EnquireSection />
+        </main>
 
         <SiteFooter />
       </div>
