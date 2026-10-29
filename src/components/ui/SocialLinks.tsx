@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram } from "react-icons/fa6";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa6";
 import { SITE } from "../../data/content";
 
 type Tone = "onDark" | "onLight";
@@ -11,6 +11,7 @@ const tones: Record<Tone, string> = {
 const links = [
   { label: "Instagram", href: SITE.instagramUrl, Icon: FaInstagram },
   { label: "Facebook", href: SITE.facebookUrl, Icon: FaFacebook },
+  { label: "YouTube", href: SITE.youtubeUrl, Icon: FaYoutube },
 ];
 
 export function SocialLinks({
