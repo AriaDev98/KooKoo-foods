@@ -8,6 +8,7 @@ export const SITE = {
   instagramHandle: "@kookoo.au",
   instagramUrl: "https://instagram.com/kookoo.au",
   facebookUrl: "https://www.facebook.com/kookoofoods",
+  youtubeUrl: "https://www.youtube.com/@kookoofoodsau",
   address: {
     kitchen: "FoodLab",
     line: "34 Cosgrove Rd, Strathfield South",

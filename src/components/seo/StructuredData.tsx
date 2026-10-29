@@ -72,7 +72,7 @@ export function StructuredData() {
       latitude: -33.897,
       longitude: 151.077,
     },
-    sameAs: [SITE.instagramUrl, SITE.facebookUrl],
+    sameAs: [SITE.instagramUrl, SITE.facebookUrl, SITE.youtubeUrl],
     hasMenu: buildMenu(),
   };
 
