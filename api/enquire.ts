@@ -26,6 +26,38 @@ const BUSINESS_PHONE = "+61 477 489 613";
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "Kookoo Foods <onboarding@resend.dev>";
 const LOGO_URL = "https://www.kookoofoods.com.au/images/logos/kookoo-logo-gold.png";
 
+// Every enquiry is also logged to a Google Sheet (via an Apps Script web
+// app acting as a webhook), independent of whether the email sends —
+// so a Resend outage or a mistyped address doesn't mean the enquiry is
+// lost with no record of it anywhere.
+const SHEET_WEBHOOK_URL = process.env.ENQUIRY_SHEET_WEBHOOK_URL;
+const SHEET_WEBHOOK_SECRET = process.env.ENQUIRY_SHEET_WEBHOOK_SECRET;
+
+async function logToSheet(entry: {
+  name: string;
+  contact: string;
+  occasion: string;
+  guests: number;
+  date: string;
+  dishes: string[];
+  notes: string;
+}): Promise<void> {
+  if (!SHEET_WEBHOOK_URL || !SHEET_WEBHOOK_SECRET) {
+    console.error("enquire: sheet webhook not configured");
+    return;
+  }
+  try {
+    const res = await fetch(SHEET_WEBHOOK_URL, {
+      method: "POST",
+      body: JSON.stringify({ secret: SHEET_WEBHOOK_SECRET, ...entry }),
+    });
+    const body = (await res.json()) as { success?: boolean };
+    if (!body.success) console.error("enquire: sheet logging rejected", body);
+  } catch (err) {
+    console.error("enquire: sheet logging failed", err);
+  }
+}
+
 function escapeHtml(input: string): string {
   return input
     .replace(/&/g, "&amp;")
@@ -126,6 +158,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     </div>
   `;
 
+  // Logged independently of the email send below — this is the one record
+  // of the enquiry that survives even if Resend itself is down.
+  const sheetLog = logToSheet({ name, contact, occasion, guests: guestsNum, date, dishes, notes });
+
   try {
     await resend.emails.send({
       from: FROM_EMAIL,
@@ -134,6 +170,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       subject: `Catering enquiry — ${occasion || "Event"} — ${name}`,
       html: businessHtml,
     });
+
+    await sheetLog;
 
     if (contactIsEmail) {
       // A failed confirmation email shouldn't fail the whole enquiry — the
@@ -157,6 +195,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error("enquire: sending to business failed", err);
+    await sheetLog;
     return res.status(502).json({ success: false, error: "send_failed" });
   }
 }
