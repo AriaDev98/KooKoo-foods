@@ -27,7 +27,7 @@ export function IntroSection() {
         <div className="max-w-[34em]">
           <Reveal>
             <SectionHeading icon="cooking-pot" tone="amber">
-              Catering for events and parties
+              Persian catering across Sydney
             </SectionHeading>
           </Reveal>
           <div className="font-body text-lead leading-relaxed text-green-700 mt-8">
