@@ -10,6 +10,7 @@ import { MenuSection } from "./components/sections/MenuSection";
 import { HowItWorksSection } from "./components/sections/HowItWorksSection";
 import { PantrySection } from "./components/sections/PantrySection";
 import { OccasionsSection } from "./components/sections/OccasionsSection";
+import { ReelSection } from "./components/sections/ReelSection";
 import { StorySection } from "./components/sections/StorySection";
 import { ProcessSection } from "./components/sections/ProcessSection";
 import { FaqSection } from "./components/sections/FaqSection";
@@ -48,6 +49,7 @@ function App() {
           <HowItWorksSection />
           <PantrySection />
           <OccasionsSection />
+          <ReelSection />
           <StorySection />
           <ProcessSection />
           <FaqSection />
