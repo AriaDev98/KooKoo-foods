@@ -62,9 +62,11 @@
         --sage-200: #c3cdb2;
         --cream-100: #faf7ef;
         --cream-200: #f0ebdc;
+        --cream-300: #e4ddc8;
         --cream-400: #d2c8ac;
         --amber-500: #d69a1f;
         --amber-400: #e6b245;
+        --ease-standard: cubic-bezier(0.32, 0.72, 0.28, 1);
       }
 
       * {
@@ -176,6 +178,7 @@
       .btn-primary {
         background: var(--amber-500);
         color: var(--green-900);
+        transition: background-color 150ms var(--ease-standard);
       }
       .btn-primary:hover {
         background: var(--amber-400);
@@ -183,6 +186,10 @@
       .btn-outline {
         border: 2px solid var(--green-800);
         color: var(--green-800);
+        transition: background-color 150ms var(--ease-standard);
+      }
+      .btn-outline:hover {
+        background: var(--cream-300);
       }
       .back-link {
         font-family: "Bricolage Grotesque", system-ui, sans-serif;
@@ -190,6 +197,10 @@
         font-size: 0.9375rem;
         text-decoration: none;
         color: var(--cream-200);
+        transition: color 150ms var(--ease-standard);
+      }
+      .back-link:hover {
+        color: var(--amber-500);
       }
       .guides-link {
         font-family: "Bricolage Grotesque", system-ui, sans-serif;
@@ -197,6 +208,7 @@
         font-size: 0.875rem;
         text-decoration: none;
         color: var(--sage-300);
+        transition: color 150ms var(--ease-standard);
       }
       .guides-link:hover {
         color: var(--amber-400);
