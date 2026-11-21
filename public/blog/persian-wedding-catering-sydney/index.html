@@ -93,6 +93,7 @@
         margin: 0 auto;
         display: flex;
         align-items: center;
+        justify-content: space-between;
       }
       main {
         max-width: 720px;
@@ -190,6 +191,16 @@
         text-decoration: none;
         color: var(--cream-200);
       }
+      .guides-link {
+        font-family: "Bricolage Grotesque", system-ui, sans-serif;
+        font-weight: 600;
+        font-size: 0.875rem;
+        text-decoration: none;
+        color: var(--sage-300);
+      }
+      .guides-link:hover {
+        color: var(--amber-400);
+      }
       footer {
         background: var(--green-800);
         color: var(--sage-300);
@@ -207,6 +218,7 @@
     <header>
       <div class="wrap">
         <a href="/" class="back-link">&larr; Kookoo Foods</a>
+        <a href="/blog/" class="guides-link">All guides</a>
       </div>
     </header>
 
