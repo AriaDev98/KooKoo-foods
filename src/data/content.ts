@@ -63,6 +63,18 @@ export const OCCASIONS = [
   "Small home gatherings",
 ];
 
+// Photos for the "What we cook for" section — kept separate from OCCASIONS
+// above since that list also doubles as the enquiry form's dropdown options.
+export const OCCASION_PHOTOS: Record<(typeof OCCASIONS)[number], string> = {
+  Weddings: "/images/photos/wedding-spread.jpg",
+  Birthdays: "/images/photos/orange-cake.webp",
+  "Corporate lunches": "/images/photos/corporate-lunch-spread.jpg",
+  "Nowruz and Persian occasions": "/images/photos/samanu.webp",
+  "Funerals and memorials": "/images/photos/halva.webp",
+  "Community events": "/images/photos/community-event-tasting.jpg",
+  "Small home gatherings": "/images/photos/ghormeh-sabzi.webp",
+};
+
 export const PANTRY = [
   {
     src: "/images/photos/crackers-hands-2.webp",
