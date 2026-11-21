@@ -44,7 +44,14 @@ export function ReelSection() {
             Before enquiries and events, there was a market stall — the same food, cooked the same
             way, just out in the open.
           </p>
-          <Button href={SITE.instagramUrl} target="_blank" rel="noopener noreferrer" variant="outline" className="self-start">
+          <Button
+            href={SITE.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="outline"
+            className="self-start duration-150 ease-standard active:scale-95"
+            style={{ transitionProperty: "color, background-color, scale" }}
+          >
             <FaInstagram size={18} aria-hidden="true" />
             See more on {SITE.instagramHandle}
           </Button>
