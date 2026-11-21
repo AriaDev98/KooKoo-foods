@@ -56,6 +56,7 @@
         --cream-200: #f0ebdc;
         --cream-400: #d2c8ac;
         --amber-500: #d69a1f;
+        --ease-standard: cubic-bezier(0.32, 0.72, 0.28, 1);
       }
       * {
         box-sizing: border-box;
@@ -77,6 +78,10 @@
         font-size: 0.9375rem;
         text-decoration: none;
         color: var(--cream-200);
+        transition: color 150ms var(--ease-standard);
+      }
+      header a:hover {
+        color: var(--amber-500);
       }
       main {
         max-width: 720px;
@@ -111,6 +116,10 @@
         font-size: 1.5rem;
         color: var(--green-900);
         margin: 0 0 8px;
+        transition: color 150ms var(--ease-standard);
+      }
+      .post:hover .post-title {
+        color: var(--amber-500);
       }
       .post-excerpt {
         margin: 0;
