@@ -17,6 +17,7 @@ import { ReviewsSection } from "./components/sections/ReviewsSection";
 import { EnquireSection } from "./components/sections/EnquireSection";
 import { TableProvider } from "./context/TableContext";
 import { TableTray } from "./components/navigation/TableTray";
+import { WhatsAppFloat } from "./components/navigation/WhatsAppFloat";
 import { StructuredData } from "./components/seo/StructuredData";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <SiteHeader />
         <StickyBar />
         <BackToTop />
+        <WhatsAppFloat />
         <TableTray />
 
         {/* tabIndex={-1}: focusable by the skip link's jump, but not part of
