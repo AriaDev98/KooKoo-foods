@@ -117,6 +117,7 @@ export const FOOTER_COLUMNS = [
       { label: "Book your event", href: "#enquire" },
       { label: "Jars & pantry", href: "#pantry" },
       { label: "Delivery across NSW", href: "#enquire" },
+      { label: "Wedding catering guide", href: "/blog/persian-wedding-catering-sydney/" },
     ],
   },
   {
