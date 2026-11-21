@@ -59,13 +59,13 @@ export function ReelSection() {
           >
             <video
               ref={videoRef}
-              src="/videos/market-stall.mp4"
-              poster="/images/photos/market-stall-poster.jpg"
+              src="/videos/kitchen-to-street.mp4"
+              poster="/images/photos/kitchen-to-street-poster.jpg"
               muted
               loop
               playsInline
               preload="none"
-              aria-label="Kookoo Foods at a Persian market stall"
+              aria-label="Kookoo Foods, from the FoodLab kitchen to the market stall"
               className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
