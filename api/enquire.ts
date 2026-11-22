@@ -39,6 +39,7 @@ async function logToSheet(entry: {
   occasion: string;
   guests: number;
   date: string;
+  dietary: string[];
   dishes: string[];
   notes: string;
 }): Promise<void> {
@@ -73,6 +74,7 @@ interface EnquiryBody {
   occasion?: unknown;
   guests?: unknown;
   date?: unknown;
+  dietary?: unknown;
   notes?: unknown;
   dishes?: unknown;
   website?: unknown; // honeypot — real visitors never see or fill this field
@@ -101,6 +103,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const notes = typeof body.notes === "string" ? body.notes.trim() : "";
   const guestsNum = Number(body.guests);
   const dishes = Array.isArray(body.dishes) ? body.dishes.filter((d): d is string => typeof d === "string") : [];
+  const dietary = Array.isArray(body.dietary)
+    ? body.dietary.filter((d): d is string => typeof d === "string")
+    : [];
 
   const invalidFields: string[] = [];
   if (!name) invalidFields.push("name");
@@ -135,6 +140,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     <p><strong>Occasion:</strong> ${escapeHtml(occasion || "Not specified")}</p>
     <p><strong>Guests:</strong> ${guestsNum}</p>
     <p><strong>Date:</strong> ${escapeHtml(date || "Flexible")}</p>
+    <p><strong>Dietary needs:</strong> ${dietary.length ? escapeHtml(dietary.join(", ")) : "Not specified"}</p>
     ${dishListHtml}
     ${notes ? `<p><strong>Notes:</strong><br>${escapeHtml(notes).replace(/\n/g, "<br>")}</p>` : ""}
   `;
@@ -160,7 +166,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   // Logged independently of the email send below — this is the one record
   // of the enquiry that survives even if Resend itself is down.
-  const sheetLog = logToSheet({ name, contact, occasion, guests: guestsNum, date, dishes, notes });
+  const sheetLog = logToSheet({ name, contact, occasion, guests: guestsNum, date, dietary, dishes, notes });
 
   try {
     await resend.emails.send({

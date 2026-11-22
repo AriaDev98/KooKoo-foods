@@ -1,5 +1,6 @@
 import { Hero } from "../layout/Hero";
 import { Button } from "../ui/Button";
+import { SITE } from "../../data/content";
 
 export function HeroSection() {
   return (
@@ -22,6 +23,9 @@ export function HeroSection() {
         <p className="m-0 font-body text-lead leading-relaxed text-cream-200 text-center">
           Authentic Persian flavours, homemade with heart. From backyard gatherings to big-day
           events.
+        </p>
+        <p className="hero-content-rise m-0 font-ui text-body-sm font-bold uppercase tracking-eyebrow text-amber-400">
+          From {SITE.pricingFrom} per person
         </p>
         <div className="hero-content-rise flex flex-wrap gap-4 justify-center">
           <Button variant="primary" size="lg" href="#menu">
