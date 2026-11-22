@@ -53,6 +53,8 @@ export const STEPS = [
   },
 ];
 
+export const DIETARY_OPTIONS = ["Vegetarian", "Vegan", "Gluten-free", "Dairy-free", "Nut allergy"];
+
 export const OCCASIONS = [
   "Weddings",
   "Birthdays",

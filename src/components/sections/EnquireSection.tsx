@@ -7,7 +7,7 @@ import { Select } from "../ui/Select";
 import { Textarea } from "../ui/Textarea";
 import { Button } from "../ui/Button";
 import { Reveal } from "../ui/Reveal";
-import { OCCASIONS, SITE } from "../../data/content";
+import { DIETARY_OPTIONS, OCCASIONS, SITE } from "../../data/content";
 import { useTable } from "../../context/TableContext";
 import { isEmail, isValidContact } from "../../utils/contact";
 import { useHasMounted } from "../../hooks/useHasMounted";
@@ -18,6 +18,7 @@ interface FormState {
   occasion: string;
   guests: string;
   date: string;
+  dietary: string[];
   notes: string;
 }
 
@@ -27,6 +28,7 @@ const initialForm: FormState = {
   occasion: OCCASIONS[0],
   guests: "",
   date: "",
+  dietary: [],
   notes: "",
 };
 
@@ -47,6 +49,13 @@ export function EnquireSection() {
   };
 
   const hasError = Object.values(errors).some(Boolean);
+
+  const toggleDietary = (option: string) => {
+    setForm((f) => ({
+      ...f,
+      dietary: f.dietary.includes(option) ? f.dietary.filter((d) => d !== option) : [...f.dietary, option],
+    }));
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -98,6 +107,7 @@ export function EnquireSection() {
           occasion: form.occasion,
           guests: guestsNum,
           date: form.date,
+          dietary: form.dietary,
           notes: form.notes,
           dishes: selected,
           website, // honeypot, always empty for a real visitor
@@ -226,6 +236,28 @@ export function EnquireSection() {
                 />
               </Field>
             </div>
+            <Field label="Dietary needs" hint="Select any that apply — let us know allergy details below.">
+              <div className="flex flex-wrap gap-2" role="group" aria-label="Dietary needs">
+                {DIETARY_OPTIONS.map((option) => {
+                  const active = form.dietary.includes(option);
+                  return (
+                    <button
+                      key={option}
+                      type="button"
+                      aria-pressed={active}
+                      onClick={() => toggleDietary(option)}
+                      className={`rounded-full border-2 px-4 py-2 font-ui text-body-sm font-bold transition-colors duration-150 ease-standard cursor-pointer ${
+                        active
+                          ? "border-green-800 bg-green-800 text-cream-100"
+                          : "border-cream-400 bg-cream-100 text-green-700 hover:border-green-700"
+                      }`}
+                    >
+                      {option}
+                    </button>
+                  );
+                })}
+              </div>
+            </Field>
             <div className="rounded-2xl border-2 border-dashed border-green-700 bg-cream-200 px-5 py-4">
               <div className="font-ui text-caption font-bold uppercase tracking-eyebrow text-green-600">
                 Your table
@@ -266,7 +298,7 @@ export function EnquireSection() {
             </div>
             <Field
               label="What are you after"
-              hint="Dishes you have your eye on, dietary needs, suburb for delivery."
+              hint="Dishes you have your eye on, allergy details, suburb for delivery."
               htmlFor="enquire-notes"
             >
               <Textarea

@@ -10,6 +10,11 @@ export interface FaqItem {
 
 export const FAQ: FaqItem[] = [
   {
+    question: "How much does catering cost?",
+    answer:
+      "As a guide, most spreads work out to about $35-$40 per person, depending on the dishes and quantities you choose, and that includes rice and sides. Tell us your date and guest numbers on the enquiry form and we'll send you an exact price, usually the same day.",
+  },
+  {
     question: "What's the minimum number of guests?",
     answer: "We cater from 10 guests up. For a smaller group, give us a call and we'll see what we can do.",
   },
@@ -21,6 +26,11 @@ export const FAQ: FaqItem[] = [
     question: "Can I collect the food myself?",
     answer:
       "Yes — everything is cooked to order at FoodLab on the day of your event. You can have it delivered, or collect it from the kitchen yourself.",
+  },
+  {
+    question: "Is it delivery only, or can you do buffet setup and serving staff too?",
+    answer:
+      "Delivery is our standard service. If you'd like buffet-style setup, serving staff, or extras like plates and cutlery for your event, mention it in your enquiry and we'll let you know what we can arrange.",
   },
   {
     question: "Do you have vegetarian, vegan and gluten-free options?",
