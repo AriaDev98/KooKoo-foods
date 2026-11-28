@@ -11,6 +11,7 @@ import { DIETARY_OPTIONS, OCCASIONS, SITE } from "../../data/content";
 import { useTable } from "../../context/TableContext";
 import { isEmail, isValidContact } from "../../utils/contact";
 import { useHasMounted } from "../../hooks/useHasMounted";
+import { getSource, trackGoal } from "../../utils/attribution";
 
 interface FormState {
   name: string;
@@ -110,12 +111,14 @@ export function EnquireSection() {
           dietary: form.dietary,
           notes: form.notes,
           dishes: selected,
+          source: getSource(),
           website, // honeypot, always empty for a real visitor
         }),
       });
 
       if (!res.ok) throw new Error(`request failed: ${res.status}`);
 
+      trackGoal("enquiry-sent");
       setSent(true);
       const firstName = form.name.trim().split(" ")[0];
       setStatus(

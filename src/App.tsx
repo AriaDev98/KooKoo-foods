@@ -20,6 +20,7 @@ import { TableProvider } from "./context/TableContext";
 import { TableTray } from "./components/navigation/TableTray";
 import { WhatsAppFloat } from "./components/navigation/WhatsAppFloat";
 import { StructuredData } from "./components/seo/StructuredData";
+import { ConversionTracking } from "./components/seo/ConversionTracking";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <StructuredData />
         <Analytics />
         <SpeedInsights />
+        <ConversionTracking />
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
