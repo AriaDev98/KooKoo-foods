@@ -77,6 +77,7 @@ interface EnquiryBody {
   dietary?: unknown;
   notes?: unknown;
   dishes?: unknown;
+  source?: unknown; // first-touch channel from the browser, e.g. "Instagram"
   website?: unknown; // honeypot — real visitors never see or fill this field
 }
 
@@ -101,6 +102,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const occasion = typeof body.occasion === "string" ? body.occasion.trim() : "";
   const date = typeof body.date === "string" ? body.date.trim() : "";
   const notes = typeof body.notes === "string" ? body.notes.trim() : "";
+  // Short free-text label set by the site (not typed by the visitor), capped
+  // so a tampered request can't stuff the email or the Sheet.
+  const source = typeof body.source === "string" ? body.source.trim().slice(0, 80) : "";
   const guestsNum = Number(body.guests);
   const dishes = Array.isArray(body.dishes) ? body.dishes.filter((d): d is string => typeof d === "string") : [];
   const dietary = Array.isArray(body.dietary)
@@ -143,6 +147,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     <p><strong>Dietary needs:</strong> ${dietary.length ? escapeHtml(dietary.join(", ")) : "Not specified"}</p>
     ${dishListHtml}
     ${notes ? `<p><strong>Notes:</strong><br>${escapeHtml(notes).replace(/\n/g, "<br>")}</p>` : ""}
+    <p><strong>Found us via:</strong> ${escapeHtml(source || "Unknown")}</p>
   `;
 
   const customerHtml = `
@@ -166,7 +171,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   // Logged independently of the email send below — this is the one record
   // of the enquiry that survives even if Resend itself is down.
-  const sheetLog = logToSheet({ name, contact, occasion, guests: guestsNum, date, dietary, dishes, notes });
+  // The source rides along in the Notes column so it shows in the Sheet
+  // without changing the Apps Script's column layout.
+  const sheetNotes = [notes, `Found us via: ${source || "Unknown"}`].filter(Boolean).join("\n\n");
+  const sheetLog = logToSheet({ name, contact, occasion, guests: guestsNum, date, dietary, dishes, notes: sheetNotes });
 
   try {
     await resend.emails.send({
